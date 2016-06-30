@@ -4,7 +4,7 @@ Below is some information that will help you get started on your integration wit
 
 Take a look at this [video](https://youtu.be/ezIioLysyIc?list=PLUO6j5jr1rwtrkegAj-YNXq56Si337vPo "video") to get an overview of the Trimble Connect API.
 
-Next, create a FREE registered Personal Account of Trimble Connect by clicking here. You can then sign-in to Trimble Connect.
+Next, create a FREE registered Personal Account of Trimble Connect by clicking [here](http://connect.trimble.com/get-started). You can then sign-in to Trimble Connect.
 
 Here are links to a series of training videos that will help you learn more about Trimble Connect and its features.
 
