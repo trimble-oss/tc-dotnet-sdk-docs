@@ -14,7 +14,7 @@ Here are links to a series of training videos that will help you learn more abou
 
 Here is useful information for you getting started with the API/SDK:
 
-* [TC .NET SDK Developer Guide](documentation\Developer%20Guide.md)
+* [TC .NET SDK Developer Guide](documentation/Developer%20Guide.md)
 * [REST API Documentation](https://gteam.zendesk.com/hc/en-us/articles/207222356-API-v2-0)
 * [API/SDK Training Videos](https://www.youtube.com/playlist?list=PLUO6j5jr1rwtrkegAj-YNXq56Si337vPo)
 * [API/SDK Training Videos Internal and Trimble Partners](https://www.youtube.com/playlist?list=PLUO6j5jr1rwtJ4aG7cW3JAvHyI77Q1NaM)
