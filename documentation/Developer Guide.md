@@ -158,7 +158,7 @@ All published packages support the following platforms:
 * Android 4.0+ (using Xamarin Platform)
 * iOS 7.1+ (using Xamarin Platform)
 
-The corresponding symbol packages can be found at [http://symbolsource.org/](http://symbolsource.org/)
+The corresponding symbol packages can be found at [https://nuget.smbsrc.net/](https://nuget.smbsrc.net/)
 
 Guide for configuring Visual Studio to use symbol server: [http://inedo.com/support/kb/1036/using-progets-symbol-server](http://inedo.com/support/kb/1036/using-progets-symbol-server) 
 
