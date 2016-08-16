@@ -151,6 +151,7 @@ See [Developer Guide - Data](Developer%20Guide%20-%20Data.md).
 ## <a name="nuget">NuGet packages</a>
 
 You can find the official releases on the public stable channel: [https://www.nuget.org/profiles/TrimbleConnect](https://www.nuget.org/profiles/TrimbleConnect).
+The beta channel is also available for restricted audience: [http://ts-nuget.teklaad.tekla.com/nuget/tempfortcd/](http://ts-nuget.teklaad.tekla.com/nuget/tempfortcd/)
 
 All published packages support the following platforms:
 
@@ -158,9 +159,10 @@ All published packages support the following platforms:
 * Android 4.0+ (using Xamarin Platform)
 * iOS 7.1+ (using Xamarin Platform)
 
-The corresponding symbol packages can be found at [https://nuget.smbsrc.net/](https://nuget.smbsrc.net/)
+The corresponding symbol packages for stable channel can be found at [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public).
+For the beta channel symbol packages are available as well from this source: [http://ts-nuget.teklaad.tekla.com/symbols/tempfortcd](http://ts-nuget.teklaad.tekla.com/symbols/tempfortcd).
 
-Guide for configuring Visual Studio to use symbol server: [http://inedo.com/support/kb/1036/using-progets-symbol-server](http://inedo.com/support/kb/1036/using-progets-symbol-server) 
+SymbolSource has good instructions on how package consumers can [configure Visual Studio to use the symbol packages ](http://www.symbolsource.org/Public/Home/VisualStudio).
 
 <!--## <a name="samples">Sample apps</a>
 
