@@ -1,5 +1,12 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.0.84
+
+* Improved: email claim is exposed as part of UserInfo
+* Improved: added AuthorityUris constants for production and staging
+* Improved: the AuthenticationContext.AuthorityUri is initialized with the production URL by default
+* Improved: logger implementation is made internal 
+ 
 # 1.0.83
 
 * Fixed: argument checking in case AuthorityUri is not initialized
@@ -7,7 +14,6 @@
 # 1.0.82
 
 * Fixed: the sign-in using web page is not possible if user uses the Backspace key at least once while typing in his credentials
-
 * The JavaScript errors suppression is removed
 
 # 1.0.81
@@ -17,13 +23,9 @@
 # 1.0.80
 
 * Support for Owner Password Flow added
-
 * Support for implicit flow removed
-
 * Custom sign-in UI support with auth code flow is removed. The browser behavior is not emulated any more, but user must interact with real browser.
-
 * Trailing slash is automatically added to authority URL if needed.
-
 * Incompatible API changes in the AuthenticationContext constructor: client app registration details are given in the AuthenticationContext constructor instead of individual method calls.
 
 # 1.0.79
@@ -63,15 +65,12 @@
 # 1.0.70
 
 * Support for embedding web sign-in form into the application frame.
-
 * Fix the back key handling in web sign-in form
-
 * Navigating and DocumentCompleted callbacks added
 
 # 1.0.69
 
 * new code signature (Trimble Solutions)
-
 * Tracing fixed to use Warning level instead of WriteLine.
 
 # 1.0.67
@@ -105,13 +104,9 @@
 # 1.0.53
 
 * New required parameter introduced to the AcquireToken method that uses web browser popup: platform specific parameters. This is a cross platform replacement for AuthenticationContext.OwnerWindow property.
-
 * iOS web browser pop up implemented
-
 * Android web browser pop up implemented
-
 * Forgot password link is now opened in a separate browser window
-
 * Better error message if sign-in web form cannot be parsed
 
 # 1.0.52
