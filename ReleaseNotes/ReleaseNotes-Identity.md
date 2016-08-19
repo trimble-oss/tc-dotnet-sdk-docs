@@ -1,5 +1,9 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.0.86
+
+* Assembly is strong named 
+ 
 # 1.0.84
 
 * Improved: email claim is exposed as part of UserInfo
