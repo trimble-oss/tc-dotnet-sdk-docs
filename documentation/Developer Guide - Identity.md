@@ -277,7 +277,7 @@ In order to acquire an initial security token, an application must present its c
 
 The code snippet below demonstrates how to initialize the AuthenticationContext and call _AcquireTokenAsync_:
 
-    var clientCredential = new ClientCredential(<id>, <secret>, <redirectUrl>);
+    var clientCredential = new ClientCredential(<id>, <secret>, <appname>);
     var userCredentials = new NetworkCredential(<username>, <pass>, <tenant>);
     var authCtx = new AuthenticationContext(clientCredential) { AuthorityUri = ...};
     var token = await authCtx.AcquireTokenAsync(userCredentials);
