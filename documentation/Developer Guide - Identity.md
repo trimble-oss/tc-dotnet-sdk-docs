@@ -24,6 +24,8 @@ The authentication component provides the authentication context for all TC API 
 
 The main concepts in the identity component are: **AuthenticationContext**, **AcquireToken**, **AuthenticationResult**, **TokenCache**. 
 
+![Class diagram](images/Trimble.Identity_ClassDiagram.png)
+
 **AuthenticationContext** represents a connection to the Identity Provider.  The **AuthenticationContext** has a set of **AcquireToken** overloaded methods to cover several authentication scenarios for headless and GUI applications.  For headless apps, the app must pass the **ICredentials** provider as a parameter, for GUI applications, the **AcquireToken** method is invoked via a web browser window displayed when and if user interaction is needed. 
 
 **AuthenticationContext** has an associated persistent **TokenCache**.  The cache can be enumerated by the app if needed, to find previously acquired tokens.  **AcquireToken** methods are aware of the **TokenCache** and use cached tokens instead of initiating network communication whenever they are available. 
