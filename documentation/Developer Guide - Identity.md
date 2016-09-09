@@ -68,200 +68,21 @@ TID requires the tenant name in addition to the username.  The tenant name can b
 
 ## <a name="tracing">Code tracing</a>
 
+Tracing is implemented using [Trimble.Diagnostics](Developer%20Guide%20-%20Diagnostics.md) library.
+
 The _Trimble.Identity_ component uses a similar approach for code instrumentation and tracing as the .NET network tracing (see [https://msdn.microsoft.com/en-us/library/ty48b824(v=vs.110).aspx](https://msdn.microsoft.com/en-us/library/ty48b824(v=vs.110).aspx)).
 
 On desktop platforms, in order to enable tracing for **Trimble.Identity** trace source, please include the following in your app.config:
  
     <system.diagnostics>
     <sources>
-        <source name="**_Trimble.Identity_**"></source>
+        <source name="Trimble.Identity"></source>
     </sources>
 
     <switches>
-      <add name="**_Trimble.Identity_**" value="Verbose"/>
+      <add name="Trimble.Identity" value="Verbose"/>
     </switches>
     </system.diagnostics>
-
-The following table shows what tracing messages are enabled depending on the value of *SourceLevels*.  The items in the leftmost column are the *SourceLevels* that you specify in the config.  The items in the header row represent the _TraceEventType_ values tied to a particular event.  A check mark (v) indicates that this level event will log against this *SourceLevel*.
-
-<table>
-  <tr>
-    <td></td>
-    <td>C
-r
-i
-t
-i
-c
-a
-l</td>
-    <td>E
-r
-r
-o
-r</td>
-    <td>W
-a
-r
-n
-i
-n
-g</td>
-    <td>I
-n
-f
-o
-r
-m
-a
-t
-i
-o
-n</td>
-    <td>V
-e
-r
-b
-o
-s
-e</td>
-    <td>S
-t
-a
-r
-t</td>
-    <td>S
-t
-o
-p</td>
-    <td>S
-u
-s
-p
-e
-n
-d</td>
-    <td>R
-e
-s
-u
-m
-e</td>
-    <td>T
-r
-a
-n
-s
-f
-e
-r</td>
-  </tr>
-  <tr>
-    <td>Off</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-  </tr>
-  <tr>
-    <td>Critical</td>
-    <td>v</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-  </tr>
-  <tr>
-    <td>Error</td>
-    <td>v</td>
-    <td>v</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-  </tr>
-  <tr>
-    <td>Warning</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-  </tr>
-  <tr>
-    <td>Information</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-  </tr>
-  <tr>
-    <td>Verbose</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-  </tr>
-  <tr>
-    <td>ActivityTracing</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>x</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-  </tr>
-  <tr>
-    <td>All</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-    <td>v</td>
-  </tr>
-</table>
-
 
 ### Code tracing on mobile platforms
 
