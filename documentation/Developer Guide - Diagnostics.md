@@ -3,18 +3,19 @@
 
 Trimble.Diagnostics component provides cross platform tools for code level tracing with TraceSource. 
 
-It uses a similar approach for code instrumentation and tracing as the .NET network tracing (see [https://msdn.microsoft.com/en-us/library/ty48b824(v=vs.110).aspx](https://msdn.microsoft.com/en-us/library/ty48b824(v=vs.110).aspx)).
+It is similar approach for code instrumentation and tracing as the .NET network tracing (see [https://msdn.microsoft.com/en-us/library/ty48b824(v=vs.110).aspx](https://msdn.microsoft.com/en-us/library/ty48b824(v=vs.110).aspx)) or tracing in WCF (see [https://msdn.microsoft.com/en-us/library/ms751526(v=vs.110).aspx](https://msdn.microsoft.com/en-us/library/ms751526(v=vs.110).aspx)).
 
-On desktop platforms, in order to enable tracing for e.g. **Trimble.Identity** trace source, please include the following in your app.config:
+Internally it uses the tracing mechanism defined in the System.Diagnostics namespace. In this tracing model, trace data is produced by trace sources that applications implement. Each source is identified by a name. Trace consumers create trace listeners for the trace sources for which they want to retrieve information. To receive trace data, you must create a listener for the trace source. 
+On desktop platforms, this can be done by adding the following code to app’s configuration file (**Trimble.Identity** is used as an example trace source):
  
     <system.diagnostics>
-    <sources>
+      <sources>
         <source name="**_Trimble.Identity_**"></source>
-    </sources>
+      </sources>
 
-    <switches>
-      <add name="**_Trimble.Identity_**" value="Verbose"/>
-    </switches>
+      <switches>
+        <add name="**_Trimble.Identity_**" value="Verbose"/>
+      </switches>
     </system.diagnostics>
 
 The following table shows what tracing messages are enabled depending on the value of *SourceLevels*.  The items in the leftmost column are the *SourceLevels* that you specify in the config.  The items in the header row represent the _TraceEventType_ values tied to a particular event.  A check mark (v) indicates that this level event will log against this *SourceLevel*.
