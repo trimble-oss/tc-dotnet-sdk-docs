@@ -1,5 +1,10 @@
 # Trimble.Diagnostics Release Notes
 
+# 1.0.10
+
+* UWP tracing is implemented with EventSource
+* not used resources are removed from Android project 
+
 # 1.0.9
 
 * net35-client target added
