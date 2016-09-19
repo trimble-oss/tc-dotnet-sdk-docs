@@ -1,5 +1,9 @@
 # Trimble SQLite .NET Wrapper
 
+# 1.0.56
+
+* Trimble.Diagnostics package is used for tracing
+
 # 1.0.55
 
 * PCL profile changed to `Profile111` to ensure future transition to `netstandard11`
