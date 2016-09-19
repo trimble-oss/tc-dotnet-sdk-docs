@@ -1,5 +1,28 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.1.3
+
+* Fix: TaskCancellationException on auth code grant sign-in with web browser
+
+# 1.1.2
+
+* Missed AuthenticationAgentContinuationHelper added to recover backward compatibilty with v1.0.86
+
+# 1.1.1-beta
+
+* Migrated to Trimble.WebUI package for web UI flow functionality
+* Recovered code level backward compatibilty with v1.0.86
+
+# 1.0.88-beta (should have been 1.1.2-beta)
+
+* Switched PCL from `Profile5` to `Profile111` to prepare future transition to netstandard11
+* UWP target added
+
+# 1.0.87-beta (should have been 1.1.1-beta)
+
+* Trimble.Diagnostics package is used for tracing
+* Trimble.Identity.UI package is used for UI related functionality
+
 # 1.0.86
 
 * Assembly is strong named 
