@@ -3,6 +3,24 @@
 (Applicable for Trimble.Connect.Client, Trimble.Connect.Data, Trimble.Connect.Data.Sync components)
 
 
+# 2.0.279
+
+* Fixed login problem with interactive profile completion. With embedded view login have to be run in UI thread.
+
+# 2.0.278
+
+* Migrated to Trimble.WebUI to support web UI flow
+* mark API key based login as obsolete
+
+# 2.0.277-beta
+
+* LoginAsync() method is extended with the profile completion flow with Web UI support
+
+# 2.0.276
+
+* Portable project is switched from Profile7 to Profile111 to prepare ground for netstandard11
+* UWP target platform added
+
 # 2.0.275
 
 * ECOM_ENTITLEMENT_DATA_FAILED error code added
