@@ -49,7 +49,6 @@ Trimble Connect .NET SDK is:
 The Trimble Connect SDK contains all of the necessary tools and building blocks to handle user authentication and to communicate with the Trimble Connect Platform Services in order to share data and collaborate with other users and applications using the TC.
 
 Here are some benefits of using the TC .NET SDK comparing to the plain REST API.
-TC .NET SDK provides added value for the desktop and mobile applications over using the plain REST API. 
 
 1. Convenience wrappers for the REST API give the .NET developer a comfortable API paradigm to work with in the .NET world.
 2. The REST wrappers API is strongly typed. This boosts the developer productivity by providing compile type error checking.
