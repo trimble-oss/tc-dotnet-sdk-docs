@@ -51,7 +51,7 @@ The Trimble Connect SDK contains all of the necessary tools and building blocks 
 Here are some benefits of using the TC .NET SDK comparing to the plain REST API.
 
 1. Convenience wrappers for the REST API give the .NET developer a comfortable API paradigm to work with in the .NET world.
-2. The REST wrappers API is strongly typed. This boosts the developer productivity by providing compile type error checking.
+2. The REST wrappers API is strongly typed. This boosts the developer productivity by providing compile time error checking.
 3. SDK components are built with extensibility in mind and provide set of extensibility mechanisms that help application developers to build backward and forward compatible applications.
 4. There are number functional building blocks which are typically required when creation real world applications but might be time consuming to create yourself: message formatting and parsing, error handling, token management and caching, pods connection management.
 5. SDK components are cross platform. The same API is available on number of target platforms. This allow to share code between mobile and desktop applications and significantly boost productivity,
