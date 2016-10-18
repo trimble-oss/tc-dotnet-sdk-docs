@@ -48,9 +48,20 @@ Trimble Connect .NET SDK is:
 
 The Trimble Connect SDK contains all of the necessary tools and building blocks to handle user authentication and to communicate with the Trimble Connect Platform Services in order to share data and collaborate with other users and applications using the TC.
 
-TC .NET SDK provides added value for the desktop and mobile applications over using the plain REST API. In addition to the convenience wrappers for the REST API calls, there are functional building blocks which are typically required when creation applications: message formatting and parsing, error handling, token management and caching, pods connection management. SDK enables you to build connected apps that tolerate network performance and availability problems (e.g. on construction site where connection might be not available). TC SDK uses some private REST APIs that are not available otherwise via public REST API. Finally SDK components provide built-in IntelliSense documentation and integration with the development tools.
+Here are some benefits of using the TC .NET SDK comparing to the plain REST API.
+TC .NET SDK provides added value for the desktop and mobile applications over using the plain REST API. 
 
-The TC .NET SDK targets full .NET desktop application (.NET 4.0 and above) as well as iOS (7.1+) and Android (4.0+) applications built with Xamarin.
+1. Convenience wrappers for the REST API give the .NET developer a comfortable API paradigm to work with in the .NET world.
+2. The REST wrappers API is strongly typed. This boosts the developer productivity by providing compile type error checking.
+3. SDK components are built with extensibility in mind and provide set of extensibility mechanisms that help application developers to build backward and forward compatible applications.
+4. There are number functional building blocks which are typically required when creation real world applications but might be time consuming to create yourself: message formatting and parsing, error handling, token management and caching, pods connection management.
+5. SDK components are cross platform. The same API is available on number of target platforms. This allow to share code between mobile and desktop applications and significantly boost productivity,
+6. SDK enables you to build occasionally connected apps that tolerate network performance and availability problems (e.g. on construction site where connection might be not available). Local storage synchronization, merge and conflict resolution mechanisms are build in and available out of the box. 
+7. TC SDK uses some private REST APIs that are not available otherwise via public REST API. 
+8. SDK components provide full built-in IntelliSense documentation and integration with the development tools. This gives a lot of value since developers can learn the API just by coding and explore the API possibilities right from the IDE.
+8. We are using the TC .NET SDK ourself to build core TC applications. This code works and provides value. Developers don't need to spend time designing, implementing and testing similar low level code to access TC data again.
+
+The TC .NET SDK targets full .NET desktop application (.NET 4.0 and above) as well as iOS (7.1+), Android (4.0+) and UWP applications built with Xamarin.
 
 <!-- (Comment) Introductory presentation can be found also [TODO: insert link]().-->
 
