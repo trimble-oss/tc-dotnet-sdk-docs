@@ -54,7 +54,7 @@ Here are some benefits of using the TC .NET SDK comparing to the plain REST API.
 2. The REST wrappers API is strongly typed. This boosts the developer productivity by providing compile time error checking.
 3. SDK components are built with extensibility in mind and provide set of extensibility mechanisms that help application developers to build backward and forward compatible applications.
 4. There are number functional building blocks which are typically required when creation real world applications but might be time consuming to create yourself: message formatting and parsing, error handling, token management and caching, pods connection management.
-5. SDK components are cross platform. The same API is available on number of target platforms. This allow to share code between mobile and desktop applications and significantly boost productivity,
+5. SDK components are cross platform. The same API is available on number of target platforms. This allow to share code between mobile and desktop applications and significantly reduce the development time for set of applications.
 6. SDK enables you to build occasionally connected apps that tolerate network performance and availability problems (e.g. on construction site where connection might be not available). Local storage synchronization, merge and conflict resolution mechanisms are build in and available out of the box. 
 7. TC SDK uses some private REST APIs that are not available otherwise via public REST API. 
 8. SDK components provide full built-in IntelliSense documentation and integration with the development tools. This gives a lot of value since developers can learn the API just by coding and explore the API possibilities right from the IDE.
