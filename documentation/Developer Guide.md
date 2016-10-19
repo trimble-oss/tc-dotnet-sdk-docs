@@ -48,23 +48,42 @@ Trimble Connect .NET SDK is:
 
 The Trimble Connect SDK contains all of the necessary tools and building blocks to handle user authentication and to communicate with the Trimble Connect Platform Services in order to share data and collaborate with other users and applications using the TC.
 
-Here are some benefits of using the TC .NET SDK comparing to the plain REST API.
-
-1. Convenience wrappers for the REST API give the .NET developer a comfortable API paradigm to work with in the .NET world.
-2. The REST wrappers API is strongly typed. This boosts the developer productivity by providing compile time error checking.
-3. SDK components are built with extensibility in mind and provide set of extensibility mechanisms that help application developers to build backward and forward compatible applications.
-4. There are number functional building blocks which are typically required when creation real world applications but might be time consuming to create yourself: message formatting and parsing, error handling, token management and caching, pods connection management.
-5. SDK components are cross platform. The same API is available on number of target platforms. This allow to share code between mobile and desktop applications and significantly reduce the development time for set of applications.
-6. SDK enables you to build occasionally connected apps that tolerate network performance and availability problems (e.g. on construction site where connection might be not available). Local storage synchronization, merge and conflict resolution mechanisms are build in and available out of the box. 
-7. TC SDK uses some private REST APIs that are not available otherwise via public REST API. 
-8. SDK components provide full built-in IntelliSense documentation and integration with the development tools. This gives a lot of value since developers can learn the API just by coding and explore the API possibilities right from the IDE.
-8. We are using the TC .NET SDK ourself to build core TC applications. This code works and provides value. Developers don't need to spend time designing, implementing and testing similar low level code to access TC data again.
-
 The TC .NET SDK targets full .NET desktop application (.NET 4.0 and above) as well as iOS (7.1+), Android (4.0+) and UWP applications built with Xamarin.
 
 <!-- (Comment) Introductory presentation can be found also [TODO: insert link]().-->
 
 API training videos are available on [youtube](http://www.youtube.com/playlist?list=PLUO6j5jr1rwtrkegAj-YNXq56Si337vPo).
+
+### <a name="SDK_vs_rest">Why should I use TC .NET SDK</a>
+
+When creating .NET applications developers can choose different approaches what .NET mechanism to use to communicate with TC Services. They can opt to rely on the TC REST API directly and utilize built-in HttpWebRequest or HttpClient classes available in the .NET platform or use generic 3d party libraries like RestSharp (http://restsharp.org/) that help to communicate with REST services. 
+Using these generic network .NET APIs and libraries gives application developer a full flexibility in how to communicate with the TC Services and how to organize the app code, but it might be not the most productive approach comparing to the specialized SDK. 
+In addition to TC API usage the TC SDK boosts developer productivity by providing reusable ready to use functional blocks that are typically needed in real life apps. This helps to build high quality applications by reusing already implemented and tested components.
+The TC .NET SDK is used to build the core TC applications (TCD, TCM) that proves the usability of the SDK.
+All SDK components are cross platform. The same API is available on a number of target platforms. This allows to share code between mobile and desktop applications and significantly reduce the development time for a family of applications.
+
+Below are benefits listed for each component in the TC .NET SDK.
+
+#### Trimble.Identity
+
+User identification component (Trimble.Identity) solves the challenge of authenticating the user with Trimble Identity service. There are not many publicly available components that could help application developer to implement this feature. Implementing this functionality is proven to be challenging since it includes a user interaction with the web UI flow. This component abstracts all the complexity of the authentication from the application developer behind a very simple interface yet providing a significant degree of flexibility.
+
+#### Trimble.Connect.Client
+
+TC API Wrappers component can be seen as a layer on top of the generic network library. Below are some benefits of using the TC API Wrappers component (Trimble.Connect.Client) in comparison to consuming the TC REST API with generic .NET libraries:
+
+* The SDK components’ APIs are optimized to be used with specific TC Services in comparison to the generic APIs.
+* Strong typing helps productivity by providing compile time error checking
+* Fully built-in IntelliSense documentation support enables learning the TC API by exploring it from the IDE
+* Comes with production ready components needed for the interaction with the cloud service (http message formatting and parsing, error handling, token management and caching, pods connection management) - developers can start working on features instead of building infrastructure.
+* The common challenge for the connected applications is aligning the service API versioning and application versioning. The service communication code in SDK is designed and implemented with extensibility in mind and provide a set of extensibility mechanisms which help application developers to build backward and forward compatible applications.
+
+#### Trimble.Connect.Data
+
+One significant addition in the SDK over the direct REST API usage is the local (offline) storage component (Trimble.Connect.Data) with synchronization capabilities. This component enables building occasionally connected applications. This might be a typical challenge on a construction site where good network connection might be not available. This means:
+
+* Application user perceived performance is not affected by network quality
+* End user can continue his/her work regardless of the network or backend availability
 
 ## <a name="components">Components</a>
 
