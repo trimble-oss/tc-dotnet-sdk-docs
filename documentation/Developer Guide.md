@@ -161,7 +161,7 @@ TID environments
 
 * Production TID: [https://identity.trimble.com/i/oauth2/](https://identity.trimble.com/i/oauth2/) 
 
-## <a name="nuget">NuGet packages</a>
+## <a name="nuget-packages">NuGet packages</a>
 
 You can find the official releases on the public stable channel: [https://www.nuget.org/profiles/TrimbleConnect](https://www.nuget.org/profiles/TrimbleConnect).
 The beta channel is also available for restricted audience: [http://ts-nuget.teklaad.tekla.com/nuget/tempfortcd/](http://ts-nuget.teklaad.tekla.com/nuget/tempfortcd/)
