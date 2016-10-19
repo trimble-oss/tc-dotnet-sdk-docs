@@ -6,7 +6,7 @@
 2. [Components](#components)
 3. [Building applications with TC SDK Components](#applications)
 4. [TC environments](#environments)
-5. [NuGet packages](#nuget)
+5. [NuGet packages](#nuget-packages)
 6. [Support](#support)
 
 
@@ -95,17 +95,17 @@ TC .NET SDK is provided as a set of components.
 
 TC SDK components are implemented as following nuget packages:
 
-1. Trimble.Identity - TID authentication (See [Developer Guide - Identity](Developer%20Guide%20-%20Identity.md))
+1. [Trimble.Identity](Developer%20Guide%20-%20Identity.md) - TID authentication
 
-2. Trimble.Connect.Client - TC API Client (TC REST API wrappers) (See [Developer Guide - Client](Developer%20Guide%20-%20Client.md))
+2. [Trimble.Connect.Client](Developer%20Guide%20-%20Client.md) - TC API Client (TC REST API wrappers)
 
-3. Trimble.Connect.Data - TC Data Storage (local offline storage) (See [Developer Guide - Data](Developer%20Guide%20-%20Data.md))
+3. [Trimble.Connect.Data](Developer%20Guide%20-%20Data.md) and - TC Data Storage (local offline storage) which uses SQLite for storing data locally
 
-4. Trimble.Connect.Data.Sync - synchronization component which uses SQLite for local storage of TC data
+4. Trimble.Connect.Data.Sync - synchronization component
 
-All nuget packages target full .NET as well as PCL, iOS, and Android Xamarin platforms.
+All nuget packages target full .NET as well as PCL, UWP, iOS, and Android Xamarin platforms.
 
-The nuget packages are available from the [nuget.org](https://www.nuget.org/) and the corresponding symbols from symbolsource.org.  
+The [NuGet packages](#nuget-packages) are available from the [nuget.org](https://www.nuget.org/) and the corresponding symbols from symbolsource.org.  
 
 ## <a name="applications">Building Applications with TC SDK Components</a>
 
