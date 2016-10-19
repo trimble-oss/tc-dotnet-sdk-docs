@@ -168,6 +168,7 @@ All published packages support the following platforms:
 * .NET 4.0+
 * Android 4.0+ (using Xamarin Platform)
 * iOS 7.1+ (using Xamarin Platform)
+* UWP
 
 The corresponding symbol packages for stable channel can be found at [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public).
 For the beta channel symbol packages are available as well from this source: [http://ts-nuget.teklaad.tekla.com/symbols/tempfortcd](http://ts-nuget.teklaad.tekla.com/symbols/tempfortcd).
