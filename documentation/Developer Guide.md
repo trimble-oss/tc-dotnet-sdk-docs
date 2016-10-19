@@ -68,11 +68,11 @@ Below are benefits listed for each component in the TC .NET SDK.
 
 #### Trimble.Identity
 
-User identification component (Trimble.Identity) solves the challenge of authenticating the user with Trimble Identity service. There are not many publicly available components that could help application developer to implement this feature. Implementing this functionality is proven to be challenging since it includes a user interaction with the web UI flow. This component abstracts all the complexity of the authentication from the application developer behind a very simple interface yet providing a significant degree of flexibility.
+User identification component ([Trimble.Identity](Developer%20Guide%20-%20Identity.md)) solves the challenge of authenticating the user with Trimble Identity service. There are not many publicly available components that could help application developer to implement this feature. Implementing this functionality is proven to be challenging since it includes a user interaction with the web UI flow. This component abstracts all the complexity of the authentication from the application developer behind a very simple interface yet providing a significant degree of flexibility.
 
 #### Trimble.Connect.Client
 
-TC API Wrappers component (Trimble.Connect.Client) can be seen as a layer on top of the generic network library. Below are some benefits of using the TC API Wrappers component in comparison to consuming the TC REST API with generic .NET libraries:
+TC API Wrappers component ([Trimble.Connect.Client](Developer%20Guide%20-%20Client.md)) can be seen as a layer on top of the generic network library. Below are some benefits of using the TC API Wrappers component in comparison to consuming the TC REST API with generic .NET libraries:
 
 * The SDK components’ APIs are optimized to be used with specific TC Services in comparison to the generic APIs.
 * Strong typing helps productivity by providing compile time error checking
@@ -82,7 +82,7 @@ TC API Wrappers component (Trimble.Connect.Client) can be seen as a layer on top
 
 #### Trimble.Connect.Data
 
-One significant addition in the SDK over the direct REST API usage is the local (offline) storage component (Trimble.Connect.Data) with synchronization capabilities. This component enables building occasionally connected applications. This might be a typical challenge on a construction site where good network connection might be not available. This means:
+One significant addition in the SDK over the direct REST API usage is the local (offline) storage component ([Trimble.Connect.Data](Developer%20Guide%20-%20Data.md)) with synchronization capabilities. This component enables building occasionally connected applications. This might be a typical challenge on a construction site where good network connection might be not available. This means:
 
 * Application user perceived performance is not affected by network quality
 * End user can continue his/her work regardless of the network or backend availability
@@ -99,9 +99,7 @@ TC SDK components are implemented as following nuget packages:
 
 2. [Trimble.Connect.Client](Developer%20Guide%20-%20Client.md) - TC API Client (TC REST API wrappers)
 
-3. [Trimble.Connect.Data](Developer%20Guide%20-%20Data.md) and - TC Data Storage (local offline storage) which uses SQLite for storing data locally
-
-4. Trimble.Connect.Data.Sync - synchronization component
+3. [Trimble.Connect.Data](Developer%20Guide%20-%20Data.md) and Trimble.Connect.Data.Sync - TC Data Storage (local offline storage) which uses SQLite for storing data locally with synchronization capability
 
 All nuget packages target full .NET as well as PCL, UWP, iOS, and Android Xamarin platforms.
 
