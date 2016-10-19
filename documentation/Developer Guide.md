@@ -6,9 +6,8 @@
 2. [Components](#components)
 3. [Building applications with TC SDK Components](#applications)
 4. [TC environments](#environments)
-5. [Components developer guides](#component_guides)
-6. [NuGet packages](#nuget)
-7. [Support](#support)
+5. [NuGet packages](#nuget)
+6. [Support](#support)
 
 
 ### Acronyms
@@ -96,11 +95,11 @@ TC .NET SDK is provided as a set of components.
 
 TC SDK components are implemented as following nuget packages:
 
-1. Trimble.Identity - TID authentication
+1. Trimble.Identity - TID authentication (See [Developer Guide - Identity](Developer%20Guide%20-%20Identity.md))
 
-2. Trimble.Connect.Client - TC API Client (REST API wrappers)
+2. Trimble.Connect.Client - TC API Client (TC REST API wrappers) (See [Developer Guide - Client](Developer%20Guide%20-%20Client.md))
 
-3. Trimble.Connect.Data - TC Data Storage (local offline storage)
+3. Trimble.Connect.Data - TC Data Storage (local offline storage) (See [Developer Guide - Data](Developer%20Guide%20-%20Data.md))
 
 4. Trimble.Connect.Data.Sync - synchronization component which uses SQLite for local storage of TC data
 
@@ -163,22 +162,6 @@ TID environments
 * Staging TID: [https://identity-stg.trimble.com/i/oauth2/](https://identity-stg.trimble.com/i/oauth2/) 
 
 * Production TID: [https://identity.trimble.com/i/oauth2/](https://identity.trimble.com/i/oauth2/) 
-
-## <a name="component_guides">Components Developer Guides</a>
-
-This section houses a collection of links to individual components developer guides.
-
-### Trimble.Identity
-
-See [Developer Guide - Identity](Developer%20Guide%20-%20Identity.md).
-
-### Trimble.Connect.Client
-
-See [Developer Guide - Client](Developer%20Guide%20-%20Client.md).
-
-### Trimble.Connect.Data and Trimble.Connect.Data.Sync
-
-See [Developer Guide - Data](Developer%20Guide%20-%20Data.md).
 
 ## <a name="nuget">NuGet packages</a>
 
