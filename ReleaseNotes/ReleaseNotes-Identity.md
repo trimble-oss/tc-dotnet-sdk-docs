@@ -1,5 +1,37 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.1.9
+
+* Added: Missed convinience extension to AcquireTokenSilentAsync with refresh options
+
+# 1.1.8
+
+* Fix: Resolve ambiguity in AcquireToken extensions
+
+# 1.1.7
+
+* license url in the package descriptor is updated to use new support.connect.trimble.com hostname
+* Added: automatic token refresh based on the id_token expiration (RefreshOptions)
+* Added: token revocation API
+* Added: possiblity to dispose AuthenticationContext
+* Custom user-agent header is now sent with all requests (TID SDK/x.x)
+* Added: acquire token by the refresh token received externally
+
+# 1.1.6
+
+* license url in the package descriptor is updated
+
+# 1.1.5
+
+* Upgraded dependency on Trimble.WebUI to 1.0.4
+* Delegate LougoutAsync call to WebUIHelper. Now logout is supported on mobile platforms as well.
+* Parameters extension method exposed to convert them to WebUIConfiguration
+
+# 1.1.4
+
+* Fixed dependencies on Microsoft.AspNet.WebApi.Client in nuspec for iOS and Android targets
+* Upgraded dependency on Trimble.WebUI to 1.0.3
+
 # 1.1.3
 
 * Fix: TaskCancellationException on auth code grant sign-in with web browser
@@ -25,15 +57,15 @@
 
 # 1.0.86
 
-* Assembly is strong named 
- 
+* Assembly is strong named
+
 # 1.0.84
 
 * Improved: email claim is exposed as part of UserInfo
 * Improved: added AuthorityUris constants for production and staging
 * Improved: the AuthenticationContext.AuthorityUri is initialized with the production URL by default
-* Improved: logger implementation is made internal 
- 
+* Improved: logger implementation is made internal
+
 # 1.0.83
 
 * Fixed: argument checking in case AuthorityUri is not initialized
@@ -41,6 +73,7 @@
 # 1.0.82
 
 * Fixed: the sign-in using web page is not possible if user uses the Backspace key at least once while typing in his credentials
+
 * The JavaScript errors suppression is removed
 
 # 1.0.81
@@ -70,7 +103,6 @@
 # 1.0.76
 
 * More tracing added to interactive web sign-in control.
-
 * Logic for web browser control session counting fixed (both for pop-up and embedded): by default session is kept alive while app is running, to kill the session and clear memory state app must call LogoutAsync()
 
 # 1.0.75
