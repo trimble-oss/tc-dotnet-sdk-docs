@@ -1,7 +1,53 @@
-# Trimble Connect .NET SDK Release Notes
+# Trimble Connect Client .NET Release Notes
 
+# 2.0.287
+
+* Added: extensibility mechanism to send additional parameters in query string in `GetAllAsync()`
+* Added: extensibility mechanism `InvokeApiAsync()`
+* Added: convenience extensions to search `Views` by model and model version
+* Added: convenience extensions to search `Todos` by file and file version 
+
+# 2.0.286
+
+* `ReceiveAll()` extension method added to enumerate paged results
+* internal refactorings to improve support for object delta queries
+* improve robustness when parsing range for paged results
+
+## Common Release notes
 (Applicable for Trimble.Connect.Client, Trimble.Connect.Data, Trimble.Connect.Data.Sync components)
 
+# 2.0.285
+
+* Fix: undelete operation should be applied to parent folders as well
+
+# 2.0.284
+
+* license url in the package descriptor is updated to use new support.connect.trimble.com hostname
+* The `X-TrimbleConnect-Client` header is introduced
+
+# 2.0.283
+
+* license url in the package descriptor is fixed
+
+# 2.0.282
+
+* Fix: the license information in local project descriptor is not updated in some cases on `PullAsync()`.
+
+# 2.0.281
+
+* `X-TC-INSTALLATION-ID` header is introduced. The unique installation identifier is generated for each application installation and upgrade. This feature is a foundation for the per app installation TC service API usage analytics and billing.
+* forward compatibility improvements for date properties (`ToDo.DueDate`, `Release.DueDate`, `Project.StartDate`, `Project.EndDate`) values parsing in TC service responses. Now both `yyyy'-'MM'-'dd` and `yyyy'-'MM'-'dd'T'HH':'mm':'ssK` formats are supported.
+* Fixed the UTC datetime conversion when processing date properties (`ToDo.DueDate`, `Release.DueDate`, `Project.StartDate`, `Project.EndDate`)
+* `ITrimbleConnectClient.LogoutAsync()` method is added
+
+# 2.0.280
+
+* TotalLength for paged results calculation improved in case of empty response: returns 0 now instead of null.
+
+# 2.0.279-beta
+
+* Fix for ObjectDisposedException in interactive profile completion
+* Upgrade dependency to Trimble.WebUI 1.0.3
 
 # 2.0.278-beta
 
@@ -948,7 +994,7 @@ Sync:
 
 # 2.0.75-alpha
 
-# All dlls are build in release mode now
+All dlls are build in release mode now
 
 Data:
 
@@ -957,11 +1003,11 @@ Data:
 
 # 2.0.73-alpha
 
-# Symbol packages published
+Symbol packages published
 
 # 2.0.72-alpha
 
-# No changes.
+No changes.
 
 # 2.0.70-alpha
 
