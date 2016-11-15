@@ -4,15 +4,14 @@
 
 1. [Overview](#overview)
 2. [Authentication](#authentication)
-3. [Code snippets](#authentication-snippets)
 	+ [Example: Sign-in TC Platform Services](#sign-in-example)
 	+ [Example: Use retry handler to refresh expired access token automatically](#refresh-token-example)
-4. [TC Data Model](#data-model)
-5. [Accessing TC Platform Services](#accessing-tc)
-	+  [Extensibility mechanisms](#extensibility-mechanisms)
-	+  [Code snippets](#tc_snippets)
-		+  [Example: Access TC Services](#example-access-tc)
-		+  [Example: Using delegating handlers to implement network activity indicator](#example-delegating-handlers)
+3. [TC Data Model](#data-model)
+4. [Accessing TC Platform Services](#accessing-tc)
+5. [Extensibility mechanisms](#extensibility-mechanisms)
+6. [Code snippets](#tc_snippets)
+	+  [Example: Access TC Services](#example-access-tc)
+	+  [Example: Using delegating handlers to implement network activity indicator](#example-delegating-handlers)
 
 ### Acronyms
 
@@ -45,30 +44,27 @@ The video tutorial: [SDK Authentication using the Identity library](https://www.
 
 TC uses token based authentication. The token is issued by TC though exchanging a valid TID token acquired during the TID OAuth2 (OpenID Connect) authentication (see [Trimble.Identity Developer Guide](Trimble.Identity%20Developer%20Guide.md)).
 
-It is important to understand that the ID token is generally a one use token with short life span. It is expired much faster than the TID access token and TC access token. This means that when the TC token is expired and a new token needs to be acquired (there is no refresh token concept for TC) app will have to request a new id token from TID.  This can be done by executing the refresh flow (**AcquireTokenByRefreshTokenAsync**).
-
-## <a name="authentication-snippets">Code Snippets</a>
+It is important to understand that the ID token is generally a one use token with short life span. It is expired much faster than the TID access token and TC access token. This means that when the TC token is expired and a new TID token needs to be acquired (there is no refresh token concept for TC) app will have to request a new id token from TID.  This can be done by `AuthenticationContext.AcquireTokenByRefreshTokenAsync` or by using `RefreshOptions.IdToken` option in other `AuthenticationContext.AcquireTokenAsync` methods. Please refer to the [Trimble.Identity Developer Guide](Trimble.Identity%20Developer%20Guide.md).
 
 ### <a name="example-sign-in">Example: Authenticating with TC API </a>
 
-To authenticate with TC, the TID token must be "exchanged" for a TC token.  Note that the ID token is very short lived.  This basically means that the token meant is for one time use and your app must always refresh the cached token before calling the LoginAsync method.
+To authenticate with TC, the TID token must be "exchanged" for a TC token.  Note that the ID token is usually a short lived. This basically means that the token is meant for one time use. `LoginAsync` could fail if the `id_token` is expired. 
 
-    var accessToken = ...;
-    var serviceUri = ...;
     var authCtx = new AuthenticationContext(...);
+    var accessToken = await authCtx.AcquireTokenAsync(RefreshOptions.IdToken)
 
+    var serviceUri = ...;
     using (var client = new TrimbleConnectClient(serviceUri))
     {    
-        accessToken = await authCtx.AcquireTokenByRefreshTokenAsync(accessToken)
         await client.LoginAsync(accessToken.IdToken);        
         ...
     }
 
 ### <a name="example-refresh-token">Example: Use retry handler to refresh expired access token automatically</a>
 
-The tc access token can expire at any moment of time that cannot be predicted by the application. To handle the token expiration it is recommended to use an http delegating handler (RetryHandler) that intercepts responses from the backend, handle access token refresh logic and repeat the original request transparently for the caller. 
+The TC access token can expire at any moment of time that cannot be predicted by the application. To handle the token expiration it is recommended to use an http delegating handler (`RetryHandler`) that intercepts responses from the backend, handle access token refresh logic and repeat the original request transparently for the caller. 
 
-Below is a code snippet showing how to install a RetryHandler and connect it to the TC client.
+Below is a code snippet showing how to install a `RetryHandler` and connect it to the TC client.
 
     var authCtx = new AuthenticationContext(...);
     
@@ -79,8 +75,7 @@ Below is a code snippet showing how to install a RetryHandler and connect it to 
     {
         handler.OnFailed = async (response, request, cancellationToken) =>
         {
-            if (response.StatusCode == HttpStatusCode.Unauthorized 
-                || response.StatusCode ==  HttpStatusCode.BadRequest)
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 var e = await InvalidServiceOperationException.FromResponse(response);
                 if (e.ErrorCode == ResponseErrorCode.TidTokenExpired || 
@@ -104,27 +99,36 @@ Below is a code snippet showing how to install a RetryHandler and connect it to 
         // use the client normally for making service requests.    
     }
 
-An application should be prepared such that **AcquireTokenByRefreshTokenAsync()** can fail because when a refresh token is revoked or invalid, in which case the token must be reacquired using the user credentials.
+An application should be prepared such that `AcquireTokenByRefreshTokenAsync()` can fail because when a refresh token is revoked or invalid, in which case the token must be reacquired using the user credentials.
 
-<!--## <a name="data-model">TC Data Model</a>
+## <a name="data-model">TC Data Model</a>
 
-![Data model](images/tc_data_model.png)-->
+![Data model](images/tcps_data_model.png)
 
 ## <a name="accessing-tc">Accessing the TC API</a>
 
+Below is a class diagram that describes the API programming models used in the SDK component to access the TC service.
+
 ![Class diagram](images/class_diagram.png)
 
-### <a name="extensibility-mechanisms">Extensibility mechanisms</a>
+## <a name="extensibility-mechanisms">Extensibility mechanisms</a>
 
-Generally speaking, the SDK client component is designed to be backward and forward compatible.  The following mechanisms are used to achieve this flexibility:
+The SDK client component is designed to be backward and forward compatible. This means that applications released with older versions of the SDK should be still functional when new TC Service APIs release. Also if by some reason app developers don't want to migrate to newer versions of the SDK but need access to new TC Service APIs this can be done as well by using extension mechanisms.
 
-1. Each entity has a _Properties_ attribute implemented as a generic dictionary. This is a collection of "unknown" properties. E.g. if a new property is added to the entity after SDK has been released app can access such property from this dictionary.
+The following mechanisms are used to achieve this flexibility:
 
+1. Each entity has a `Properties` attribute implemented as a generic dictionary. This is a collection of "unknown" or "open" properties. E.g. if a new property is added to the entity after SDK has been released app can access such property from this dictionary.
 2. We prefer string literals to enums. This makes it possible to deserialize new values even if they were not known at the time of SDK compilation.
+3. All updates to entities are done using PATCH requests instead of PUT.
+4. There is a generic mechanism to pass additional query parameters to the `GetAllAsync` and `SearchAsync` methods
+5. There is a generic mechanism to invoke any TC API method in a dynamic way: `InvokeApiAsync`.
+6. Application developer can provide custom `HttpMessageHandler` and `DelegatingHandlers` when creating `TrimbleConnectClient`. This is very powerfull mechanism to implement custom processing in the http pipeline. One example can be found [below](#example-delegating-handlers).
 
-### <a name="tc_snippets">Code Snippets</a>
+## <a name="tc_snippets">Code Snippets</a>
+Below are some examples on using the Trimble Connect Client component.
+Full sample applications can be found on [github](https://github.com/Trimble-Connect/samples)
 
-#### <a name="example-access-tc">Example: Access TC API endpoints</a>
+### <a name="example-access-tc">Example: Access TC API endpoints</a>
 
     // list all projects
     var projects = await client.GetProjectsAsync();
@@ -148,7 +152,7 @@ Generally speaking, the SDK client component is designed to be backward and forw
         await stream.CopyToAsync(destination);
     }
 
-#### <a name="example-delegating-handlers">Example: Using delegating handlers to implement network activity indicator</a>
+### <a name="example-delegating-handlers">Example: Using delegating handlers to implement network activity indicator</a>
 
 The code snippet below demonstrates how to use http delegating handlers to implement network activity indicator in the app.
 
