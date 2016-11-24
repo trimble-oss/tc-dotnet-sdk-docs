@@ -1,5 +1,13 @@
 # Trimble SQLite .NET Wrapper
 
+# 1.0.58
+
+* Renamed the embedded sqlite3 native Android library to avoid name conflict with SQLitePCLRaw package.
+
+# 1.0.57
+
+* Android only change: the distributed sqlite3.so library is used only on Android 7 (API24) or later
+
 # 1.0.56
 
 * Trimble.Diagnostics package is used for tracing
@@ -9,8 +17,8 @@
 * PCL profile changed to `Profile111` to ensure future transition to `netstandard11`
 * sqlite native libraries updated to 3.14.1
 * Android 7 (API24) support: native sqlite3.so library is included as part of the distribution.
-* UWP target added 
- 
+* UWP target added
+
 # 1.0.54
 
 * Assembly is strong named
