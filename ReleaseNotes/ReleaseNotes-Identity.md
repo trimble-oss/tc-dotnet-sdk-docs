@@ -1,5 +1,16 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.1.11
+
+* Added: localization support for the sign-in web UI (InteractiveAuthenticationRequest.Language parameter added)
+
+# 1.1.10
+
+* Added: possibility to set Scope parameter for authentication requests
+* Added: possibility to set State parameter for authentication requests
+* API has changes - AuthenticationRequest introduced which unifies user, refresh options, scope and state parameters
+* Compatibility extensions for source level backward compatibility (version is not ABI compatible)
+
 # 1.1.9
 
 * Added: Missed convinience extension to AcquireTokenSilentAsync with refresh options
