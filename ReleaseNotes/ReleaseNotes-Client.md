@@ -1,5 +1,30 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.0.292
+
+* Added FolderItem.Revision property
+
+# 2.0.291
+
+* Missed extension added for deleting attachments from Todo
+* The attachments API assymetry is encapsulated: now the result from listing attachments can be directly used for deleting attachments. 
+Background: TCPS API uses attachment id property differently in requests and in responses. In request it is a file *version id*, in response it is a *file id* and the *file version id* is tranferred in a different field. This creates incompartibility between response and request content.
+The solution applied on SDK level is that `Attachent.Identifier` and `Attachent.Version` properties are always used according to their names, but when sending requests to TCPS the `Identifier` is automatically replaced with value from the `Version` property when needed.
+
+# 2.0.290
+
+* `IProjectClient` interface now inherits from `ITrimbleConnectClient` interface, so all cross-project methods can be invoked on a ProjectClient as well
+
+# 2.0.289
+
+* Cleanup `IController` `ITrimbleConnectClient` interfaces, move overloads to extension methods
+
+# 2.0.288
+
+* Fix the breaking API change in the 2.0.287: `IController.GetAllAsync()` overload is missing
+* Fix the breaking API change in the 2.0.287: `ITrimbleConnectClient.SearchAsync()` overload is missing
+* Added: extensibility mechanism to send additional parameters in query string in `ITrimbleConnectClient.GetProjectsAsync()`
+
 # 2.0.287
 
 * Added: extensibility mechanism to send additional parameters in query string in `GetAllAsync()`
