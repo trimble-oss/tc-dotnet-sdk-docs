@@ -101,9 +101,9 @@ Enter your current site URL with `signin-trimble` appended into the Authorized r
 
 #### <a name="appcreds">Storing Trimble app credentials</a>
 
-Link sensitive settings like Trimble ClientID and ClientSecret to your application configuration by using the [Secret Manager tool](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets) instead of storing them in your configuration file directly, as described in the social login overview page.
+Link sensitive settings like Trimble ClientID and ClientSecret to your application configuration by using the [Secret Manager tool](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets) instead of storing them in your configuration file directly.
 
-Execute the following commands in your project working directory to store the Google secrets:
+Execute the following commands in your project working directory to store the Trimble secrets:
 
 	dotnet user-secrets set Authentication:Trimble:ClientID <client_id>
 	dotnet user-secrets set Authentication:Trimble:ClientSecret <client-secret>
@@ -116,7 +116,7 @@ Use NuGet to install the [Trimble.Identity.AspNetCore](https://www.nuget.org/pac
 
 Add the Trimble middleware in the `Configure` method in `Startup.cs`:
 
-	app.UseGoogleAuthentication(new TrimbleAuthenticationOptions
+	app.UseTrimbleAuthentication(new TrimbleAuthenticationOptions
 	{
         Environment = TrimbleEnvironment.Staging,
 	    ClientId = Configuration["Authentication:Trimble:ClientId"],
