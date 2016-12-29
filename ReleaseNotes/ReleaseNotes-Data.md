@@ -1,6 +1,75 @@
 # Trimble Connect .NET SDK Release Notes
 
-(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)
+*(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
+
+# 2.1.18
+* Added: ResetSyncCursorAsync method added (ResetSyncCursor is marked as obsolete) that allows to reset the sync cursor more reliably when async pull operations are running at the same time.
+
+# 2.1.17
+* Added: Support for Todo.Type and Title properties in local storage (db schema version changed 50->51). All locally cached todos are marked as dirty on upgrade, so next pull operation should populate new properties from the server.
+
+# 2.1.16
+* Improvement: Use pagination (1000 items per page) when pulling clash items to avoid long requests failing with timeout
+
+# 2.1.15
+* Fix: CurrentUserIdentifier is not updated on local project push
+
+# 2.1.14
+* Fix: missed locking on project push might cause duplicate project creation
+
+# 2.1.13
+* Fix database connection management: all asynchronous operations create a new separate connection to database for the operation.
+This way app can continue to use normal CRUD operations with the storage instance that the async operation was initiates with while the async operation is running.
+Note that app should still take care that synchronous operations for same Storage instance are NOT executed concurrently from different threads.
+
+# 2.1.12
+* Synchronization methods (push, pull, refresh) are now thread safe. It is ok for the app to call them concurerntly from diferent thread, Sync component with do the nessesery coordination automatically to avoid data corruption.
+Previously it was up to the application to make sure only other thread is initiating the synchronization activity. Typical problem was a duplicate entities creation.
+* Push parallelizm is improved. If there are many entities up to 10 parallel requests will be send to backend to improve performance.
+
+# 2.1.11-beta
+* Fix: automatic on demand file cache migration is removed to avoid problems related to atomicity of this operation and performance hit on storage construction. App could do migration as an admin action if needed.
+* More intelligent file cache implemented that supports both local and shared stages simultaneously for the backward compartibility: files that are already in the local cache will be used from there, all new files are put to shared cache.
+* App can now access and modify the file cache location using `IStorage.FileCache.DirectoryPath` property. App should take care not to change the file cache location when there are not published files because they cannot be restored from the cloud, or app should copy such files to a new location.
+
+# 2.1.10-beta
+* Fix: storage schema (48->49) cannot be converted if there are not published files
+
+# 2.1.9-beta
+* Fix: too much noise to trace console when sdk config file is missed 
+
+# 2.1.8-beta
+* Compatibility release: Update Sync component to work with Trimble.Connect.Client 2.0.290 and above
+
+# 2.1.7-beta
+* Added: Support for Releases in local storage
+
+# 2.1.6-beta
+* Bugfix: db schema v49 conversion fixed
+
+# 2.1.5-beta
+* Bugfix: db schema v49 conversion fixed
+
+# 2.1.4-beta
+* File history support added (FileVersions collection and LocalFile.Versions property). 
+At this point we don't guarantee the full file history is available locally automatically- there could be some versions missed. 
+But each version seen will be recorded and always available later even if file is updated or deleted. App can force the full file history retrival with FileVersions.PullAsync().
+Added CleanOptions.FileHistory.
+* db schema has changed (v49)
+
+# 2.1.3-beta
+* Add support for syncing project members' avatars. 
+
+# 2.1.2-beta
+* Shared file content caching support. 
+Now the shared file content cache is the default behaviour on desktop platforms. 
+The default location for the shared file cache is local user profile (`%USERPROFILE%\.TrimbleConnect\.files`). This location can be overriden using _FileCachePath_ parameter in the configuration file `%USERPROFILE%\.TrimbleConnect\.config`.
+If relative file is specified in the configuration file then the file cache will be local for the project storage (same as behaviour in earlier versions).
+On mobile platforms behaviour is unchanged.
+When storage created with older SDK version is opened on desktop platform the SDK will look for the ".files" subfolder. If it exists automatic migration will be attempted to copy all the currently cached files to the shared cache. 
+* In case of the shared file content cache the `Storage.Clear()` method behaviour has changed: files are never removed from the shared cache
+* Added possibility to override the file content cache (blob storage) location on project storage creation, the BlobStorage class is exposed for this purposes
+* Added callback on storage opening that informs app that the storage is going to be converted from older version and allows to cancel the conversion.
 
 # 2.1.1-beta
 * Comments pull optimization - pulling only comment changes since last synchronization
