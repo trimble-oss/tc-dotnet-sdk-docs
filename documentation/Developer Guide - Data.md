@@ -35,12 +35,18 @@
 		+ [Example: Initial creation of the local storage for the cloud project](#example-formats)
 	+ [Commands](#commands)
 		+ [Using command queues](#using-commands)
+5. [Catalog](#catalog)
+	+ [Creating the catalog](#creating-catalog)
+	+ [Accessing the catalog](#accessing-catalog)
+	+ [Thread safety and memory usage](#thread-safety-catalog)
+	+ [Catalog data](#catalog-data)
+		+ [Licenses](#licenses)
 
-### Acronyms
+## Acronyms
 
-TID - Trimble Identity
+*TID* - Trimble Identity
 
-TC - Trimble Connect
+*TC* - Trimble Connect
 
 ## <a name="local-storage">Local Storage</a>
 
@@ -52,15 +58,36 @@ Each storage instance is designed to store data from a single TC project and own
 
 Local storage has the capability to store both [objects](#object-storage) and [files](#file-storage). 
 
-The folder used in the storage constructor must initially. The Local Storage component will initialize it. 
-
 A small metadata file ".storage" is created in the file storage directory. This file contains the information necessary for tracking the files and synchronizing them with a remote data storage system.
 
-All objects are stored locally in a single file.  Local folders may be used as local "working folders" as well.
+All objects are stored locally in a single file. Local folders may be used as local "working folders" as well.
+
+###File cache
+
+Content for all TC files is cached locally in a separate folder that is configurable.
+
+By default the file cache location is shared for all project storages on desktop platforms. This allows to avoid unnecessary network transfers when there are several storages that represent the same project on the same machine. This could happen if there are several TC connected applications installed on the same machine.
+
+The default location for the shared file cache is a folder under local user profile (`%USERPROFILE%\.TrimbleConnect\.files`). This location can be overriden using *FileCachePath* parameter in the configuration file `%USERPROFILE%\.TrimbleConnect\.config`.
+If relative path is specified in the configuration file then the file cache will be local for the project storage, if it is absolute path the cache will be shared between all storages.
+
+Here is an example of the .config file content that specifies the local isolated caches for each project storage:
+
+    {'FileCachePath' : '.files'} 
+
+Another example of the .config file that uses a drive D: for the shared file cache:
+
+    {'FileCachePath' : 'D:\TrimbleConnect\.files'}
+
+Application also has a possiblity to override the global configuration settings when connection to the storage is initialized and specify any cache location in runtime.
+
+    storage.FileCache.DirectoryPath = ...;
+
+On mobile platforms sharing of files between apps is not supported so each project storage has a local file cache that is located in the `.files` subfolder of the storage.
 
 ### <a name="creating-storage">Creating Local Storage</a>
 
-Use the Create method of the _Storage_ class to create a new storage object bound to the project and user.  After storage creation, user and project entities cannot be changed.
+Use the `Create` method of the `Storage` class to create a new storage object bound to the project and user.  After storage creation, user and project entities cannot be changed.
 
     using (var storage = Storage.Create("directory path"), user, project)
     {
@@ -666,4 +693,60 @@ Now the synchronization with the remote storage system can be implemented as fol
     await storage.ExecuteAsync(remoteStorage, "Finalize");
 
 The command queue ensures that the operations are executed in the same order as they were enqueued.  This allows, for example, the application to create a new object in the remote storage system with one command and then apply some permissions on the object with another.
+
+## <a name="catalog">Catalog</a>
+
+**Catalog** is a class designed to store data that does not belong to a single project, but instead exists independently. Currently only license information is stored in catalog.
+
+### <a name="creating-catalog">Creating the catalog</a>
+
+Use the Create method of the _Catalog_ class to create a new catalog object.
+
+    using (var catalog = Catalog.Create("directory path"))
+    {
+        // use the catalog here
+    }
+
+Catalog is stored in a _.catalog_ file under the provided directory.
+
+### <a name="accessing-catalog">Accessing the catalog</a>
+
+Use the Catalog class to access the catalog dataq.
+
+    using (var catalog = new Catalog("directory path"))
+    {
+        // use the catalog here
+    }
+
+The recommended location for the data file is the local (non-roaming) application data folder or the user's personal document folder.
+
+### <a name="thread-safety-catalog">Thread safety and memory usage</a>
+
+The _Catalog_ instances are not thread safe.  However, you can create multiple instances that point to the same data file and use them from different threads in a safe manner.  For convenience, _Catalog_ class has an overloaded constructor that will allow you to create new connection to the same data file.
+
+    using (var catalogConn2 = new Catalog(catalog))
+    {
+        // use the catalogConn2 here
+    }
+
+Each Catalog instance maintains a small cache in memory.  It's recommended to release your in-memory _Catalog_ instances by calling Dispose() method to free the cache and to reduce the application memory footprint.
+
+### <a name="catalog-data">Catalog data</a>
+
+#### <a name="licenses">Licenses</a>
+
+License information is readonly data. The data is populated and refreshed by pulling the data from Trimble Connect backend. Remote data is fetched through the _Sync.RemoteCatalog_ class.
+
+    ITrimbleConnectClient client = ...;    
+    
+    using (var catalog = new Catalog("directory path"))
+    using (var remoteCatalog = new RemoteCatalog(client))
+    {
+        await catalog.Licenses.PullAsync(remoteCatalog);
+        ...
+    }
+
+License objects contain information on _Limits_ and _Usages_ of resources associated with a specific license. Pushing data to the Trimble Connnect can fail if the license limits are exceeded (e.g. new file upload would cause storage size to go over the limit).
+
+If a user has more than one license, the locally created project must have a license identifier set before being pushed to the Trimble Connect. 
 
