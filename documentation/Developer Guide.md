@@ -51,7 +51,7 @@ The TC .NET SDK targets full .NET desktop application (.NET 4.0 and above) as we
 
 <!-- (Comment) Introductory presentation can be found also [TODO: insert link]().-->
 
-API training videos are available on [youtube](http://www.youtube.com/playlist?list=PLUO6j5jr1rwtrkegAj-YNXq56Si337vPo).
+API training videos are available on [youtube](https://www.youtube.com/playlist?list=PLB3LvMW41rgbYMnTAV7hchEbv9rB0G7A2).
 
 ### Why should I use TC .NET SDK
 
