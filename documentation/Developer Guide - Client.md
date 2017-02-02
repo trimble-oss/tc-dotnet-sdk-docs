@@ -38,7 +38,7 @@ The TC REST API specification can be found here:
 
 * Production: [https://app.connect.trimble.com/tc/static/apidoc.html](https://app.connect.trimble.com/tc/static/apidoc.html) 
 
-The video tutorial: [SDK Authentication using the Identity library](https://www.youtube.com/watch?v=7Rkw117bfsA).
+The video tutorial: [SDK Authentication using the Identity library](https://youtu.be/XaQXK4Y3TpE?t=2m20s).
 
 ## <a name="overview">Authentication</a>
 
