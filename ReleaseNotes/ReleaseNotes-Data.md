@@ -2,6 +2,106 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.1.48
+* Fix file sync so it's robust when receiving folder items out of order
+
+# 2.1.47
+* Fixes a minor internal issue
+
+# 2.1.46
+* Fix tagged objects sync deserialization of thumbnail uri's to handle array structure
+
+# 2.1.45
+* Fix sync logic so that after a sync cursor reset, entities to which access has been lost will be deleted on next pull
+
+# 2.1.44
+* Fix: pull thumbnail on indivudual file pull (LocalFile.PullAsync) if missed.
+
+# 2.1.43
+* Support the change in the ToDo permission model inroduced in the TCPS 2.50: ToDos are not public for project members any more.
+
+# 2.1.42
+* Optimize sync support for 2D views
+* Expose EntityDescriptor.IsEmbedded property
+
+# 2.1.41
+* Add embedded file attachments support (db schema version changed 55->56)
+* FileVersion.ParentType property added
+* Files.Delete() query added
+
+# 2.1.40
+* Optimize sync support for ClashSets
+* Fix: running pull and push in parallel will result in duplicated entities
+
+# 2.1.39
+* Add sync support for Tags
+
+# 2.1.38
+* Fix: missed methods added to created embedded 2D Views
+* Fix: missed logic implemented to pull and push 2D views as attachments
+
+# 2.1.37
+* Bugfix for deletion of local only Views during Pull operation (also affected are ViewGroups, ClashSets, 2D Views)
+
+# 2.1.36
+* Support sync for 2D view
+
+# 2.1.35
+* Add automatic pulling of thumbnails for LocalFile and FileVersion entities when the Files collection is refreshed
+
+# 2.1.34
+* Bugfix for schema update in version 2.1.31.
+
+# 2.1.33
+* Bugfix for ITags.GetEntityTags to return only tags and not other entity links.
+
+# 2.1.32
+* Add local storage support for tags and tag operation. No sync capabilities.
+
+# 2.1.31
+* Added: 2D views support
+
+# 2.1.30
+* Improvements in handling cancellations when adding and updating files in local storage
+
+# 2.1.29
+* Bugfix: Cannot pull files and versions in parallel if they have same content
+
+# 2.1.28
+* Internal pull optimisation for files and todo sync
+* Add ThumbnailUrl and Revision support to Files and FileVersions
+
+# 2.1.27
+* Bugfix: File pull progress percentage is calculated wrongly when not original file format is requested.
+
+# 2.1.26
+* Bugfix: IStorage.Clear(ClearOptions.FileHistory) does not clear the file history.
+
+# 2.1.25
+* Bugfix: LocalFile.Version should be null if file is modified locally
+* Bugfix: LocalFile.Discard() does not reset changes in name and parent folder
+
+# 2.1.24
+* Bugfix: On mobile targets cannot create a Storage instance because a file cache is not found.
+
+# 2.1.23
+* Bugfix: view.AssignedTo is not updated when IViews.Update(view, thumbnailData, mediaType) overload is used.
+
+# 2.1.22
+* PullWithTimeoutAsync and PushWithTimeoutAsync extension method introduced in 2.1.21 are removed. Instead a LocalFile.PullAsync and PushAsync methods are added with timeout and bufferSize parameters.
+* Added possibility to specify custom transfer buffer size for file push and pull.
+* Added FileVersion.PullAsync with timeout and transfer buffer size parameters
+
+# 2.1.21
+* Extensions are added (PullWithTimeoutAsync, PushWithTimeoutAsync) to allow to pull and push file content with timeout on a stream activity.
+
+# 2.1.20
+* Predefined Todo types are removed
+
+# 2.1.19
+* Added: Support for Todo.PercentageCompleted property in local storage (db schema version changed 51->52). All locally cached todos are marked as dirty on upgrade, so next pull operation should populate new properties from the server.
+* Fix: ResetSyncCursorAsync method missed for Files collection
+
 # 2.1.18
 * Added: ResetSyncCursorAsync method added (ResetSyncCursor is marked as obsolete) that allows to reset the sync cursor more reliably when async pull operations are running at the same time.
 
