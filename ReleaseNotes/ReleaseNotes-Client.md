@@ -1,5 +1,92 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.1.22
+* User profile object expanded with new properties: 'Language', 'Companies', 'Phone', 'DefaultPodLocation', 'ViewerBackgroundColor'.
+* Company profile object expanded with new properties: 'CreatedBy', 'ModifiedBy', 'ModifiedOn', 'Role'.
+* Added 'IUserController.UpdateAsync(Person)'
+* Added 'ICompaniesController'
+* 'IViews.GetAllAsync' does not add a 'detail=true' query parameter by default any more
+
+# 2.1.21
+* triangles count property added for Models
+
+# 2.1.20
+* Improvement: The *IReleasesController* interface is aligned with *ITodosController* and *ITagsController* so return type is ObjectIdentity, not Attachment. 
+
+# 2.1.19
+* Improvement: The *ITodosController* interface is changed (incompatible change) to return collection of Entities instead of collection of Attachments. 
+* Improvement: Most of additional properties are removed from the *Attachment* class to keep it as an entity descriptor only.
+* Improvement: *EntityDescritor* class is removed as duplicate. *Attachment* class to be used instead everywhere.
+* Improvement: *ITagsController* interface has changed to use *Attachment* class as entity descriptor instead of *EntityDescritor*.
+* Added: *Entity.ToDescriptor()* and *Entity.IsEmbedded()* extensions are exposed.
+
+# 2.1.18
+* Fix: Cannot get object sync response beyond first page
+
+# 2.1.17
+* Added: Support embedded file attachments
+* Added: FileInfo.ParentType property
+
+# 2.1.16
+* Bugfix for Tags Object Sync API support
+
+# 2.1.15
+* Added: support Object Sync API for Tags
+
+# 2.1.14
+* Added: support Object Sync API for 2D views
+
+# 2.1.13
+* Added: request list of supported file formats for assimilation API
+* Fix: fixed name for RequestAccessAsync method (was RequestAccess)
+
+# 2.1.12
+* Added: request access to the locked project API
+* Fix: fixed name for EntityType.View2D (was EntityType.View2)
+
+# 2.1.11
+* Added: 2d views API support
+
+# 2.1.10
+* Added: tags API support
+
+# 2.1.9
+* Add support for model hierarchy, properties and property sets download
+
+# 2.1.8
+* Fix an issue where calling UploadFromFileAsync with name==null wouldn't extract name from file path but use null instead
+* Internal improvements of automated tests
+
+# 2.1.7
+* Rename extensions: UploadWithTimeoutAsync -> UploadAsync, DownloadToFileWithTimeoutAsync -> DownloadToFileAsync.
+* Add possibility to specify transfer buffer size for DownloadToFileAsync (default buffer size is 80KB).
+* Add possibility to specify transfer buffer size for file upload operations.
+
+# 2.1.6
+* Extensions are added (UploadWithTimeoutAsync, DownloadToFileWithTimeoutAsync) to allow to upload and download file content with timeout on a stream activity.
+
+# 2.1.5
+
+* Predefined Todo types are removed
+
+# 2.1.4
+
+* Added: Todo.CompletionPercentage property
+
+# 2.1.3
+
+* Fix: first version of the file is added to release always.
+
+# 2.1.2
+
+* Added: pagination support for fetching clash items.
+
+# 2.1.1
+
+* Minor version incremented because binary compartibility was broken in 2.0.289 (version should have been incremented back then)
+* Todo.Title and Type properties are added to data model
+* FolderItem.Status, HasChildren and AccessLevel properties are added to data model
+
 # 2.0.292
 
 * Added FolderItem.Revision property
