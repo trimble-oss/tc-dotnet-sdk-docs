@@ -1,5 +1,15 @@
 # Trimble.WebUI Release Notes
 
+# 1.0.9
+* Added support for SFSafariViewController on iOS and GoogleCustomTabs on Android. This support is behind the WebUIConfiguration.UseSystemBrowser option.
+  The old UIWebView (iOS) and WebView (Android) preserved because it has more capabilities in some areas (customization, ending flow with http(s) url).
+  SFSafariViewController is availiable on iOS 9+, on older versions library automatically falls back to UIWebView.
+  If GoogleCustomTabs are not available library automatically fallback to WebView on Android.
+* Improvement: automatic discovery of the parent ViewController (iOS) instead of require app to specify it in WebUIConfiguration.
+
+# 1.0.8
+* Fix (net40+): LogoutAsync can be used by console apps and from MTA same way as AcquireTokenAsync: STA created automatically if needed. 
+
 # 1.0.7
 * Fix (Android): The web view should not reload on changing orientation.
 
