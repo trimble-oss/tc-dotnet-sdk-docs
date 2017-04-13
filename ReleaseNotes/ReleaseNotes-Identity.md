@@ -1,5 +1,17 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.1.14
+
+* Improvement: AuthenticationContext.LogoutAsync() clears the web session on iOS and Android when Parameters.UseSystemBrowser option set to true. 
+
+# 1.1.13
+
+* Added: Ability to use system browser (SFSafariViewController on iOS and GoogleCustomTabs on Android) for executing sign-in web flow. Controlled by the Parameters.UseSystemBrowser parameter. 
+
+# 1.1.12
+
+* Bugfix: TokenCache.Count access does not trigger the persistent state to be loaded. As a result the property returns 0 even if cache is not empty if accessed before any other method.
+
 # 1.1.11
 
 * Added: localization support for the sign-in web UI (InteractiveAuthenticationRequest.Language parameter added)
