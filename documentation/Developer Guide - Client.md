@@ -9,8 +9,10 @@
 3. [TC Data Model](#data-model)
 4. [Accessing TC Platform Services](#accessing-tc)
 5. [Extensibility mechanisms](#extensibility-mechanisms)
-6. [Code snippets](#tc_snippets)
+6. [Search API](#search)
+7. [Code snippets](#tc_snippets)
 	+  [Example: Access TC Services](#example-access-tc)
+	+  [Example: How to enumerate paged results](#example-paging)
 	+  [Example: Using delegating handlers to implement network activity indicator](#example-delegating-handlers)
 
 ### Acronyms
@@ -124,6 +126,28 @@ The following mechanisms are used to achieve this flexibility:
 5. There is a generic mechanism to invoke any TC API method in a dynamic way: `InvokeApiAsync`.
 6. Application developer can provide custom `HttpMessageHandler` and `DelegatingHandlers` when creating `TrimbleConnectClient`. This is very powerfull mechanism to implement custom processing in the http pipeline. One example can be found [below](#example-delegating-handlers).
 
+## <a name="search">Search API</a>
+
+The search API allows you to search for items across the projects.
+
+    Task<IQueryResult<SearchResult>> SearchAsync(
+            SearchQuery query,
+            IDictionary<string, string> parameters = null,
+            long? pageSize = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+There is a convinient search query builder. 
+E.g. in following example we search for ToDos created last 7 days that has a word `test` across all projects.
+
+    var now = DateTimeOffset.UtcNow;
+    var query = Search.For<Todo>("test").Between(now.AddDays(-7), now);
+    await client.SearchAsync(query, 100).ReceiveAll((page) => {...});
+
+E.g. in following example shows how to search for any entity with word `test` in specific project.
+
+    var query = Search.For("test").In(projectIdentifier);
+    await client.SearchAsync(query, 100).ReceiveAll((page) => {...});
+
 ## <a name="tc_snippets">Code Snippets</a>
 Below are some examples on using the Trimble Connect Client component.
 Full sample applications can be found on [github](https://github.com/Trimble-Connect/samples)
@@ -151,6 +175,34 @@ Full sample applications can be found on [github](https://github.com/Trimble-Con
     {
         await stream.CopyToAsync(destination);
     }
+
+### <a name="example-paging">Example: How to enumerate paged results</a>
+
+Most methods that return a list of entities (like `GetAllAsync` and `SearchAsync` methods) accept a `pageSize`  paramter and return an instance of `IQueryResult<T>`. Entities should be read from the `IQueryResult<T>` page by page. Note that `IQueryResult<T>` can be enymerated only once.
+
+    var page = await client.SearchAsync(....);
+    do
+    {
+		foreach(var entity in page)
+		{
+			// ... process each entity
+		}
+
+        if (page.HasMore)
+        {
+            page = await page.GetNextPageAsync(cancellationToken);
+        }
+        else
+        {
+            break;
+        }
+    }
+	while (true);
+
+There is a helper extension method `ReceiveAll` that encapsulates the enumeration logic for all pages and accepts a callback to be called for each page.
+
+    await client.ClashSets.GetItemsAsync(clashset.Identifier, 100).ReceiveAll(
+		(items) => { Console.WriteLine("Received {0}", items.Count()); });
 
 ### <a name="example-delegating-handlers">Example: Using delegating handlers to implement network activity indicator</a>
 
