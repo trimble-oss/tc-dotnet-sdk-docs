@@ -11,6 +11,7 @@
 	+ [Accessing files in the local storage](#accessing-files)
 	+ [Adding a files and folders to the local storage](#adding-files)
 	+ [Modifying files in the local storage](#modifying-files)
+	+ [Embedded file attachments](#embedded-files)
 4. [Sharing data](#sharing-data)
 	+ [Local data and server data](#local-and-remote-data)
 	+ [Synchronization scope](#sync-scope)
@@ -262,6 +263,48 @@ The files in local storage are marked as read only and should not be modified di
     }
 
 To update a file with new content, the _UpdateFileAsync()_ method should be used.  Your app should not directly modify files in local storage.
+
+### <a name="embedded-files">Embedded file attachments</a>
+
+The embedded file attachments featue allow to add files to projects as attachments to ToDos without making them visible as part of the project file hierarhy. Such files don't appear in any folder.
+
+How to add embedded attachment:
+
+    var issue = storage.Todos.Insert(
+		new LocalModels.Todo
+		{
+	        Type = "Issue",
+	        Text = "Lokalni opis " + Guid.NewGuid(),
+	    });
+
+    string filepath = ...;
+    using (var stream = File.OpenRead(filepath)) 
+	{
+        var file = await storage.Attachments.EmbedFileAsync(issue, "Embedded 1", stream);
+    }
+
+How to push attachments.
+`PushAsync` operation pushes also attachments and pushes local only attachments on demand and creates all needed links
+
+    await storage.Todos.PushAsync(remoteStorage);
+
+How to pull attachments. 
+
+`PullAsync` operation pulls also all attachments descriptors for them. But it doesn't pull attached entities (soft links are created).
+
+    await storage.Todos.PullAsync(remoteStorage);
+    // Next line will pull descriptors all missed embedded attached files
+    await storage.Files.RefreshAsync(remoteStorage);
+    // as usual file content need to be pulled separately as well
+
+Otherwise from consumer point of view embedded files are normal instances of `LocalFile` class.
+
+    var embeddedFile = storage.Files[attachment.Identifier];
+
+The `IStorage.Files` collection contains all files including the embedded files, but embedded files are filtered out by default when you enumerate the IStorage.Files collection (to keep backward compatibility). To enumerate embedded files following methods can be used:
+
+    var embeddedFiles = storage.Files.Embedded;
+    var allFiles = storage.Files.IncludeEmbedded;
 
 ## <a name="sharing-data">Sharing data</a>
 
