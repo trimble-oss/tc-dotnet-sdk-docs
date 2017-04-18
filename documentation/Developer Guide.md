@@ -7,7 +7,8 @@
 3. [Building applications with TC SDK Components](#applications)
 4. [TC environments](#environments)
 5. [NuGet packages](#nuget-packages)
-6. [Support](#support)
+6. [Frequently asked questions](#faq)
+7. [Support](#support)
 
 
 ### Acronyms
@@ -182,6 +183,10 @@ SymbolSource has good instructions on how package consumers can [configure Visua
 <!--## <a name="samples">Sample apps</a>
 
 Example apps can be found here [TODO: insert link]().-->
+
+## <a name="faq">Frequently asked questions</a>
+
+Please check the [FAQ](Developer%20Guide%20-%20FAQ.md) document.
 
 ## <a name="support">Support</a>
 
