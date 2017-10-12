@@ -151,7 +151,7 @@ TC has several deployment environments that we encourage you to use for debuggin
 
 2. Production - production Trimble Connect environment
 
-    * Production TC v2 API: [https://app.connect.com/tc/api/2.0/](https://app.connect.trimble.com/tc/api/2.0/) 
+    * Production TC v2 API: [https://app.connect.trimble.com/tc/api/2.0/](https://app.connect.trimble.com/tc/api/2.0/) 
 
     * Production TCW: [http://connect.trimble.com/](http://connect.trimble.com/) 
 
