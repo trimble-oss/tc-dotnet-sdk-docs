@@ -1,5 +1,25 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.1.18
+
+* Improvement: if refresh token is invalid (expired or revoked) automatically try to acquire a new token using credentials. 
+  Previosly app had to clear the token cache from the invalid token explicitly in order to acquire a new token.
+
+# 1.1.17
+
+* License text updated: https://community.trimble.com/docs/DOC-10021 
+* Trimble.Diagnostics and Trimble.WebUI dependencies upgraded to refer to packages with correct license
+
+# 1.1.16
+
+*Fix: AuthenticationContext.LogoutAsync() does not clear the web session on Windows platform
+
+# 1.1.15
+
+* No functional changes: project is migrated to VS2017 (SDK project format)
+* Migrated to Trimble.Diagnostics 2.0.7 for logging
+* PCL target is removed
+
 # 1.1.14
 
 * Improvement: AuthenticationContext.LogoutAsync() clears the web session on iOS and Android when Parameters.UseSystemBrowser option set to true. 

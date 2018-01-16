@@ -2,6 +2,230 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.3.30
+* Fix peformance bug introduced in 2.3.21 (db schema v73): files metadata pull becomes slow for large file structures (same as was fixed in 2.3.9).
+* Incompartible change: IFiles.PullAssimilationChangesAsync method is split out of IFiles.PullAsync. As a result thumbnail and triangleCount changes are not pulled as part of IFIles.PullAsync any more.
+
+# 2.3.29
+* Fix: local undelete operation should always win on conflict resolution. Before the fix after the file sync cursor reset locally undeleted folders were marked back as deleted again.
+* Fix: Allow to attach several versions of the same file to todo (db schema is incremeted to v75)
+* Fix: Links to file (todo and comment attachments, alignments) are automatically patched with assigned (by server) file version identifier after file push, if they were referring to locally modified file.
+
+# 2.3.28
+* Fix: cannot add embedded file attachment if there was an attachment (now deleted) with the same name already
+
+# 2.3.27
+* A workaround for missing source type information in links created by the TC WEB
+
+# 2.3.26
+* Adds triangle count to *LocalFile* and *FileVersion* as read-only property which is synchronized from the backend
+* Fixes issue when generated thumbnail wouldn't be pulled if file was pulled before thumbnail was generated
+
+# 2.3.25
+* Improves performance of querying files by parent folder or name
+* Fixes issue with project settings not being pulled in some scenarios if storage was created by the SyncClient.CreateStorage() method (introduced in 2.3.23)
+
+# 2.3.24
+* Fixes 65 to 66 schema migration (SDK version 2.3.1) to preserve hashes of newly added files
+
+# 2.3.23
+* SyncClient.CreateStorage() method added to create a storage out of the existing project descriptor (e.g. in scenario when listing projects)
+* IStorage.Clone() method added as a alternative to copy constructor. This method allowes to create new connections to existing storage without knowing exact type of the storage
+* Fixed the LocalFile.Size property after the file update operation
+
+# 2.3.22
+* Add *LastSynchronized* to repositories which stores time of last performed pull for an entity type
+* Modify *Clashes* so we don't ignore clashes belonging to a deleted *ClashSet* 
+
+# 2.3.21
+* Fix database constraint that was preventing some file operations because of duplicate name if there are files and/or folders marked as deleted in the same folder
+
+# 2.3.20
+* Prevent thumbnails from being downloaded multiple times on parallel calls of *IPullableThumbnails.PullAsync{T}*
+* Fix sync bugs introduced in 2.3.19
+
+# 2.3.19
+* Added *Discard* method to **ClashSets, Comments, Links, Placements, Releases, Tags, Todos, ViewGroups, Views**. This method discards local changes and revers data back to latest known remote state.
+* As a consequence of adding *Discard*, *IPushableRepository.ResetAsync* is marked as obsolete because *Discard* covers the needed functionality 
+
+# 2.3.17
+* Fixes bug preventing users and group synchronization if there is a user and a group with same identifier
+* License text updated: https://community.trimble.com/docs/DOC-10021 
+* Upgrade dependencies so they point to packages with correct license
+
+# 2.3.16
+* Added 'LocalFile.UpdateAsync(Stream)' method. 
+
+# 2.3.15
+* Fix: file download blocks the file metadata sync. 
+* Change has been made to 'LocalFile.PullAsync()' logic: this method does not update the file metadata any more even if there is a newer version of the file available on the server, but just download the content for whatever version is known locally.
+
+# 2.3.14
+* API and db schema (v70) change to improve forward compartibility: 'TodoStatus' and 'TodoPriority' are string literals now instead of enums.
+* Parallelism is improved when consuming paged changes from server and applying them to local storage. 
+
+# 2.3.14-hotfix
+* A hotfix for TCM v2.2 release that includes all performance improvements and fixes from 2.3.14 and 2.3.15 except the 'TodoStatus' and 'TodoPriority' change.
+
+# 2.3.13
+* Improvement: give a single callback on a snapshot based sync instead of one per each change detected. Give also a total count of entities received in the snapshot instead of null in a total count.
+* Fix: HT was not used to guard the shapshot based sync
+* Added: 'LocalFile.GetFullPath' method
+* Fix: Deleted entities are missing in 'SyncProgressEventArgs' progress notification on pull
+
+# 2.3.12
+* The sync component version is sent as part of the UserAgent header
+
+# 2.3.11
+* Add support for adding presentation formats of files to the file cache and pushing them to remote storage
+
+# 2.3.10
+* Bugfix: File sync cursor might be corrupted sometimes if sync is interrupted
+
+# 2.3.9
+* Performance improvements for file metadata pull
+* Bugfix: Scenario in which after pull remotely deleted folders are incorrectly undeleted locally
+
+# 2.3.8
+* File purge events are recognized and ignored
+
+# 2.3.7
+* File and folder versions sync is modified based on backend API changes (useVersions parameter)
+* Fix: when reporting progress for delta sync the total number of items left to consume (SyncProgressEventArgs<T>.TotalCount) was not reported correctly
+* PCL target is removed
+* Fix: strong names for iOS and Android assemblies
+
+# 2.3.6
+* Fix: db initialization script is failing on Android < 23 (6.0) and earlier versions.
+
+# 2.3.5
+* Fix: local storage migration from 2.2.13 (schema v62) to v2.2.14 (schema v63)
+
+# 2.3.4
+* File and folder sync logic is improved to be compatible and to benefit from receiving all file and folder versions from server
+* Conflict resolution for files and folders has changed: name and folder location changes are applied with the same rules as changes for other entities - latest timestamp wins; local content changes are never overriden, but always rebased on top of remote changes if any.
+* When pulling file and folder structure the changes are applied to local cache immediatly, so user see up-to-date folder structure and names always.
+	This new logic causes the difference in 'LocalFile.GetPath()' behavior: this method will not return path to previosly downloaded content if there is a newer file version available.
+	If application wants user to work with some specific version of the file it should remember this version somewhere and ask for the content path for that specific version: 'FileVersion.GetPath()'
+* 'LocalFile.GetPath()' and 'FileVersion.GetPath()' methods are renamed to 'GetContentPath()' to emphasize the logical change in the LocalFileBehavior. The 'GetLatestDownloadedContentPath()' extension method added to emulate the old GetPath() behavior.
+* Fix: regression after 2.3.1 - LocalFile.Version should be null if file is modified locally
+* Entity.Parent property is exposed
+
+# 2.3.3
+* Added sync support for project settings. Settings are synced together with project's descriptor.
+* Incompatible change: Unit settings properties removed from Project entity and encapsulated in UnitSettings class which is part of ProjectSettings class used as Settings property of Project entity
+
+# 2.3.2
+* Obsolete 'ResetCursor' method has been removed
+* Obsolete 'IPullableComments.PullAsync<TEntity>' method has been removed
+* Changed the push/pull callback signature to use the IProgress interface
+* Changed signature for 'IPullableComments.PullAsync<TEntity>(entity)' to return collection of comments for entity instead of accepting the callback
+* Added IPullableThumbnails interface. Application is reponsible on pulling thumbnails explicitly now. Previously we were pulling them implicitly as part of other pull operations for previewable entities. This gives an option to application to manage thumbnail caching by its own.
+* The 'IFiles.PullThumbnailsAsync' has been removed. 'IPullableThumbnails.PullAsync<FileVersion>()' to be used instead.
+* New option is introduced that can be set by app in runtime ('IStorage.Options') or via configuration file ('.TrimbleConnect\.config'): 'PullChangesPageSize' (default is 100).
+
+# 2.3.1
+* Tracing added with Trimble.Diagnostics package
+* Transactional page processing for the sync activity added: sync streams are consumed and applied to local storage page by page.
+* Fix: IRepository.Get(long) returns null when 0 is passed to be consistent with behavior that null is returned for unknown entity
+* File storage structure is refactored to be more compact
+* Deleted file version is now stored with information about who and when has marked file as deleted
+* Descriptors for embedded files are pulled as part of the normal stream (IFiles.PullEmbeddedAsync method is removed)
+
+# 2.3.0
+* **WARNING** During local storage migration the Placements repository will be cleared. Use Files.RefreshAsync or Placements.PullAsync to restore them from the online service 
+* Add support for delta based sync of placements (enabled by default)
+* Breaking change: Previously pulling placements only resulted in changing the placement's remote status, and individual placement needed to be pulled in order to refresh data. Now placements are automatically pulled and potential conflicts are resolved as for other entities - deletion always wins, otherwise last modification wins. The LocalFile.GetStatus() will not return statuses PullPlacement and ConflictPlacement anymore. PushPlacement is still used. 
+* Use placement inheritance logic rules to find applicable placement for a file version
+* Change: If all placements have Deleted status, IPlacements.GetByFile will return null
+* Breaking change: FileId removed from Placement and Alignment, FileIdentifier and FileVersion are used instead
+* Alignment class marked as obsolete, will be removed in the future
+* Fix: Links cursor was throwing error on Reset and wasn't used in actual delta requests
+
+# 2.2.15
+* Fix: Return link query results correctly when the queried object descriptor has correct local identifier and placeholder global identifier
+* Fix: Updating link uses correct global identifier even if the node descriptors are referring to placeholder global identifiers
+
+# 2.2.14
+* Added support for url names.
+
+# 2.2.13
+* Added ´UpdatedBy´ and ´Updated properties to project stats to reflect last known content modification which happened in the cloud.
+
+# 2.2.12
+* Bugfix for embedded file attachments to comments
+
+# 2.2.11
+* Bugfix for links data schema
+
+# 2.2.10
+* Fix: Use correct parent folder and name information in file queries (fixes evaluation of LocalFile.Children and queries using IFiles.WithParentId)
+
+# 2.2.9
+* Add CRUD support for entity links
+* Add sync support for entity links
+* The ´IFiles.RefreshAsync´ operation is split to several phases that can be invoked separatelly by app.
+
+# 2.2.8
+* ´IPullableComments.PullAsync<T>(..)´ method is marked as obsolete. Pulling comments for specific entity type is not supported any more. Instead all comments are pulled always.
+
+# 2.2.7
+* Improvement: The ´IReadOnlyRepository´ interface is extended with ´LoadAllPropertiesOnEnumeration´ property and ´Load´ method.
+    The ´LoadAllPropertiesOnEnumeration´ property allows to control whether all properties should be loaded when enumerating collection or only minimum set of properties. This allows app to do performance optimizations and skip loading expensive properties when showing entities in lists in UI.
+	The ´Load´ method allows to reload entity's properties in place without instantiating a new instance of the entity.
+	The ´Views´ (´ElementStates´, ´ClippingPlanes´, ´Markups´, ´Camera´, ´IndicatorTypes´) and ´Views2D´ (´Markups´) collections support partial loading of entities on enumeration at the moment.
+
+# 2.2.6
+* Added: Support URLs as attachments.
+
+# 2.2.5
+* Added: Attachments support for comments.
+* Change: Database are constraints relaxed to allow deletion of all entities (e.g. views) that are attached to ToDos and Comments (db schema change 59->60).
+
+# 2.2.4
+* Improvement: Added ´PushAsync´ and ´PullAsync´ operations to ´IFiles´ interface. Comparing to ´IFiles.RefreshAsync´ these operations are lower level and allow to implement one way synchronization.
+* Fix: occasional db locked sqlite exceptions on pushing entities. SQLite is switched to WAL mode.
+
+# 2.2.3
+* Delta sync is enabled for 3d views by default
+
+# 2.2.2
+* Fix: don't try to push changes for files known to be changed remotely bacause it causes unnecessary failed requests.
+* Fix: Automatic conflict resolution in case file is moved or renamed remotely but content is changed locally. Previously local changes were lost, now they are rebased.
+* Fix: attachments that refer to local only entity are deleted automatically when the local entity is deleted
+* Improvement: automatically recover the local state if server rejects the change request because of the state conflict (file rename or move)
+* Improvement: Expose IFiles.SnapshotSync property
+* Rename UseSnapshotSync to SnapshotSync property for all repos
+
+# 2.2.1
+* Constraints for link deletion changed: it is now allowed to delete linked entities.
+	- for local only entities this will result in automatic deletion of all links for that Entity
+	- for synced entities this will mark the entity as deleted and try to push this operation to the server on next ´PushAsync()´. 
+	Server may reject this operation for some entity types (e.g. currently for files referred to from ´Release´s), but allow for others (e.g. files as attachments, files referred to from views, 2d views and clashsets).
+	- for applications this change means that ´IAttachments.GetTargets()´ may return links that point to deleted entities.
+* Added: ´EntityDescriptor.IsDeleted´ flag to handle scenarios when link points to deleted entity
+* Local database constrants relaxed to support following cases:
+	- deleted file attachments - file can be marked as deleted even if it is attached to a ´ToDo´
+	- deleted file in a view - file can be marked as deleted even if it referred to from a ´View´
+	- deleted file in a clashset - file can be marked as deleted even if it referred to from a ´ClashSet´
+* db schema version incremented to v58
+* Fix: LocalFile.Discard() operation also discards the delete local status now
+* Improvement: deleted entities are not wiped from local storage automatically sometimes, but explicit IStorage.Clear() call is required always. Calling Delete() twice does not wipe entity/file any more.
+
+# 2.2.0
+* Added: Configuration framework introduced. 
+ - Configuration can be supplied via: a) ´.TrimbleConnect\.config´ file; b) in runtime when constructing storage; c) to individual Push/Pull methods.
+ - Following parameters can be configured (´StorageOptions´): ´MaxEntitiesToPushInParallel´, ´UseSnapshotPullFor´, ´FileCachePath´, ´UploadOptions´, ´DownloadOptions´
+ - Repositories expose ´MaxEntitiesToPushInParallel´ and ´UseSnapshotSync´ properties
+* Fix: ´ICommands.In()´ method returns a new scoped instance of the commands repository
+* API change: All file transfer methods (PushAsync/PullAsync) accept ´FileTransferOptions´ as a parameter instead of separate buffer size and timeout arguments.
+* Added: support for segmented resumable file content push with parallelism
+* Added: ´IStorage.DirectoryPath´ property exposed
+* The default stream activity timeout when transferring files has been changed to 2 minutes (was infinite previosly).
+
+# 2.1.49
+* Fix: cannot delete entity which has tags  
+
 # 2.1.48
 * Fix file sync so it's robust when receiving folder items out of order
 

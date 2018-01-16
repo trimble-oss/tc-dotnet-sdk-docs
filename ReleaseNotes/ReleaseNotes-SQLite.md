@@ -1,5 +1,8 @@
 # Trimble SQLite .NET Wrapper
 
+# 1.0.59
+* License text updated: https://community.trimble.com/docs/DOC-10021
+
 # 1.0.58
 
 * Renamed the embedded sqlite3 native Android library to avoid name conflict with SQLitePCLRaw package.

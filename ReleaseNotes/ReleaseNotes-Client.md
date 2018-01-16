@@ -1,5 +1,115 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.2.9
+* Add missing Heartbeat support for thumbnails cursor
+
+# 2.2.8
+* Add support for optimized thumbnail and triangle count sync
+
+# 2.2.7
+* License text updated: https://community.trimble.com/docs/DOC-10021  
+* Upgrade dependencies so they point to packages with correct license
+
+# 2.2.6
+* Fix: protect from duplicate calls to `ITrimbleConnectClient.AddUserAgent()` to add version of the same component multiple times
+* Added `FileFormat.TrimBIM` constant
+
+# 2.2.5
+* Make custom UsrAgent headers tolerant to possible errors. If header cannot be added by any reason the client instance still can be constracted.
+
+# 2.2.4
+* `ITrimbleConnectClient.AddUserAgent()` method added to allow adding custom entries to the UserAgent header sent with all requests
+
+# 2.2.3
+* Added ability to add arbitrary parameters to ObjectSync API queries
+
+# 2.2.2
+* Fix authenticode signing
+
+# 2.2.1
+* downgrade Android target framework 7.0 -> 4.4
+
+# 2.2.0
+* FileTransferTimeout is removed
+* netstandard1.4 target introduced. Profile111 is removed
+
+# 2.1.42
+* Fix: when paging listing results (projects, entities, BIM objects) one last item might be lost
+
+# 2.1.41
+* Remove id from the set alignment request body
+
+# 2.1.40
+* `ReceiveAll()` extension method renamed to `ReceiveAllAsync()`
+* Reduce the default page size for ObjectSync API to 50
+
+# 2.1.39
+* Add UploadRepresentationAsync to IFilesController to support uploading alternative representations of model files
+
+# 2.1.38
+* Add support for reading and updating project's unit settings and invite and todo restrictions
+
+# 2.1.37
+* Added support for url attachment names
+
+# 2.1.36
+* Added: IAppsController interface: 
+   - wrapper to query app version information with download url
+   - wrapper to query app info
+   - wrapper to request API key and app access token
+* The App settings wrappers are reimplemented to accommodate changes in the TCPS API.
+* App tokens API added: 'IAppsController.CurrentApp' property added to handle requests that require app level authentication (e.g. 'IAppsController.SetSettings' and 'IAppsController.GetSettings').
+* Fix: file download ('IFileController.DownloadAsync') operation uses wrong http timeout (same as normal object requests)
+
+# 2.1.35
+* The TransferUtility.DownloadAsync() internal algorithm is improved (file is not downloaded in-place, but to temporary file first with locking)
+
+# 2.1.34
+* Added object sync support for entity links
+
+# 2.1.33
+* Added support for entity links
+
+# 2.1.32
+* Improvement: Expose setters for Attachment.VersionId and Attachment.Url properties.
+
+# 2.1.31
+* Fix: app settings cannot be set for the very first time.
+* Added: support attachments for comments.
+* added: support for URL attachments (for todos and comments). 'EntityType.Url' and 'UrlReference' are added.
+
+# 2.1.30
+* Improvement: The application settings API wrapper has changed (incompatible change comparing to 2.1.29) to support concurrency. The 'AppSettings' data model is introduced.
+
+# 2.1.29
+* Added: Application settings (per user cross project) API wrapper ('IUsersController.GetAppSettingsAsync' and 'IUsersController.SetAppSettingsAsync').
+Implementation is based on preliminary backend API and subject to change, the intention is to provide an interface for integrators to start working with.
+
+# 2.1.28
+* Improvement: Increase the default page size when requesting changes to 100
+* Fix: one last item can be lost from the Object Sync API response in rare cases.
+
+# 2.1.27
+* Improvement: 'InvalidServiceOperationException.Data' property is populated with all properties from the error message sent by server
+* 'LoginOptions' and 'LoginAsync(string, LoginOptions)' are extracted to a separate Trimble.Connect.Auth component to decouple the WebUI dependency
+
+# 2.1.26
+* Added: Support uploading embedded attachments with multipart upload and 'TransferUtility'.
+* API change: TransferUtility.NumberOfThreads -> TransferUtility.MaxParallelSegments
+* Improvement: default timeout for 'TransferUtility' set to 2 minutes (was infinite).
+
+# 2.1.25
+* Added: App can control the level of parallelization when using 'TransferUtility'.
+* Improved: 'TransferUtility' automatically switches to simple upload mode if file is small.
+* Added: 'TransferUtility.DownloadAsync' method added to perform resumable file download.
+
+# 2.1.24
+* Incompatible API change in the 'IFilesController.RemoveFolderPermissionsAsync' method to accept collection of permissions to remove.
+
+# 2.1.23
+* Added: Multipart file upload low level API wrapper
+* Added: 'TransferUtility' with multipart file upload high level API
+
 # 2.1.22
 * User profile object expanded with new properties: 'Language', 'Companies', 'Phone', 'DefaultPodLocation', 'ViewerBackgroundColor'.
 * Company profile object expanded with new properties: 'CreatedBy', 'ModifiedBy', 'ModifiedOn', 'Role'.

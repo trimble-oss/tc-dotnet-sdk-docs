@@ -1,7 +1,30 @@
 # Trimble.WebUI Release Notes
 
+# 1.1.4
+* Upgrade dependency to Trimble.Diagnostics 2.0.8 that has a correct license reference
+
+# 1.1.3
+* License url has been updated in package descriptor: https://community.trimble.com/docs/DOC-10021
+* Fix: delay initialization of the WebBrowser control to avoid COM exceptions
+
+# 1.1.2
+* Fix: authenticode signature recovered
+
+# 1.1.1
+* Fix the AssemblyVersion to be 1.0.0.0
+
+# 1.1.0
+* Profile111 PCL target is removed
+* Migrated to Trimble.Diagnostics 2.0.6
+
+# 1.0.10
+* Improvement: LogoutAsync method is refactored for Windows desktop platforms: 
+	client must call the IWebUI.ExecuteAsync explicitly when needed to reuse the standard IWebUI.ExecuteAsync for web session sign-out.
+* Fix: iOS specific problem that ExecuteAsync returns before the browser window is destroyed. That creates problems with executing sequential web flows.
+
 # 1.0.9
-* Added support for SFSafariViewController on iOS and GoogleCustomTabs on Android. This support is behind the WebUIConfiguration.UseSystemBrowser option.
+* Google does not allow OAuth requests to Google in embedded browsers known as “web-views”. To overcome this new limitation
+  added support for SFSafariViewController on iOS and GoogleCustomTabs on Android. This support is behind the WebUIConfiguration.UseSystemBrowser option.
   The old UIWebView (iOS) and WebView (Android) preserved because it has more capabilities in some areas (customization, ending flow with http(s) url).
   SFSafariViewController is availiable on iOS 9+, on older versions library automatically falls back to UIWebView.
   If GoogleCustomTabs are not available library automatically fallback to WebView on Android.
