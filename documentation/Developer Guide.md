@@ -153,7 +153,7 @@ TC has several deployment environments that we encourage you to use for debuggin
 
     * Production TC v2 API: [https://app.connect.trimble.com/tc/api/2.0/](https://app.connect.trimble.com/tc/api/2.0/) 
 
-    * Production TCW: [http://connect.trimble.com/](http://connect.trimble.com/) 
+    * Production TCW: [https://connect.trimble.com/](https://connect.trimble.com/) 
 
 The staging environment of TC uses staging environment of TID.  Production TC environment uses the production TID environment.
 
@@ -178,7 +178,7 @@ All published packages support the following platforms:
 The corresponding symbol packages for stable channel can be found at [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public).
 For the beta channel symbol packages are available as well from this source: [http://ts-nuget.teklaad.tekla.com/symbols/tempfortcd](http://ts-nuget.teklaad.tekla.com/symbols/tempfortcd).
 
-SymbolSource has good instructions on how package consumers can [configure Visual Studio to use the symbol packages ](http://www.symbolsource.org/Public/Home/VisualStudio).
+SymbolSource has good instructions on how package consumers can [configure Visual Studio to use the symbol packages ](https://www.symbolsource.org/Public/Home/VisualStudio).
 
 <!--## <a name="samples">Sample apps</a>
 
