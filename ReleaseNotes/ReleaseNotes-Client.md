@@ -1,5 +1,40 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.3.2
+* Added cache handler delegate support to Trimble connect http client that currently caches heart beat responses.
+
+# 2.3.1
+* Modified percentage complete field in the delta response to double precision.
+
+# 2.3.0
+* Added support for FsObject stream (EntityType.FsObject) that combines file and folder in a signle size optimized stream.
+* Added IsDeleted flag in Entities to get deleted status, the deletedOn and deletedBy are transferred in Entity.ModifiedOn and Entity.ModifiedBy properties.
+* Added ability to set the ITrimbleConnectClient.Configuration property from the app. This allow to save one network call if configuration is known to the app already. 
+
+# 2.2.17
+* Added overload that allows to pass query parameters to IFilesController.UpdateFileAsync.
+
+# 2.2.16
+* Added overload that allows to pass query parameters to file listing APIs: IFilesController.GetFileVersionsAsync, IFilesController.GetFolderItemsAsync, IFilesController.GetFolderItemsByPathAsync.
+
+# 2.2.15
+* Pagination fixed for the THUMBNAIL stream in ObjectSync API
+
+# 2.2.14
+* Added method overload for providing additional parameters during the file upload. API: UploadAsync
+
+# 2.2.13
+* Added paging capability for all file and folder APIs: IFilesController.GetFolderVersionsAsync, IFilesController.GetFolderItemsByPathAsync, IFilesController.GetFolderItemsAsync, IFilesController.GetFileVersionsAsync.
+* Fixed digital signature missing in 2.2.12
+
+# 2.2.12
+* ViewGroup entity type name (`EntityType.ViewGroup`) fixed: VIEWGROUP ->  VIEW_GROUP. Allows to use object sync API for view group.
+
+# 2.2.10
+* Improved the extensibility of the `ITrimbleConnectClient.CreateProjectAsync()` and `IProjectClient.UpdateAsync()` operations. 
+  Now project properties that are not part of the `Project` DTO definition can be updated by adding them to generic `Project.Properties` dictionary.
+* `Project.GroupsCount` property added
+
 # 2.2.9
 * Add missing Heartbeat support for thumbnails cursor
 
