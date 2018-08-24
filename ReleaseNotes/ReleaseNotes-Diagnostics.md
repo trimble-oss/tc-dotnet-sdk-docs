@@ -1,5 +1,15 @@
 # Trimble.Diagnostics Release Notes
 
+# 2.0.11
+* Fix: Outputs message to attached debugger from EventLogLogger
+
+# 2.0.10
+* Added EventLogLogger outputs message to debugger also if attached
+
+# 2.0.9
+* Added EventLogLogger on Windows platforms
+* Added PerformanceScope helper class
+
 # 2.0.8
 * License text updated: https://community.trimble.com/docs/DOC-10021
 
