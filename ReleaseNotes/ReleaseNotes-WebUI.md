@@ -1,5 +1,14 @@
 # Trimble.WebUI Release Notes
 
+# 1.1.7
+* Fix: Reverse changes from 1.1.5 and 1.1.6
+
+# 1.1.6
+* Fix: Exception when embedding the UI into panel if called not from UI thread
+
+# 1.1.5
+* Fix: Exception when embedding the UI into panel if called not from UI thread
+
 # 1.1.4
 * Upgrade dependency to Trimble.Diagnostics 2.0.8 that has a correct license reference
 
