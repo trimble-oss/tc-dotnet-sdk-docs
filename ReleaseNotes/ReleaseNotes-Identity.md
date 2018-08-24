@@ -1,5 +1,17 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.1.22
+
+* Fix: Token is not cached if acquired by calling AcquireTokenByAuthorizationCodeAsync() directly.
+
+# 1.1.20
+
+* Fix: Exception when AcquireTokenAsync is called while refresh token is invalid and UI is requested to be shown in embedded panel
+
+# 1.1.19
+
+* Added AvatarUrl property to UserInfo class 
+
 # 1.1.18
 
 * Improvement: if refresh token is invalid (expired or revoked) automatically try to acquire a new token using credentials. 
