@@ -2,6 +2,114 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.5.16
+* Added new storage options to specifiy page size for entity types and db timeout.
+* Fix: Corrected DB transaction exception while undeleting embedded file.
+
+# 2.5.15
+* Fix: Reattaching the same file after deleting the attachment
+
+# 2.5.14
+* Fix database deadlock while pushing model placements if there are more than one placement to push.
+* Fix: Missing transaction added while pulling placements.
+* Fix: use separate storage connection from background thread while pushing file resentation formats.
+
+# 2.5.13
+* Improved file sync performance by combining file and folder streams using FsObject sync.
+
+# 2.5.12
+* Improved the pull strategy by storing the embedded entities as soon as they were discovered.
+
+# 2.5.11
+* Fix: Fixed the internal issue to improve the robustness.
+
+# 2.5.10
+* Fix: database schema conversion bug introduced in 2.5.9 - coverter v78 -> v79 is missing
+
+# 2.5.9
+* Fix: File attachment thumbnailsUrl are updated on assimilation events.
+
+# 2.5.8
+* Fix: Fixed storage state for local deleted entities
+
+# 2.5.7
+* Improvement: avoid pulling file thumbnail twice by send tokenThumburl parameter when pulling folder items with IFiles.PullChildrenAsync() when moving or renaming a file.
+
+# 2.5.6
+* Fix: occasional db lock on pulling entities.
+
+# 2.5.5
+* Fix: In case of delayed response from server while pushing an entity, local entity changes are persisted in storage.
+
+# 2.5.4
+* Fix: Override option for pushing presentation format does not work in some cases.
+
+# 2.5.3
+* Fix: The DatabaseSchemaCorruptedException.Project.RootFolderIdentifier is null. This does not allow to recreate the storage using Storage.CreateFromRemoteState().
+
+# 2.5.2
+* Fix: on opening existing db don't execute the "PRAGMA journal_mode=WAL" each time, since the WAL mode is persistant execiute it only on db creation. This improves the db opening performance and solves the rare "SQLite error (5): database is locked" issue on concurrent opening of the same db.
+
+# 2.5.1
+* IFiles.RefreshAsync() obsolete method has been removed
+* ResetSyncCursor() obsolete method has been removed
+* IPushableRepository<T>.ResetAsync() obsolete method has been removed
+* Support for snapshot based sync for files has been removed
+* Fixed locking when pushing files and folders: file/folders might have been pushed twice if app calls several push operations in parallel.
+* Improved parallelizm when pushing and pulling items in parallel (e.g. previosly push was blocked until pull is fully completed, witch might be very long operation for initial project join scenario)
+* Storage.Options property is exposed in IStorage interface
+* IFiles.PullChildrenAsync() method has been introduced to help with initial folder structure sync scenarios for large projects. This call prioritize the sync of the content (one level) of the specific folder over backgroud full sync.
+
+# 2.5.0
+* Incompartible change: ViewGroup.Views property has been removed and ViewGroup.ViewIdentifiers property has been added instead (db schema change v76->v77).
+  - Ability to pull ViewGroups without (or before) pulling the Views to local storage.
+  - ViewGroups can refer to views that are not accessible to the user at the time of pulling ViewGroup, this reference will not be lost any more. So if user got access to the view the reference is there to use.
+  - App has a information regarding whether ViewGroup is empty or user just has no access to views in the group. This way app can make informed decisions on UX interaction level, e.g. whether to allow user to delete a ViewGroup or suggest user to request access to views as well as do proper visualization for reordering operations.
+
+# 2.4.10
+* View permission deny event is taken in use: when user removed from view assignees the view will be marked as deleted in local storage on next views pull.
+
+# 2.4.9
+* Thumbnail management for files has been optimized to avoid downloading same thumbnail twice after file upload (tokenThumburl=false parameter is used).
+
+# 2.4.8
+* Added automatic recovery for the corrupted databases with local only data (if data has been synced with server we reject to open the database and reporting DatabaseSchemaCorruptedException), in previous version the DatabaseSchemaCorruptedException was thrown for local only storages as well, so user was losing data.
+
+# 2.4.7
+* fix for database schema migration bug introduced in 2.3.17 (db schema conversion v70->v71): 
+  - conversion is fixed, 
+  - DatabaseSchemaCorruptedException exception is thrown on opening db if corrupted db is detected (passing the db schema version and project desriptor). The recommended recovery procedure is to delete the corrupted database and recreate it again.
+
+# 2.4.5
+* Fix: error on pulling files from the empty project (when folder cursor == null)
+* Fix documentation for the LocalFile.AddPresentationFormatAsync
+* Fix documentation for the LocalFile.GetContentPath FileVersion.LocalFile and LocalFileExtensions.GetLatestDownloadedContentPath
+* View groups are using delta based sync by default now.
+
+# 2.4.4
+* Optimize IFiles.PullAssimilationChangesAsync in case of initial project join
+* Prevent links which refer to local only items from being pushed
+
+# 2.4.3
+* Added UpdateFromRemoteState extension to enable update project descriptor with information got from listing remote projects. Previously app had to call IProjects.PullAsync() which generated additional network call.
+
+# 2.4.2
+* Fix: Progress callback for the IFiles.PullAssimilationChangesAsync implemented
+* Fix: page size can be configured when fetching assimilation events using IFiles.PullAssimilationChangesAsync
+
+# 2.4.1
+* Added LocalFile.SchedulePresentationFormatUpload() and FileVersion.SchedulePresentationFormatUpload() methods to schedule presentation file uploads. 
+  Can be used if the presentation file is already in the file cache.
+* Added ability to override the presentation file format that exists on the server by uploading a new content for presentation file.
+* Incompartible change: AddPresentationFormatAsync methods don't schedule the upload automatically any more, SchedulePresentationFormatUpload should be called explicitly
+
+# 2.4.0
+* Renamed DiskUsageOptions to DiskUsageType
+
+# 2.3.31
+* Added IStorage.DiskUsage() to calculate disk space used for the local cache
+* ClearOptions for the IStorage.Clear() method are improved, some options are depricated (Unchanged, Modified, NotReferencedFileContent, FileHistory) and some new are introduced (HistoryFileContent)
+
 # 2.3.30
 * Fix peformance bug introduced in 2.3.21 (db schema v73): files metadata pull becomes slow for large file structures (same as was fixed in 2.3.9).
 * Incompartible change: IFiles.PullAssimilationChangesAsync method is split out of IFiles.PullAsync. As a result thumbnail and triangleCount changes are not pulled as part of IFIles.PullAsync any more.
