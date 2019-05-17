@@ -44,9 +44,11 @@ The video tutorial: [SDK Authentication using the Identity library](https://yout
 
 ## <a name="overview">Authentication</a>
 
-TC uses token based authentication. The token is issued by TC though exchanging a valid TID token acquired during the TID OAuth2 (OpenID Connect) authentication (see [Trimble.Identity Developer Guide](Trimble.Identity%20Developer%20Guide.md)).
+TC uses token based authentication. The token is acquired during the TID OAuth2 (OpenID Connect) authentication (see [Trimble.Identity Developer Guide](Trimble.Identity%20Developer%20Guide.md)).
 
-It is important to understand that the ID token is generally a one use token with short life span. It is expired much faster than the TID access token and TC access token. This means that when the TC token is expired and a new TID token needs to be acquired (there is no refresh token concept for TC) app will have to request a new id token from TID.  This can be done by `AuthenticationContext.AcquireTokenByRefreshTokenAsync` or by using `RefreshOptions.IdToken` option in other `AuthenticationContext.AcquireTokenAsync` methods. Please refer to the [Trimble.Identity Developer Guide](Trimble.Identity%20Developer%20Guide.md).
+It is important to understand that the ID token is generally a one use token with short life span. This means that when the token is expired and a new TID token needs to be acquired. App will have to request a new id token from TID.  This can be done by `AuthenticationContext.AcquireTokenByRefreshTokenAsync` or by using `RefreshOptions.IdToken` option in other `AuthenticationContext.AcquireTokenAsync` methods. Please refer to the [Trimble.Identity Developer Guide](Trimble.Identity%20Developer%20Guide.md).
+
+The application should initialize the Trimble connect user with the acquired access token from TID.
 
 ### <a name="example-sign-in">Example: Authenticating with TC API </a>
 
@@ -58,7 +60,7 @@ To authenticate with TC, the TID token must be "exchanged" for a TC token.  Note
     var serviceUri = ...;
     using (var client = new TrimbleConnectClient(serviceUri))
     {    
-        await client.LoginAsync(accessToken.IdToken);        
+        await client.InitializeTrimbleConnectUserAsync(accessToken.IdToken, accessToken.AccessToken);        
         ...
     }
 
@@ -85,7 +87,7 @@ Below is a code snippet showing how to install a `RetryHandler` and connect it t
                 {    
                     token = await authCtx.AcquireTokenByRefreshTokenAsync(token);
     
-                    await client.LoginAsync(token.IdToken, cancellationToken);
+                    await client.InitializeTrimbleConnectUserAsync(token.IdToken, token.AccessToken, cancellationToken);
     
                     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", client.CurrentUser.AuthenticationToken);
     
@@ -96,7 +98,7 @@ Below is a code snippet showing how to install a `RetryHandler` and connect it t
             return false;
         };
     
-        await client.LoginAsync(token.IdToken);    
+        await client.InitializeTrimbleConnectUserAsync(token.IdToken, token.AccessToken);    
     
         // use the client normally for making service requests.    
     }
