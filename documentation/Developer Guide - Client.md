@@ -52,7 +52,7 @@ The application should initialize the Trimble connect user with the acquired acc
 
 ### <a name="example-sign-in">Example: Authenticating with TC API </a>
 
-To authenticate with TC, the TID token must be "exchanged" for a TC token.  Note that the ID token is usually a short lived. This basically means that the token is meant for one time use. `LoginAsync` could fail if the `id_token` is expired. 
+Authenticate with TID and initialize the Trimble connect user. 
 
     var authCtx = new AuthenticationContext(...);
     var accessToken = await authCtx.AcquireTokenAsync(RefreshOptions.IdToken)
@@ -66,7 +66,7 @@ To authenticate with TC, the TID token must be "exchanged" for a TC token.  Note
 
 ### <a name="example-refresh-token">Example: Use retry handler to refresh expired access token automatically</a>
 
-The TC access token can expire at any moment of time that cannot be predicted by the application. To handle the token expiration it is recommended to use an http delegating handler (`RetryHandler`) that intercepts responses from the backend, handle access token refresh logic and repeat the original request transparently for the caller. 
+The TID access token can expire at any moment of time that cannot be predicted by the application. To handle the token expiration it is recommended to use an http delegating handler (`RetryHandler`) that intercepts responses from the backend, handle access token refresh logic and repeat the original request transparently for the caller. 
 
 Below is a code snippet showing how to install a `RetryHandler` and connect it to the TC client.
 
