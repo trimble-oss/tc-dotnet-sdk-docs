@@ -1,5 +1,35 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.4.7
+* Use only access token from TID to initialize Trimble connect User. 
+
+# 2.4.6
+* Added API support to get the user information within a project.
+
+# 2.4.5
+* Added pdf fileformat to Trimble.Connect.Client.Models.FileFormat enumeration.
+
+# 2.4.4
+* Changed the authentication for Trimble Connect APIs to use TID access token
+* Remarks: ITrimbleConnectClient.LoginAsync that exchanges TID token for connect access token is obsolete now. Instead clients should use ITrimbleConnectClient.InitializeTrimbleConnectUserAsync.
+
+# 2.4.3
+* Added API support to request the application access token
+* Added support for downloading 2D files as pdf file format.
+
+# 2.4.2
+# 2.4.1
+* Integrated the data ocean file services APIs.
+* Added API support for links with embedded file target.
+
+# 2.3.5
+# 2.3.4
+* Added paging support to get members of company.
+
+# 2.3.3
+* Added Timezone property to Person entity type.
+* Added API support to get the timezones supported by Trimble Connect.
+
 # 2.3.2
 * Added cache handler delegate support to Trimble connect http client that currently caches heart beat responses.
 

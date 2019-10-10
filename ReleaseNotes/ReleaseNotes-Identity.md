@@ -1,5 +1,18 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.1.25
+
+* Added encryption and decryption for default shared token cache storage in windows platform.
+
+# 1.1.24
+
+* Fix: Code error while aquiring the token.
+
+# 1.1.23
+
+* Improvement: If InteractiveRequest.UserIdentity.DisplayableId is populated it is used as a hint on the web page.
+  Note: If the client app is registered in TID with a custom sign-in template, the template must handle the 'user_hint' param the same way as a standard TID sign-in form does it.
+  
 # 1.1.22
 
 * Fix: Token is not cached if acquired by calling AcquireTokenByAuthorizationCodeAsync() directly.
