@@ -1,5 +1,9 @@
 # Trimble Connect Auth Release Notes
 
+# 2.0.6
+* Added extension method to ITrimbleConnectClient.InitiateTrimbleConnectUserAsync() to handle profile completion.
+
+# 2.0.5
 # 2.0.4
 * License text updated: https://community.trimble.com/docs/DOC-10021 
 * Upgrade dependencies so they point to packages with correct license
