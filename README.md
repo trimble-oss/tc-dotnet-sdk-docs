@@ -23,4 +23,5 @@ Here is useful information for you getting started with the API/SDK:
 * [API/SDK Code Samples repository](https://github.com/Trimble-Connect/samples)
 * [API/SDK License Agreement](https://community.trimble.com/docs/DOC-10021)
 
-Once you are ready to start leveraging the Trimble Connect API/SDK, you will need to request API credentials unique to your organization and connected application. Please send this request to <connect-integrate@trimble.com>. 
+Once you are ready to start leveraging the Trimble Connect API/SDK, you will need to request API credentials unique to your organization and connected application.
+Please sign up at <https://connect.trimble.com/integrator-sign-page>.
