@@ -112,7 +112,7 @@ This example shows exception handling and how to recognize different error cases
 
     try
     {
-        return await authContext.AcquireTokenAsync(userCredentials);
+        return await authContext.AcquireTokenAsync();
     }
     catch (TaskCanceledException ex)
     {
