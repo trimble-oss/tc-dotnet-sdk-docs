@@ -99,9 +99,12 @@ In order to acquire an initial security token, an application must present its c
 The code snippet below demonstrates how to initialize the AuthenticationContext and call _AcquireTokenAsync_:
 
     var clientCredential = new ClientCredential(<id>, <secret>, <appname>);
-    var userCredentials = new NetworkCredential(<username>, <pass>, <tenant>);
     var authCtx = new AuthenticationContext(clientCredential) { AuthorityUri = ...};
-    var token = await authCtx.AcquireTokenAsync(userCredentials);
+    var token = await authCtx.AcquireTokenAsync();
+
+For a non-interactive authentication (Trimble-internal use only), the following can be passed as a parameter to _AcquireTokenAsync_:
+
+    var userCredentials = new NetworkCredential(<username>, <pass>, <tenant>);
 
 ### <a name="handle_exceptions">Example: How to handle exceptions</a>
 
