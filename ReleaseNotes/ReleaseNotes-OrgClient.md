@@ -1,8 +1,13 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
-## [1.0.32-beta] - 2020-08-07
+## [1.0.33-beta] - 2020-08-07
 * Updated the release notes link.
 * Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.47-beta).
+
+## [1.0.32-beta] - 2020-07-31
+* Added support for node geometries.
+* Fix for the concurrency support on UpdateNode operation.
+* Updated the dependencies.
 
 ## [1.0.31-beta] - 2020-07-29
 * Generating NuGet symbols package in the new (snupkg) format.
