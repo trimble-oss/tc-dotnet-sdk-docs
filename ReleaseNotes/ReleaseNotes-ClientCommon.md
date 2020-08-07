@@ -1,5 +1,8 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.48-beta] - 2020-08-07
+* Using portable debug symbols.
+
 ## [1.0.47-beta] - 2020-08-07
 * Updated the release notes link.
 
