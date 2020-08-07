@@ -1,5 +1,8 @@
 # Trimble.Diagnostics Release Notes
 
+# 2.0.12
+* Updated nuget packages.
+
 # 2.0.11
 * Fix: Outputs message to attached debugger from EventLogLogger
 

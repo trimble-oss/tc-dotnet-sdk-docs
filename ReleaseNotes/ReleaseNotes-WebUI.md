@@ -1,5 +1,11 @@
 # Trimble.WebUI Release Notes
 
+# 1.1.9
+* Fix: Exception when embedding the UI into panel.
+
+# 1.1.8
+* Updated the nuget packages.
+
 # 1.1.7
 * Fix: Reverse changes from 1.1.5 and 1.1.6
 

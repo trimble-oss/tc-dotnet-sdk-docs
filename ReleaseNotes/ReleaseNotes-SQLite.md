@@ -1,5 +1,9 @@
 # Trimble SQLite .NET Wrapper
 
+# 1.0.62
+# 1.0.61
+* Updated sqlite version from 3.14.1 to 3.27.2
+
 # 1.0.59
 * License text updated: https://community.trimble.com/docs/DOC-10021
 

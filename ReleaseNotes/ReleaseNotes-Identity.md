@@ -1,5 +1,15 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.1.28
+* Fix: Exception while trying to access the token cache when it is does not exist.
+
+# 1.1.27
+* Fix: Code error while acquiring the token.
+
+# 1.1.26
+* Updated nuget packages to fix vulnerabilities reported by whitesource.
+* Fix: Revoke token API call.
+
 # 1.1.25
 
 * Added encryption and decryption for default shared token cache storage in windows platform.
