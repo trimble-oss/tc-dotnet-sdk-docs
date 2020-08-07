@@ -1,5 +1,9 @@
 # Trimble Connect PSet Service Client .NET Release Notes
 
+## [2.0.17-beta] - 2020-08-07
+* Using portable debug symbols.
+* Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.48-beta).
+
 ## [2.0.16-beta] - 2020-08-07
 * Updated the release notes link.
 * Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.47-beta).

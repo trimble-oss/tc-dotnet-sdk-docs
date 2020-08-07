@@ -1,5 +1,9 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.0.34-beta] - 2020-08-07
+* Using portable debug symbols.
+* Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.48-beta).
+
 ## [1.0.33-beta] - 2020-08-07
 * Updated the release notes link.
 * Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.47-beta).
