@@ -58,7 +58,6 @@ The clients can also provide any custom implementation of ICredentialsProvider.
 
 ### <a name="example-sign-in">Example: Authenticating with TC API </a>
 
-Authenticate with TID and initialize the Trimble connect user. 
 
      var clientCreds = new ClientCredential(ClientId, ClientKey)
             {
