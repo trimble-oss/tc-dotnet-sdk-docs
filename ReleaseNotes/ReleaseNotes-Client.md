@@ -1,5 +1,83 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.1-beta
+* Added new constructor to initialize Trimble Connect Client using ICredentialProvider and marked the other constructors obsolete.
+* Deprecated Netstandard1.4 target and uap target (Netstandard2.0 target can be used for UWP development).
+* Generating NuGet symbols package in the new (snupkg) format.
+
+# 2.6.0
+* Integrated with 1.0.43 version of Trimble.Connect.Client.Common component.
+* Added a constructor for TrimbleConnectClient taking TrimbleConnectClientConfig parameter.
+* The Timeout property in ITrimbleConnectClient is removed and it can be set using TrimbleConnectClientConfig.
+* Retry handler is added by default.
+
+# 2.5.5
+* Added white source config file and fixed sonarqube bugs.
+
+# 2.5.4
+* Added an overload method for ITrimbleConnectClient.GetProjectsAsync() taking fullyLoaded parameter.
+* Made StyleCop reference private.
+
+# 2.5.3
+* Reverted to use old regions endpoint in ITrimbleConnectClient.ReadConfigurationAsync()
+
+# 2.5.2
+* Modified GetRegionsAsync() to hit the new static region end point. 
+* Adapted the Region response to include the region specific end points for other microservices like pset, org.
+
+# 2.5.1
+* Adapted the Trimble.Connect.Client to use Trimble.Connect.Client.Common component
+
+# 2.5.0
+* Added netstandard 2.0 target.
+* Removed Trimble.Connect.PSet.Client dependency that was used to get and set quick access items. 
+* P-Set operations are not supported in this package and clients should make use of Trimble.Connect.PSet.Client nuget package directly.
+
+# 2.4.23
+* Fix: Downloading 2d files as pdf file format.
+
+# 2.4.22
+* Fix: Added SourceId property to ModelElementTree
+
+# 2.4.21
+* Fix: Added If-Match header in file upload request to ensure file updation against latest version.
+* Deprecated old multipart upload API.
+
+# 2.4.20
+* Added fileset and pathtemplate parameters to Upload and Download APIs to support point cloud files.
+
+# 2.4.19
+* Fix: Errors in view json parsor with respect to parsing the assignees.
+
+# 2.4.18
+* Added panPositionX and panPositionY parameters to View2D while creating new View2D.
+
+# 2.4.17
+* Added support for skipLargeViewDetail query param while pulling views so that large view details are not pulled.
+* The views will be flagged as large if the view metadata is greater than 500KB.
+* Fix: Errors in view json parsor by adding cases to parse additional view properties.
+
+# 2.4.16
+* Added overload that allows passing download url to IFilesController.DownloadAsync method to support multipart download.
+
+# 2.4.15
+# 2.4.14
+* Fix: Out of memory exception on parsing large view response object.
+
+# 2.4.13
+* Integrated generic pset client for quick access items.
+
+# 2.4.12
+* Fixed query parameters support for GetProjectsAsync API.
+
+# 2.4.11
+# 2.4.10
+* Fixed sort order in quick access items.
+
+# 2.4.9
+# 2.4.8
+* Added API support to get and set quick access items for Trimble Connect User. This API gets/sets the items from/to Trimble CDM p-set service.
+
 # 2.4.7
 * Use only access token from TID to initialize Trimble connect User. 
 
