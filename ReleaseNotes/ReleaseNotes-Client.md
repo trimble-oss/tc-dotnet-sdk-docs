@@ -1,5 +1,8 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.2-beta
+* Added CredentialsProvider to ITrimbleConnectClient to support other micro service client intializations like sync helper client using IProjectClient
+
 # 2.6.1-beta
 * Added new constructor to initialize Trimble Connect Client using ICredentialProvider and marked the other constructors obsolete.
 * Deprecated Netstandard1.4 target and uap target (Netstandard2.0 target can be used for UWP development).

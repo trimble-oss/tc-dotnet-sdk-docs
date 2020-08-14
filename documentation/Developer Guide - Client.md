@@ -5,7 +5,6 @@
 1. [Overview](#overview)
 2. [Authentication](#authentication)
 	+ [Example: Sign-in TC Platform Services](#sign-in-example)
-	+ [Example: Use retry handler to refresh expired access token automatically](#refresh-token-example)
 3. [TC Data Model](#data-model)
 4. [Accessing TC Platform Services](#accessing-tc)
 5. [Extensibility mechanisms](#extensibility-mechanisms)

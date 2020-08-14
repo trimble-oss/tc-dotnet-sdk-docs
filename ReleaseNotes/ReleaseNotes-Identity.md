@@ -1,5 +1,14 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.1.31
+* Generating NuGet symbols package in the new (snupkg) format.
+
+# 1.1.30
+* Fix: Sonarqube code smells.
+
+# 1.1.29
+* Improvement: Allow AcquireTokenSilentAsync to use ConfigureAwait when calling AcquireTokenByRefreshTokenAsync from AcquireTokenCommonAsync.
+
 # 1.1.28
 * Fix: Exception while trying to access the token cache when it is does not exist.
 
