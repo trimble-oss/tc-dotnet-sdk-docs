@@ -1,5 +1,12 @@
 # Trimble Identity OAuth authorization code flow credentials provider
 
+## [1.0.17] - 2020-09-25
+* Updated the package tags.
+
+## [1.0.16] - 2020-09-18
+* Fixed build in VS 2019 by integrating Trimble Identity 1.2.0.
+* Updated Android target to 7.1
+
 ## [1.0.15] - 2020-08-07
 * Using portable debug symbols.
 

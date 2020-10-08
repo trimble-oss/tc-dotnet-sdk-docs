@@ -1,5 +1,14 @@
 # Trimble.Identity .NET Release Notes
 
+# 1.2.0
+* Integrated Trimble.WebUI 1.1.17 component.
+* Updated Android target to 7.1
+* Updated UWP target to 10.0.16299
+* Updated to use Trimble.Diagnostics 2.0.13 except for UWP.
+
+# 1.1.32
+* Marked the AcquireTokenAsync() methods which use NoninteractiveAuthenticationRequest workflow as obsolete.
+
 # 1.1.31
 * Generating NuGet symbols package in the new (snupkg) format.
 

@@ -1,5 +1,8 @@
 # Trimble Identity OAuth Password Grant flow credentials provider
 
+## [1.0.11] - 2020-09-02
+* Updated the package tags and `Trimble.Identity.OAuth` module to the latest version (1.0.14).
+
 ## [1.0.10] - 2020-08-10
 * Using portable debug symbols.
 

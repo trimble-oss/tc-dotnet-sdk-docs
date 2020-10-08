@@ -1,4 +1,5 @@
 # Trimble Connect ECom Service Client Release Notes
+
 #2.0.1-beta
 * Added a contructor to initialize TrimbleConnectEComServiceClient using ClientConfig and ICredentialsProvider. No longer supports initialization with accessToken.
 * Deprecated Netstandard1.4 target and uap target (Netstandard2.0 target can be used for UWP development).

@@ -1,5 +1,16 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.51-beta] - 2020-09-14
+* Introduced `RegionsConfig` global configuration for keeping the project location to service regions map with possibility to initialize from the TC server or manually.
+* Breaking change: Removed the dependency of `TrimbleConnectHttpClient` from regions configuration
+
+## [1.0.50-beta] - 2020-09-14
+* Fix: Made ClientConfig.RegionsUri configurable.
+
+## [1.0.49-beta] - 2020-09-03
+* Added Regions configuration to IClientConfig.
+* Clients should call TrimbleConnectHttpClient.ReadConfigurationAsync() to fetch the regions configuration and use it to resolve the region end points in ClientConfig.GetServiceURIForRegion(region).
+
 ## [1.0.48-beta] - 2020-08-07
 * Using portable debug symbols.
 

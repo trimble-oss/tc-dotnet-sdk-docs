@@ -1,5 +1,34 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.0.42-beta] - 2020-10-06
+* Added support for initializing the OrgClient with Trimble Connect project location. RegionsConfig.InitializeFromServerAsync() should be called in this case to initialize regions.
+
+## [1.0.41-beta] - 2020-10-02
+* Made the tree UAC policies more restrictive in tests.
+* Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.51-beta).
+
+## [1.0.40-beta] - 2020-10-01
+* Fixed potential null reference problem related to handling node geometries.
+* Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.50-beta).
+
+## [1.0.39-beta] - 2020-09-02
+* Fixed project file and updated the dependencies of the test project.
+
+## [1.0.38-beta] - 2020-08-28
+* Added DeleteNodeGeometry operation
+
+## [1.0.36-beta] - 2020-08-27
+* Support deep insert nodes as part of the tree creation API
+* Support upsert semantic on tree and node operations
+* Removed changeset API endpoints that support tree upsert semantic added in `1.0.35-beta`
+* Renamed `UpdateTreeRequest`->`UpsertTreeRequest`, `UpdateNodeRequest`->`UpsertNodeRequest`, `UpdateTreeWithChangeSetRequest`->`UpsertTreeModel`
+* Renamed all properties `ID`->`Id`
+
+## [1.0.35-beta] - 2020-08-11
+* All changeset API wrappers now use new `scope` query parameter instead of passing parameters in the request body (breaking change)
+* Added support for tree operations in the changeset API
+* Added new changeset API endpoints that support tree upsert semantic
+
 ## [1.0.34-beta] - 2020-08-07
 * Using portable debug symbols.
 * Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.48-beta).

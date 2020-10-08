@@ -2,6 +2,194 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.7.2-beta
+* Marking pre-release with beta tag as it depends on pre-release packages.
+
+# 2.7.1
+* Using portable debug symbols.
+
+# 2.7.0
+* Integrated new pre-release client versions (Trimble.Connect.Client, PSet client, SyncHelperClient).
+* Use Trimble.Connect.Client (v2.6.2-beta or above) and initialize the TrimbleConnectClient with ICredentailsProvider.
+* Updated the minimum support version for uwp to 10.0.16299 to be compatible with net standard 2.0 clients.
+
+# 2.6.25
+* Fixed bugs and vulnerabilities reported by sonarqube and whitesource.
+
+# 2.6.24
+* Fix: Persisting the folder identifier for parent identifier of subfolders.
+
+# 2.6.23
+* Fix: Pulling files using IFiles.PullLatestSnapshotAsync persisted the version identifier for parent identifer in File Versions Table.
+* Data migration and code fix done to persist the file identifier for parent identifier in file version table. 
+
+# 2.6.22
+* Fix: Files sync using IFiles.PullLatestSnapshotAsync should not mark files being pushed while pulling as deleted.
+
+# 2.6.21
+* Fix: PullChildrenTs will not be set for root on IFiles.PullLatestSnapshotAsync that leads to errors in file sync on clearing storage.
+* Fix: Pull files / folders with only readonly change should persist the readonly in storage.
+
+# 2.6.20
+* Fix: Pull file permissions to local storage. 
+* Added IFiles.PullLatestSnapshotAsync to get the latest server snapshot to local.
+* Provided StorageOptions.PullFilesFromZeroShouldIncludeVersions for backward compatibility to pull file versions everytime. Default is false and first time pull for files will skip versions.
+
+# 2.6.19
+* Fix: Trimble.Connect.Data.Sync component will directly use Trimble.Connect.PSet.Client to get and set PSets for quick access items instead of using Trimble.Connect.Client component.
+
+# 2.6.18
+* Fix: Folder deleted issue when using hybrid approach (PullChildrenAsync and PullAsync) for pulling files and folders.
+
+# 2.6.17
+* Fix: Views with segments markup cannot be pushed.
+
+# 2.6.16
+* Added fileset and pathtemplate parameters to Upload and Download APIs to support point cloud files.
+* Added fileset and pathtemplate to FileTransferOptions that is used in most of the upload/download APIs.
+
+# 2.6.15
+* Fix: Skip file assimilation status checks while pushing presentation format .trb
+* Added IViews.GetViewContentPath() to get the view json file path. Applicable only for large views.
+
+# 2.6.14
+* Fix: Issues in parsing large views in Markups and Element states.
+
+# 2.6.13
+* Fix: Error while pushing large views.
+
+# 2.6.12
+* Added IViews.GetView() methods with a flag to optimize loading large view details on demand. 
+
+# 2.6.11
+* Added support for pulling large views by skipping the large view details while pulling views. The large views should be pulled separately one by one using their identifier already synced.
+* The large view data will be stored in file cache to optimize the DB.
+* Added exception while deleting view2D attached to todo.
+
+# 2.6.10
+* Fix: Multiple alignments will be synced for a model version and the latest alignment will be used.
+
+# 2.6.9
+* Added support for multipart download.
+* Multipart download will be applied when FileTransferOptions.UseSegmentedTransfer is set to true and the file to be downloaded is of size greater than 50 MB.
+
+# 2.6.8
+* Fix: Deleted entities will not be pushed.
+
+# 2.6.7
+* Added support for syncing quick access items. 
+
+# 2.6.6
+* Fix: Removed users in created by, modified by and assignee list of entities are rightly synced.
+
+# 2.6.5
+* Added support for pulling Single File Entity. 
+
+# 2.6.4
+* Fix: File attached to release should not be deleted.
+
+# 2.6.3
+* Adapted to the single step authentication mechanism provided by Trimble.Connect.Client v2.4.4
+* Added support for downloading 2D files as pdf file format.
+
+# 2.6.2
+* Fix: Set IsDeleted flag in entity descriptor.
+
+# 2.6.1
+# 2.6.0
+* Integrated data ocean file services API
+* Added support for links with embedded file target.
+
+# 2.4.46
+* Fix: Persons API should not fetch deleted persons
+
+# 2.4.45
+# 2.5.44
+* Fix: GetPage API should set the 'Assigned To' property for entities.
+
+# 2.5.43
+* Fix: GetPage API updated not to fetch embedded entities.
+
+# 2.5.42
+* Updated the migration scripts to be compatible with latest SQLite version 3.27.1 used in Trimble.SQLite v 1.0.61 and above.
+* Note: If previous versions of this component is used with Trimble.SQLite v.1.0.61 or above, migrations could fail
+
+# 2.5.41
+* Added exception while deleting view attached to todo.
+
+# 2.5.40
+* Updated the copyright information.
+
+# 2.5.39
+* Fix: View assigned to usergroup is unassigned to user on deleting the user group on the next views sync.
+
+# 2.5.38
+* Fix: GetPage API updated not to fetch deleted entities. 
+* Fix: Issues in GetPage API with multi column search.
+
+# 2.5.37
+* Fix: Links updated with new source elements replace the old source elements.
+
+# 2.5.36
+* Fix: Embedded attachment reappearing in storage when unlinked during push.
+
+# 2.5.35
+* Fix: Project settings synchronization issue.
+
+# 2.5.33
+* Added multiple sort functionality to GetPage API for LocalFile.
+
+# 2.5.32
+* Fixed issue in new storage object creation from old storage.
+
+# 2.5.31
+* Added search functionality to entity types views, todos and persons in GetPage API. 
+  -The search string for views filters the views based on view name or description.
+  -The search string for todos filters the todos based on todo title or text.
+  -The search string for persons filters the users based on first name or last name.
+
+# 2.5.30
+* Added search functionality to entity type LocalFile in GetPage API. The GetPage API takes a search string that is a full or partial search key.
+
+# 2.5.29
+* Added Companies table that persists the company names. 
+* Added Companies column in Persons table that references the companies that the user belongs to.
+
+# 2.5.28
+* Fix: Cache the time stamp of the last pull children call for the folders and use it to mark the old versions of deleted files/folders as deleted during the files pull async.
+* This fixes the issue of showing deleted files and folders during the sync.
+* Added ignored items list to PullChildrenAsync call.
+
+# 2.5.27
+* Fix: Updated parent folder modified time and size on PullChildrenAsync call and updated the progress call back.
+
+# 2.5.26
+* Added new storage options to specifiy page size for entity types to fetch from local storage.
+
+# 2.5.25
+* Fix: DatabaseSchemaCorruptedException might be thrown on storage opening if v76 storage is open concurrently from several threads even if storage is not actually corrupted. Transactional locking added to db schema migration code.
+
+# 2.5.24
+* Added LastAccessed, timezone, phone number properties to person entity type and persisted them in local storage.
+
+# 2.5.22
+* Fix: Updating parent(folder) size on PullChildrenAsync call.
+
+# 2.5.21
+* Fix: Database query fix for updating removed file attachment versions.
+
+# 2.5.20
+* Fix: Updating removed file attachment versions.
+
+# 2.5.19
+* Added custom sort order for todo priority/status in paged requests for Todo as per the listed order in TodoPriority/TodoStatus classes.
+
+# 2.5.18
+* Added sort by type(file/folder) for entity type LocalFile in GetPage API
+
+# 2.5.17
+* Added support for querying local storage with paged requests with optional sort property.
+
 # 2.5.16
 * Added new storage options to specifiy page size for entity types and db timeout.
 * Fix: Corrected DB transaction exception while undeleting embedded file.

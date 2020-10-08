@@ -1,5 +1,16 @@
 # Trimble.WebUI Release Notes
 
+# 1.1.17
+* Updated Xamarin.Android packages and Android target version to 7.1
+* Updated UWP target version to 10.0.16299
+* Updated Trimble.Diagnostics version to 2.0.13 except for uwp target.
+
+# 1.1.11
+* Added whitesource config file.
+
+# 1.1.10
+*Fix: Using WKWebView as UIWebView control is deprecated in iOS for embedded login workflow.
+
 # 1.1.9
 * Fix: Exception when embedding the UI into panel.
 

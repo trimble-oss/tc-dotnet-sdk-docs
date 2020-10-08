@@ -1,5 +1,8 @@
 # Trimble.Diagnostics Release Notes
 
+# 2.0.13
+* Added whitesource config file and updated nuget references.
+
 # 2.0.12
 * Updated nuget packages.
 

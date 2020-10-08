@@ -1,5 +1,11 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.4-beta
+* Integrated 1.0.51-beta version of trimble.Connect.Client.Common
+
+# 2.6.3-beta
+* Integrated 1.0.49-beta version of Trimble.Connect.Client.Common by off-loading the regions implementation to common client.
+
 # 2.6.2-beta
 * Added CredentialsProvider to ITrimbleConnectClient to support other micro service client intializations like sync helper client using IProjectClient
 

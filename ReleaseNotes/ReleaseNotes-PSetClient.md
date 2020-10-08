@@ -1,8 +1,27 @@
 # Trimble Connect PSet Service Client .NET Release Notes
 
+## [2.0.20-beta] - 2020-10-02
+* Made the tree UAC policies more restrictive in tests.
+* Fixed StyleCop errors.
+* Tests are now using vairable links values.
+
+## [2.0.19-beta] - 2020-09-30
+* Integrated Trimble.Connect.Client.Common v1.0.51-beta.
+* Added support for initializing the PSetClient with Trimble Connect project location. RegionsConfig.InitializeFromServerAsync() should be called in this case to initialize regions.
+
+## [2.0.18-beta] - 2020-09-03
+* Fixed the package tags, cleaned up the project file and updated the dependencies of the test project.
+
 ## [2.0.17-beta] - 2020-08-07
 * Using portable debug symbols.
 * Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.48-beta).
+* Support upsert semantic on tree and node operations
+* Renamed `UpdateLibraryRequest`->`UpsertLibraryRequest`, `UpdateDefinitionRequest`->`UpsertDefinitionRequest`
+* Renamed all properties `ID`->`Id`
+* deleted `ListAllPSetsOfLinkRequest` and `ListAllPSetsRequest` structures as not needed
+* redirect the `ListPSets` API `/psets?libId=&defId=` -> `/libs/<>/defs/<>/psets`
+* use `ILists<>` instead of arrays everywhere
+* Fix `unprocessed` property type in the changeset response
 
 ## [2.0.16-beta] - 2020-08-07
 * Updated the release notes link.

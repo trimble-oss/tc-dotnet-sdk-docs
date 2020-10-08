@@ -1,4 +1,7 @@
-# Trimble Identity OAuth non interactife flows
+# Trimble Identity OAuth
+
+## [1.0.14] - 2020-09-02
+* Updated the package tags.
 
 ## [1.0.13] - 2020-08-07
 * Generating portable symbols for snupkg push.
