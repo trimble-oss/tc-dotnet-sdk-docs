@@ -1,5 +1,11 @@
 # Trimble.WebUI Release Notes
 
+# 1.1.19
+* Using Portable pdbs and symbols package in snupkg format. 
+
+# 1.1.18
+* Fix: Enabled scroll bar for web browser.
+
 # 1.1.17
 * Updated Xamarin.Android packages and Android target version to 7.1
 * Updated UWP target version to 10.0.16299
