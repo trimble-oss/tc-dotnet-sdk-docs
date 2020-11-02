@@ -3,8 +3,9 @@
 ### Content
 
 1. [Overview](#overview)
-2. [Authentication](#authentication)
+2. [Authentication/Initialization](#authentication)
 	+ [Example: Sign-in TC Platform Services](#sign-in-example)
+	+ [Regions Configuration](#regions-config)
 3. [TC Data Model](#data-model)
 4. [Accessing TC Platform Services](#accessing-tc)
 5. [Extensibility mechanisms](#extensibility-mechanisms)
@@ -41,7 +42,7 @@ The TC REST API specification can be found here:
 
 The video tutorial: [SDK Authentication using the Identity library](https://youtu.be/XaQXK4Y3TpE?t=2m20s).
 
-## <a name="overview">Authentication</a>
+## <a name="authentication">Authentication/Initialization</a>
 
 ## Obsolete Workflow
 TC uses token based authentication. The token is acquired during the TID OAuth2 (OpenID Connect) authentication (see [Trimble.Identity Developer Guide](Trimble.Identity%20Developer%20Guide.md)).
@@ -70,12 +71,22 @@ The clients can also provide any custom implementation of ICredentialsProvider.
             {
                 AuthenticationRequest = new InteractiveAuthenticationRequest();
             };
+			
     var config = new TrimbleConnectClientConfig { ServiceURI = TCServiceUri};
     config.RetryConfig = new RetryConfig { MaxErrorRetry = 1 };
-    using (var client = new TrimbleConnectClient(config, provider))
-    {    
-        ...
-    }
+	
+    var client = new TrimbleConnectClient(config, provider);
+	
+	await client.InitializeTrimbleConnectUserAsync();
+
+
+### <a name="regions-config">Regions Configuration </a>
+
+The regions endpoint is hardcoded to https://app.connect.trimble.com/tc/api/2.0/regions in the Trimble.Connect.Client.Common component.
+
+If the Trimble.Connect.Client component is initalized with a different service URI (say to point to QA or STATGE environments), then it is necessary to explicitly set the Regions URI.
+
+	RegionsConfig.RegionsUri = new Uri("https://app.stage.connect.trimble.com/tc/api/2.0/regions");	
 
 
 ## <a name="data-model">TC Data Model</a>

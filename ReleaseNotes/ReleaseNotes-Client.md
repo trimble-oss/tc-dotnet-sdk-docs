@@ -1,5 +1,15 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.7-beta
+* Removed ISharesController.GetAllShares() and replaced it with ISharesController.GetSharesPagedAsync()
+
+# 2.6.6-beta
+* Made polling interval configurable for IFilesController.AssimilationCompletedAsync() and IClashSetsController.CompletedAsync()
+* Added ITrimbleConnectClient.InitializeTrimbleConnectUserAsync() to initialize the Trimble connect user.
+
+# 2.6.5-beta
+* Added: Shares API support.
+
 # 2.6.4-beta
 * Integrated 1.0.51-beta version of trimble.Connect.Client.Common
 
