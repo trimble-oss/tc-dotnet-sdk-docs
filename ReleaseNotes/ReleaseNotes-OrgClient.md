@@ -1,5 +1,10 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.0.43-beta] - 2020-10-23
+* Added support for searching nodes in trees and forests.
+* Breaking change: Removed `ListAllTreesRequest`, `ListAllNodesRequest`, `ListAllNodeVersionsRequest` (use `ListTreesRequest`, `ListNodesRequest`, `ListNodeVersionsRequest` instead).
+* Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.52-beta).
+
 ## [1.0.42-beta] - 2020-10-06
 * Added support for initializing the OrgClient with Trimble Connect project location. RegionsConfig.InitializeFromServerAsync() should be called in this case to initialize regions.
 

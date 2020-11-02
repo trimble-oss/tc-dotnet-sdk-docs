@@ -1,5 +1,9 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.52-beta] - 2020-10-21
+* Updated dependency `Trimble.Identity.Oauth.Password` to version 1.0.11.
+* Added a new test.
+
 ## [1.0.51-beta] - 2020-09-14
 * Introduced `RegionsConfig` global configuration for keeping the project location to service regions map with possibility to initialize from the TC server or manually.
 * Breaking change: Removed the dependency of `TrimbleConnectHttpClient` from regions configuration

@@ -1,5 +1,9 @@
 # Trimble Connect PSet Service Client .NET Release Notes
 
+## [2.0.21-beta] - 2020-10-23
+* Breaking change: Removed `ListAllDefinitionsRequest`, `ListAllDefinitionVersionsRequest`, `ListAllPSetVersionsRequest` (use `ListDefinitionsRequest`, `ListDefinitionVersionsRequest`, `ListPSetVersionsRequest` instead).
+* Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.52-beta).
+
 ## [2.0.20-beta] - 2020-10-02
 * Made the tree UAC policies more restrictive in tests.
 * Fixed StyleCop errors.
