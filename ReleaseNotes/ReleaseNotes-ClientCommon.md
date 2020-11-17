@@ -1,5 +1,8 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.53-beta] - 2020-11-11
+* Made internals visible to the Trimble.Connect.BatchService.Client project.
+
 ## [1.0.52-beta] - 2020-10-21
 * Updated dependency `Trimble.Identity.Oauth.Password` to version 1.0.11.
 * Added a new test.
@@ -99,7 +102,7 @@
 * Added support for creating object requests without the standard headers.
 
 ## [1.0.26] - 2020-05-11
-* Made internals visibile to the Trimble.Connect.Data.Sync project.
+* Made internals visible to the Trimble.Connect.Data.Sync project.
 
 ## [1.0.25] - 2020-05-08
 * Fixed adding the timeout to the file upload api.
@@ -123,7 +126,7 @@
 * Made the **_`TrimbleConnectHttpClient.CreateBinaryRequest()`_** methods more generic by taking any Http method as parameter.
 
 ## [1.0.18] - 2020-05-06
-* Made internals visibile to the Trimble connect client test project.
+* Made internals visible to the Trimble connect client test project.
 * Changed the namespace of **_`ResponseErrorCode`_** class so that it does not conflict with the similar class in TC Client.
 
 ## [1.0.17] - 2020-05-02
@@ -140,7 +143,7 @@
 * Fixed adding the client version user agent header by taking it from the appropriate assemblies instead of from the **_`Trimble.Connect.Client.Common`_** assembly.
 
 ## [1.0.13] - 2020-04-20
-* Made internals visibile to the sync helper client.
+* Made internals visible to the sync helper client.
 
 ## [1.0.12] - 2020-04-10
 * Added support for the **_`If-None-Match`_** HTTP header extension also in the **_`HttpRequestBuilder`_** class.

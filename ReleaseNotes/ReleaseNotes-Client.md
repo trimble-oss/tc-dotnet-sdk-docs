@@ -1,5 +1,9 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.8-beta
+* Removed ISharesController and replaced it with IController<Shares>
+* Implemented Activities endpoint.
+
 # 2.6.7-beta
 * Removed ISharesController.GetAllShares() and replaced it with ISharesController.GetSharesPagedAsync()
 
