@@ -1,5 +1,14 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.0.45] - 2021-02-15
+* Added automatic encoding of URI segments and parameters in requests. This is a _**potentially breaking change**_ for applications which have been doing the encoding on the application side.
+* Updated the `Trimble.Diagnostics` dependency to the latest version (2.0.13).
+* Updated the `NUnit` dependency to the latest version (3.13.1).
+
+## [1.0.44] - 2021-02-03
+* Updated the TC logo image url for the nuget package.
+* Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.55).
+
 ## [1.0.43-beta] - 2020-10-23
 * Added support for searching nodes in trees and forests.
 * Breaking change: Removed `ListAllTreesRequest`, `ListAllNodesRequest`, `ListAllNodeVersionsRequest` (use `ListTreesRequest`, `ListNodesRequest`, `ListNodeVersionsRequest` instead).

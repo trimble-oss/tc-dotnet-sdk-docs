@@ -1,5 +1,14 @@
 # Trimble Connect PSet Service Client .NET Release Notes
 
+## [2.0.23] - 2021-02-22
+* Added automatic encoding of URI segments and parameters in requests. This is a _**potentially breaking change**_ for applications which have been doing the encoding on the application side.
+* Updated the `Trimble.Diagnostics` dependency to the latest version (2.0.13).
+* Updated the `NUnit` dependency to the latest version (3.13.1).
+
+## [2.0.22] - 2021-02-03
+* Updated the TC logo image url for the nuget package.
+* Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.55).
+
 ## [2.0.21-beta] - 2020-10-23
 * Breaking change: Removed `ListAllDefinitionsRequest`, `ListAllDefinitionVersionsRequest`, `ListAllPSetVersionsRequest` (use `ListDefinitionsRequest`, `ListDefinitionVersionsRequest`, `ListPSetVersionsRequest` instead).
 * Updated the `Trimble.Connect.Client.Common` dependency to the latest version (1.0.52-beta).
