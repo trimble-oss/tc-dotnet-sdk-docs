@@ -2,6 +2,25 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.7.8
+* Fix: Added 'Center' column as last column in the table to fix errors during migration.
+
+# 2.7.7
+* Fix: Allow presentation format .trb to be uploaded even when back-end throws file type not supported error (for files like .nwd).
+
+# 2.7.6
+* Added 'Center' column to 'Clashes' table.
+* Modified the Model Elements identifier to be based out of source identifier and file version identifier to align with the TCPS changes.
+
+# 2.7.5-beta
+* Fix: Fetch placement for known file version identifier.
+
+# 2.7.4-beta
+* Fix: Added revision number to placements table to fetch placements using file id and unknown version ids.
+
+# 2.7.3-beta
+* Integrated new pre-release client versions (Trimble.Connect.Client, PSet client, SyncHelperClient).
+
 # 2.7.2-beta
 * Marking pre-release with beta tag as it depends on pre-release packages.
 

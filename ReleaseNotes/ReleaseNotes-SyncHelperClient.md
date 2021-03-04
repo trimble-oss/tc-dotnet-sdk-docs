@@ -1,5 +1,8 @@
 # Trimble Connect Object Sync Helper Service Client Release Notes
 
+#2.0.4
+* Updated the TC logo image url for the nuget package.
+
 #2.0.3-beta
 * Integrated 1.0.51-beta version of Trimble.Connect.Client.Common
 

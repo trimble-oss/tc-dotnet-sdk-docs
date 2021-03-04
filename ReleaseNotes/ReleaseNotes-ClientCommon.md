@@ -1,5 +1,11 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.55] - 2021-01-28
+* Updated the TC logo image url for the nuget package.
+
+## [1.0.54] - 2020-12-16
+* Fix: Skip passing authorization bearer header for pre-signed url requests.
+
 ## [1.0.53-beta] - 2020-11-11
 * Made internals visible to the Trimble.Connect.BatchService.Client project.
 

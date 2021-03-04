@@ -1,5 +1,18 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.12
+* Updated the TC logo image url for the nuget package
+
+# 2.6.11
+* Fix: Skip passing authorization header for file download using pre-signed url.
+* Fix: Issue with paging in fetching activities.
+
+# 2.6.10-beta
+* Fix: Skip invalid markups while parsing views response.
+
+# 2.6.9-beta
+* Renamed IProjectClient.Share as IProjectClient.Shares for better maintainability.
+
 # 2.6.8-beta
 * Removed ISharesController and replaced it with IController<Shares>
 * Implemented Activities endpoint.
