@@ -2,6 +2,16 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.7.11
+* Updated nuget references.
+
+# 2.7.10
+* Added 'Crs' and 'Address' columns to 'Project' table. 
+* Updated Trimble Connect Client reference to version 2.6.14.
+
+# 2.7.9
+* Fix: Use file version identifier to push presentation formats.
+
 # 2.7.8
 * Fix: Added 'Center' column as last column in the table to fix errors during migration.
 

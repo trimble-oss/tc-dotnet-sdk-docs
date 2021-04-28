@@ -1,5 +1,19 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.0.48] - 2021-04-26
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.60) and adapted to the changes.
+
+## [1.0.47] - 2021-04-20
+* Fixed handling of region specific service URLs in the client configuration.
+* Fixed tests to work with the stage version of the TC client.
+* Changed the test user account.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.58).
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.13).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.57).
+
+## [1.0.46] - 2021-03-05
+* Added support for node meta-data.
+
 ## [1.0.45] - 2021-02-15
 * Added automatic encoding of URI segments and parameters in requests. This is a _**potentially breaking change**_ for applications which have been doing the encoding on the application side.
 * Updated the `Trimble.Diagnostics` dependency to the latest version (2.0.13).

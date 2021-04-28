@@ -1,5 +1,12 @@
 # Trimble Identity OAuth Password Grant flow credentials provider
 
+## [1.0.13] - 2021-04-13
+* Updated the TC logo image url for the nuget package.
+* Updated the `Trimble.Identity.OAuth` module to the latest version (1.0.16).
+
+## [1.0.12] - 2021-04-12
+* Updated the `Trimble.Identity.OAuth` module to the latest version (1.0.15).
+
 ## [1.0.11] - 2020-09-02
 * Updated the package tags and `Trimble.Identity.OAuth` module to the latest version (1.0.14).
 

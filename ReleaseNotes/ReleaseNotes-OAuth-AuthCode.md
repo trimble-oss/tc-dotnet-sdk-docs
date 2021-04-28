@@ -1,5 +1,11 @@
 # Trimble Identity OAuth authorization code flow credentials provider
 
+## [1.0.19] - 2020-09-27
+* Updated the package icon.
+
+## [1.0.18] - 2020-09-25
+* Updated the Trimble.Identity package version to v4.0.1.
+
 ## [1.0.17] - 2020-09-25
 * Updated the package tags.
 

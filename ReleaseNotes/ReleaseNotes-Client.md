@@ -1,5 +1,19 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.16
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.13).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.57).
+
+# 2.6.15
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.12).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.56).
+
+# 2.6.14
+* Added support for crs and address fields to project meta data.
+
+# 2.6.13
+* Fix: Issue with todo label not set.
+
 # 2.6.12
 * Updated the TC logo image url for the nuget package
 

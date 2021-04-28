@@ -1,5 +1,16 @@
 # Trimble Connect PSet Service Client .NET Release Notes
 
+## [2.0.25] - 2021-04-26
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.60) and adapted to the changes.
+
+## [2.0.24] - 2021-04-20
+* Fixed handling of the region specific service URLs in the client configuration.
+* Fixed tests to work with the stage version of the TC client.
+* Changed the test user account.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.58).
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.13).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.57).
+
 ## [2.0.23] - 2021-02-22
 * Added automatic encoding of URI segments and parameters in requests. This is a _**potentially breaking change**_ for applications which have been doing the encoding on the application side.
 * Updated the `Trimble.Diagnostics` dependency to the latest version (2.0.13).

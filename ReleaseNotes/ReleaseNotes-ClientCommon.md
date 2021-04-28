@@ -1,5 +1,22 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.60] - 2021-04-26
+* Removed the optional parameter passing to ClientConfig.GetServiceURIForRegion() as it is already available in ClientConfig.Environment property.
+
+## [1.0.59] - 2021-04-25
+* Throws the original server error in case of token refresh failure using ICredentialsProvider.
+* The exception details while refreshing token are available using InvalidServiceOperationException.TokenRefreshException
+
+## [1.0.58] - 2021-04-14
+* Added environment property to the client config.
+* Added possibility to specify the environment for which the region-specific service URIs are requested in `ClientConfig.GetServiceURIForRegion()`.
+
+## [1.0.57] - 2021-04-13
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.13).
+
+## [1.0.56] - 2021-04-12
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.12).
+
 ## [1.0.55] - 2021-01-28
 * Updated the TC logo image url for the nuget package.
 

@@ -1,4 +1,10 @@
-# Trimble Identity OAuth
+# Trimble Identity OAuth release notes
+
+## [1.0.16] - 2021-04-13
+* Updated the TC logo image url for the nuget package
+
+## [1.0.15] - 2021-04-09
+* Fixed whitesource vulnerabilities by updating System.Text.Encodings.Web dependency to 4.5.1
 
 ## [1.0.14] - 2020-09-02
 * Updated the package tags.
