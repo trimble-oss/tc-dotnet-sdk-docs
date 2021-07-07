@@ -1,5 +1,12 @@
 # Trimble Connect PSet Service Client .NET Release Notes
 
+## [2.0.27] - 2021-06-29
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.17) and adapted to the changes.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.62) and adapted to the changes.
+
+## [2.0.26] - 2021-06-8
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.15) and adapted to the changes.
+
 ## [2.0.25] - 2021-04-26
 * Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.60) and adapted to the changes.
 

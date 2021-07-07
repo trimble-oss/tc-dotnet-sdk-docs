@@ -1,5 +1,8 @@
 # Trimble Connect ECom Service Client Release Notes
 
+#2.0.3-beta
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.15) and adapted to the changes.
+
 #2.0.2-beta
 * Updated the TC logo image url for the nuget package
 * Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.13).

@@ -1,5 +1,13 @@
 # Trimble Connect Object Sync Helper Service Client Release Notes
 
+#2.0.7
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.17) and adapted to the changes.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.62).
+* Updated the `Trimble.Connect.Client` module to the latest version (2.6.19).
+
+#2.0.6
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.15) and adapted to the changes.
+
 #2.0.5
 * Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.13).
 * Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.57).

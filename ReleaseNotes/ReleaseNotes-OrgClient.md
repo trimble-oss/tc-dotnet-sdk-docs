@@ -1,5 +1,8 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.0.49] - 2021-06-10
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.15) and adapted to the changes.
+
 ## [1.0.48] - 2021-04-26
 * Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.60) and adapted to the changes.
 

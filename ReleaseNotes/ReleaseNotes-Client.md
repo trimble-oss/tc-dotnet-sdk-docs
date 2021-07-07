@@ -1,5 +1,16 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.19
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.17).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.62).
+
+# 2.6.18
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.15).
+* Removed RetryHandler class from `Trimble.Connect.Client`and the retry is handled by default in IClientConfig.RetryConfig if the TrimbleConnectClient is initialized using ICredentialsProvider.
+
+# 2.6.17
+* Implemented the latest representation fileUpload API workflow.
+
 # 2.6.16
 * Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.13).
 * Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.57).

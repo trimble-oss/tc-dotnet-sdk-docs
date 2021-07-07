@@ -1,5 +1,18 @@
 # Trimble Identity OAuth Password Grant flow credentials provider
 
+## [1.0.17] - 2021-06-14
+* Removed Trimble.Identity.OAuth package reference.
+
+## [1.0.16] - 2021-06-10
+* Added TidUser property in PasswordCredentialsProvider class to fetch the user details.
+
+## [1.0.15] - 2021-05-19
+* Created nuspec to copy the dependency exe and dlls to the output directory.
+
+## [1.0.14] - 2021-05-12
+* Using chrome web driver for password grant workflow as the password grant is disabled in TID v4.
+* Removed net40, android and ios targets as this package is supposed to be used only for running sdk test cases.
+
 ## [1.0.13] - 2021-04-13
 * Updated the TC logo image url for the nuget package.
 * Updated the `Trimble.Identity.OAuth` module to the latest version (1.0.16).

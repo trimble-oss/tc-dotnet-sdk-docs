@@ -1,5 +1,11 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.62] - 2021-06-29
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.17) and adapted to the changes.
+
+## [1.0.61] - 2021-06-15
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.15) and adapted to the changes.
+
 ## [1.0.60] - 2021-04-26
 * Removed the optional parameter passing to ClientConfig.GetServiceURIForRegion() as it is already available in ClientConfig.Environment property.
 
