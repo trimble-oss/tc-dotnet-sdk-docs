@@ -1,5 +1,8 @@
 # Trimble Identity OAuth Password Grant flow credentials provider
 
+## [1.0.18] - 2021-08-2
+* Upgraded the `Selenium.WebDriver.ChromeDriver` version to 92.0.4515.107 to match the latest chrome version.
+
 ## [1.0.17] - 2021-06-14
 * Removed Trimble.Identity.OAuth package reference.
 

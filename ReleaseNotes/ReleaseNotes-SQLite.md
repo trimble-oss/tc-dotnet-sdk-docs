@@ -1,5 +1,15 @@
 # Trimble SQLite .NET Wrapper
 
+# 1.0.65
+* Updated package icon url and symbols format to snupkg
+
+# 1.0.64
+* Updated sqlite version from 3.27.2 to 3.36.0.
+* Updated the TargetPlatformVersion and TargetPlatformMinVersion of uap project to 10.0.16299.0.
+
+# 1.0.63
+* Fixed sonarqube issues and setup whitesource config file.
+
 # 1.0.62
 # 1.0.61
 * Updated sqlite version from 3.14.1 to 3.27.2
