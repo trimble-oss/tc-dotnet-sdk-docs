@@ -2,6 +2,18 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.7.13
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.18).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.65).
+* Updated the `Trimble.SQLite` module to the latest version (1.0.65).
+
+# 2.7.12
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.17).
+* Updated the `Trimble.Connect.Client` module to the latest version (2.6.19).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.62).
+* Updated the `Trimble.Connect.PSet.Client` module to the latest version (2.0.27).
+* Updated the `Trimble.Connect.SyncHelper.Client` module to the latest version (2.0.7).
+
 # 2.7.11
 * Updated nuget references.
 

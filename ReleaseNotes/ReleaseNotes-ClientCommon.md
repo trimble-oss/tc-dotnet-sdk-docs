@@ -1,5 +1,15 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.65] - 2021-08-3
+* Updated the `Trimble.Diagnostics` module to (2.0.12) version.
+
+## [1.0.64] - 2021-08-3
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.18) and adapted to the changes.
+
+## [1.0.63] - 2021-07-21
+* Updated the `Newtonsoft.Json` module to (12.0.3) version for netstandard2.0 Targetframework to fix whitesource vulnerability.
+* Updated the `NUnit` module to latest version (3.13.2) to fix the whitesource vulnerability.
+
 ## [1.0.62] - 2021-06-29
 * Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.17) and adapted to the changes.
 
