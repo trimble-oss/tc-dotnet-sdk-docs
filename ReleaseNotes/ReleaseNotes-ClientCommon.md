@@ -1,5 +1,12 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.67] - 2021-09-12
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.20) and adapted to the changes.
+* Added `Selenium.WebDriver.ChromeDriver` module to the Trimble.Connect.Client.Common.Test.
+
+## [1.0.66] - 2021-08-25
+* Throw custom argument exception for invalid request uri to HttpRequestBuilder.
+
 ## [1.0.65] - 2021-08-3
 * Updated the `Trimble.Diagnostics` module to (2.0.12) version.
 
