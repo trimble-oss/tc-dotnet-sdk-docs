@@ -1,5 +1,27 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.72] - 2022-01-20
+* Fix: Skip passing authentication header to data ocean file upload urls that are already pre-signed.
+
+## [1.0.71] - 2021-12-10
+* Adapted the UploadFileAsync method for Topics Service.
+
+## [1.0.70] - 2021-12-10
+* Made internals visible to Topics client.
+
+## [1.0.69] - 2021-11-23
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (96.0.4664.4500).
+
+## [1.0.68] - 2021-09-29
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (94.0.4606.4101).
+
+## [1.0.67] - 2021-09-12
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.20) and adapted to the changes.
+* Added `Selenium.WebDriver.ChromeDriver` module to the Trimble.Connect.Client.Common.Test.
+
+## [1.0.66] - 2021-08-25
+* Throw custom argument exception for invalid request uri to HttpRequestBuilder.
+
 ## [1.0.65] - 2021-08-3
 * Updated the `Trimble.Diagnostics` module to (2.0.12) version.
 

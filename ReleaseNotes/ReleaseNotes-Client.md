@@ -1,5 +1,24 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.24
+* Added name, description and stock keeping unit properties to License entity.
+
+# 2.6.23
+* Added notify parameter to IProjectMembersController.AddAsync() API.
+
+# 2.6.22
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (94.0.4606.4101).
+
+# 2.6.21
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.20).
+* Added `Selenium.WebDriver.ChromeDriver` module to the Trimble.Connect.Client.Test.
+
+# 2.6.20
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.18).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.65).
+* Updated the `Newtonsoft.Json` module to (12.0.3) version for netstandard2.0 Targetframework to fix the whitesource vulnerability.
+* Updated the `NUnit` module to latest version (3.13.2) to fix the whitesource vulnerability.
+
 # 2.6.19
 * Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.17).
 * Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.62).
