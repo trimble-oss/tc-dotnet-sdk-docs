@@ -2,6 +2,38 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.7.22
+* Fixed: Skip the unknown attachments like topics that are attached to tags.
+
+# 2.7.21
+* Fixed: Local file meta data corruption on pulling file versions with local file modifications.
+
+# 2.7.20
+* Added optional cancellation token parameter in SyncClient.CreateAsync().
+
+# 2.7.19
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.21).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.72).
+* Updated the `Trimble.Connect.Client` module to the latest version (2.6.26).
+
+# 2.7.18
+* Added IPlacements.ResetLastPushStatus() to reset the last push status for placements.
+
+# 2.7.17
+* Fix: Large view update while push is in progress should sync as expected.
+
+# 2.7.16
+* Last push failed entities will not be retried during next push until reset.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (96.0.4664.4500).
+
+# 2.7.15
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (94.0.4606.4101).
+
+# 2.7.14
+* Fixed IPlacements.GetByFile() to return the latest placement. 
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.20).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.67).
+
 # 2.7.13
 * Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.18).
 * Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.65).

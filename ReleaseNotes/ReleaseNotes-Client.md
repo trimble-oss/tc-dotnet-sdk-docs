@@ -1,5 +1,25 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.30
+* Added support to pass processing header to the package upload API IFilesController.UploadPackageAsync().
+
+# 2.6.29
+* Added support for `Topics` or any generic object type in `Tags` entity.
+
+# 2.6.28
+* Added support for package upload API.
+* Removed unused file formats (f3d, xml, property and propertyset) and deprecated bsq format.
+
+# 2.6.27
+* Use test automation accounts in test cases.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.72).
+
+# 2.6.26
+* Fix: Issue in view json parser. The camera has to be parsed as null for large views.
+
+# 2.6.25
+* File version identifier can be passed to Get, Set and Delete Alignment calls.
+
 # 2.6.24
 * Added name, description and stock keeping unit properties to License entity.
 

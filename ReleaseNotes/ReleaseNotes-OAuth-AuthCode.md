@@ -1,5 +1,12 @@
 # Trimble Identity OAuth authorization code flow credentials provider
 
+## [1.0.21] - 2021-08-26
+* Added CustomTokenCredentialsProvider for login work-flows that use existing access token and refresh token.
+
+## [1.0.20] - 2021-08-26
+* Scope will be added automatically in the AuthCodeCredentialsProvider constructor.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.65).
+
 ## [1.0.19] - 2020-09-27
 * Updated the package icon.
 

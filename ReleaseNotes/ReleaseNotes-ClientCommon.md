@@ -1,5 +1,9 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.73] - 2022-03-21
+* Added provision to add processing header to the request.
+* Used test automation accounts in test cases.
+
 ## [1.0.72] - 2022-01-20
 * Fix: Skip passing authentication header to data ocean file upload urls that are already pre-signed.
 

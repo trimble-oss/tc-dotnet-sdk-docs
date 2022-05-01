@@ -1,5 +1,19 @@
 # Trimble Connect PSet Service Client .NET Release Notes
 
+## [2.0.31] - 2021-03-02
+* Use test automation accounts in test cases.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (98.0.4758.10200).
+
+## [2.0.30] - 2021-11-24
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (96.0.4664.4500).
+
+## [2.0.29] - 2021-10-08
+* Removed subscribe APIs to library, definition, pset and psetsOfLink methods and the related test cases as they are deprecated by the PSet service.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (94.0.4606.4101).
+
+## [2.0.28] - 2021-07-19
+* Updated the `Newtonsoft.Json` module to the latest version (12.0.3) for netstandard2.0 Targetframework to fix the whitesource vulnerability.
+
 ## [2.0.27] - 2021-06-29
 * Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.17) and adapted to the changes.
 * Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.62) and adapted to the changes.

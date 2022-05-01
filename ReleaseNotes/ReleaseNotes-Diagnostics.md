@@ -1,5 +1,10 @@
 # Trimble.Diagnostics Release Notes
 
+# 2.0.14
+* Removed netstandard1.1 and netstandard1.3 target frameworks to fix whitesource vulnerabilities.
+* Added netstandard2.0 target framework.
+* Updated the UAP target platform version to 10.0.16299.0.
+
 # 2.0.13
 * Added whitesource config file and updated nuget references.
 

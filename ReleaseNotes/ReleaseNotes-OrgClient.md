@@ -1,5 +1,10 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.0.50] - 2021-08-10
+* Updated the `Newtonsoft.Json` module to the latest version (12.0.3) for netstandard2.0 Targetframework to fix the whitesource vulnerability.
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.18).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.65).
+
 ## [1.0.49] - 2021-06-10
 * Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.15) and adapted to the changes.
 

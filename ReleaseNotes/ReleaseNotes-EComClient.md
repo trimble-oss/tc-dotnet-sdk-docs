@@ -1,5 +1,11 @@
 # Trimble Connect ECom Service Client Release Notes
 
+#2.0.4-beta
+* Updated the `Newtonsoft.Json` module to the (12.0.3) version for netstandard2.0 Targetframework to fix the whitesource vulnerability.
+* Updated the `NUnit` module to latest version (3.13.2) to fix the whitesource vulnerability.
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.18).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.65).
+
 #2.0.3-beta
 * Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.15) and adapted to the changes.
 

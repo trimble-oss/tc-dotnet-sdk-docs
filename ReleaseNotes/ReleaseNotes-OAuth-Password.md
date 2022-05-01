@@ -1,5 +1,17 @@
 # Trimble Identity OAuth Password Grant flow credentials provider
 
+## [1.0.21] - 2022-02-18
+* Use test automation accounts for testing. 
+* Adapted the authenticator to test automation login.
+
+## [1.0.20] - 2021-09-9
+* Moved the `Selenium.WebDriver.ChromeDriver` module from Trimble.Identity.OAuthPassword to Trimble.Identity.OAuth.Password.Test .
+* Removed `Selenium.WebDriver.ChromeDriver` module from nuspec file.
+
+## [1.0.19] - 2021-09-2
+* Updated the nuspec file.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.65).
+
 ## [1.0.18] - 2021-08-2
 * Upgraded the `Selenium.WebDriver.ChromeDriver` version to 92.0.4515.107 to match the latest chrome version.
 
