@@ -21,7 +21,7 @@ Here is useful information for you getting started with the API/SDK:
 * [TC .NET SDK Developer Guide](documentation/Developer%20Guide.md)
 * [TC .NET SDK posted on Nuget](https://www.nuget.org/profiles/TrimbleConnect)
 * [API/SDK Code Samples repository](https://github.com/Trimble-Connect/samples)
-* [API/SDK License Agreement](https://community.trimble.com/docs/DOC-10021)
+* [API/SDK License Agreement](https://connect.trimble.com/terms-service)
 
 Once you are ready to start leveraging the Trimble Connect API/SDK, you will need to request API credentials unique to your organization and connected application.
 Please sign up at <https://connect.trimble.com/integrator-sign-page>.
