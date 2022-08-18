@@ -28,13 +28,14 @@ This layer's responsibilities include:
 * Consistent error handling and convenient ways to deal with varying network performance (like async mechanisms and progress reporting).
 * Providing an easy to use abstraction for your targeted platforms and programming language.
 * Supporting middleware message handlers
-* Leveraging strongly typed entity recognition for data modeling
+* Leveraging strongly typed entity recognition for data modelling
 * Graceful error handling
 * Adherence to HTTP conventions and standards
 
 The TC REST API specification can be found here: 
 
-* Staging: [https://app.swaggerhub.com/apis/Trimble-Connect/topic-stage/0.1#](https://app.swaggerhub.com/apis/Trimble-Connect/topic-stage/0.1#)
+* Staging: [https://app.swaggerhub.com/apis/Trimble-Connect/topic-stage/v1#](https://app.swaggerhub.com/apis/Trimble-Connect/topic-stage/v1#)
+* Prod: [https://app.swaggerhub.com/apis/Trimble-Connect/topic/v1#](https://app.swaggerhub.com/apis/Trimble-Connect/topic/v1#)
 
 The video tutorial: [SDK Authentication using the Identity library](https://youtu.be/XaQXK4Y3TpE?t=2m20s).
 
