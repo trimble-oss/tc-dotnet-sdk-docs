@@ -1,5 +1,39 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.40
+* Added IFilesController.GetSnapshot() Api to get the latest snapshot of files and folders in the project.
+
+# 2.6.39
+# 2.6.38
+* Updated the `Trimble.Diagnostics` module to the latest version (3.0.3).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.79).
+
+# 2.6.37
+* Added PanPositionX and PanPositionY properties in View2D class.
+
+# 2.6.36
+* Updated `Newtonsoft.Json` module to 13.0.1.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.78).
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (105.0.5195.5200).
+
+# 2.6.35
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (103.0.5060.5300).
+* Updated the `Trimble.Diagnostics` module to the latest version (3.0.3) for netstandard 2.0 target framework.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.77).
+
+# 2.6.34
+* Added Position properties in Angle markup class.
+
+# 2.6.33
+* Removed the null value handling for Position properties in MeasurementPick.
+
+# 2.6.32
+* Added support for angle markup.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (102.0.5005.6102).
+
+# 2.6.31
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (100.0.4896.6000).
+
 # 2.6.30
 * Added support to pass processing header to the package upload API IFilesController.UploadPackageAsync().
 

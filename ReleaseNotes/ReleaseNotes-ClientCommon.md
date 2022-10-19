@@ -1,5 +1,26 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.79] - 2022-09-29
+* Updated `Trimble.Diagnostics` module to 3.0.3.
+* Updated `Trimble.Net.Http.Formatting` module to 1.0.6.
+
+## [1.0.78] - 2022-08-22
+* Updated `Newtonsoft.Json` module to 13.0.1.
+
+## [1.0.77] - 2022-07-20
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (103.0.5060.5300).
+* Updated the `Trimble.Diagnostics` module to the latest version (3.0.3) for netstandard 2.0 target framework.
+
+## [1.0.76] - 2022-05-12
+* Improved message formatting for InvalidServiceOperationException to include all details returned by server.
+
+## [1.0.75] - 2022-05-02
+* Added support for basic authorization header in the request.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (100.0.4896.6000).
+
+## [1.0.74] - 2022-04-06
+* Made internals visible to Tranos Notification client.
+
 ## [1.0.73] - 2022-03-21
 * Added provision to add processing header to the request.
 * Used test automation accounts in test cases.

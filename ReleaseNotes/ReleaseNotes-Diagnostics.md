@@ -1,5 +1,13 @@
 # Trimble.Diagnostics Release Notes
 
+# 3.0.8
+* Updated dependencies.
+
+# 3.0.0
+* Added netstandard2.0 logger - windows ewt, non windows trace
+* Remove all mobile targets
+* Remove obsolete Logger and SourceSwitchEx
+
 # 2.0.14
 * Removed netstandard1.1 and netstandard1.3 target frameworks to fix whitesource vulnerabilities.
 * Added netstandard2.0 target framework.

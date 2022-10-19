@@ -1,5 +1,13 @@
 # Trimble Identity OAuth Password Grant flow credentials provider
 
+## [1.0.23] - 2022-10-02
+* Updated nuspec.
+
+## [1.0.22] - 2022-09-14
+* Upgraded the `Newtonsoft.Json` version to 13.0.1.
+* Upgraded the `Trimble.Connect.Client.Common` version to 1.0.78.
+* Upgraded the `Selenium.WebDriver.ChromeDriver` version to 105.0.5195.5200 to match the latest chrome version.
+
 ## [1.0.21] - 2022-02-18
 * Use test automation accounts for testing. 
 * Adapted the authenticator to test automation login.

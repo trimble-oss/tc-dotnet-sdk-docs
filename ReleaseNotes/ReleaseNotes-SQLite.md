@@ -1,5 +1,8 @@
 # Trimble SQLite .NET Wrapper
 
+# 2.0.3
+* Remove old mobile targets
+
 # 1.0.65
 * Updated package icon url and symbols format to snupkg
 
