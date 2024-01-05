@@ -1,5 +1,32 @@
 # Trimble Connect Object Sync Helper Service Client Release Notes
 
+#2.0.16
+* Updated dependencies.
+* Updated existing document and sample reference urls with the latest trimble-oss urls.
+* Added readme_nuget.md file.
+* Added package icon file instead of package icon url.
+* Added package license file instead of package license url.
+
+#2.0.15
+* Made Triangle count property to be long type and handled nulls to return 0.
+
+#2.0.14
+* Made Triangle count property nullable to handle nulls in the response.
+* Added Test case to check null handling of triangle count.
+
+#2.0.13
+* Updated Trimble.Diagnostics module to 3.0.3.
+* Updated the Trimble.Connect.Client.Common module to the latest version (1.0.79).
+
+#2.0.12
+*Updated Newtonsoft.Json module to 13.0.1.
+*Updated the Trimble.Connect.Client.Common module to the latest version (1.0.78).
+
+#2.0.11
+* Updated the Selenium.WebDriver.ChromeDriver module to the latest version (103.0.5060.5300).
+* Updated the Trimble.Diagnostics module to the latest version (3.0.3) for netstandard 2.0 target framework.
+* Updated the Trimble.Connect.Client.Common module to the latest version (1.0.77).
+
 #2.0.10
 * Use test automation accounts in test cases.
 * Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (98.0.4758.10200).
