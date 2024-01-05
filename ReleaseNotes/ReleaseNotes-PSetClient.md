@@ -1,5 +1,37 @@
 # Trimble Connect PSet Service Client .NET Release Notes
 
+## [2.0.45] - 2023-08-09
+* Updated existing document and sample reference urls with the latest trimble-oss urls.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (115.0.5790.17000).
+* Added readme_nuget.md file.
+* Added package icon file instead of package icon url.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.87).
+* Added package license file instead of package license url.
+
+## [2.0.44] - 2023-03-31
+## [2.0.43] - 2023-03-29
+* Update string format of IfMatch and IfNoneMatch headers.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (111.0.5563.6400).
+
+## [2.0.42] - 2022-09-27
+## [2.0.41] - 2022-09-27
+* Updated the `Trimble.Diagnostics` module to the latest version (3.0.3).
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (105.0.5195.5200).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.79).
+
+## [2.0.40] - 2022-08-17
+* Updated `Newtonsoft.Json` module to 13.0.1.
+
+## [2.0.34] - 2022-07-26
+## [2.0.33] - 2022-07-22
+* Updated the `Trimble.Diagnostics` module to the (3.0.3) version for netstandard 2.0 target framework.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (103.0.5060.5300).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.77).
+
+## [2.0.32] - 2022-05-18
+* Updated the `Trimble.Diagnostics` module to the (2.0.14) version.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (101.0.4951.4100).
+
 ## [2.0.31] - 2021-03-02
 * Use test automation accounts in test cases.
 * Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (98.0.4758.10200).

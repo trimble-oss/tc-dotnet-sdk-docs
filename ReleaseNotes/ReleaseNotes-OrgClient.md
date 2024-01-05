@@ -1,5 +1,40 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.0.59] - 2023-08-10
+* Added package license file instead of package license url.
+
+## [1.0.58] - 2023-08-07
+* Updated existing document and sample reference urls with the latest trimble-oss urls.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (115.0.5790.17000).
+* Added readme_nuget.md file.
+* Added package icon file instead of package icon url.
+
+## [1.0.57] - 2022-09-30
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.79).
+* Updated the `Trimble.Diagnostics` module to the latest version (3.0.3) for all the target frameworks.
+
+## [1.0.56] - 2022-08-17
+* Updated `Newtonsoft.Json` module to 13.0.1.
+
+## [1.0.55] - 2022-08-09
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (103.0.5060.5300).
+* Updated the `Trimble.Diagnostics` module to the latest version (3.0.3) for netstandard 2.0 target framework.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.77).
+
+## [1.0.54] - 2021-03-02
+* Use test automation accounts in test cases.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (98.0.4758.10200).
+
+## [1.0.53] - 2021-12-04
+* Added support for tree metadata.
+
+## [1.0.52] - 2021-12-03
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (96.0.4664.4500).
+
+## [1.0.51] - 2021-10-08
+* Removed subscribe APIs to node, tree and forest methods and the related test cases as they are deprecated by the organizer service.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (94.0.4606.4101).
+
 ## [1.0.50] - 2021-08-10
 * Updated the `Newtonsoft.Json` module to the latest version (12.0.3) for netstandard2.0 Targetframework to fix the whitesource vulnerability.
 * Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.18).

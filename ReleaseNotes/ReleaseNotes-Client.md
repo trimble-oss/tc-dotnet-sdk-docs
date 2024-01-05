@@ -1,5 +1,70 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.60
+* Skip passing authentication token in ITrimbleConnectClient.DownloadThumbnailAsync() by default.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (118.0.5993.7000).
+
+# 2.6.59
+* Added query param support to IProjectClient.GetAsync API. Clients can use fullyLoaded = false query param to get minimal project details.
+* Added IProjectClient.Location property to get the project location.
+
+# 2.6.58
+* Implemented internal routing of all upload calls in FilesController to PackageUpload.
+
+# 2.6.57
+* Added support for account information in License class.
+
+# 2.6.56
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.25).
+
+# 2.6.55
+* Handle the package upload errors during initiate phase.
+
+# 2.6.54
+* Fixed the progress issue.
+
+# 2.6.53
+* Fixed updating the url to use in multipart upload on retry after refreshing the part urls.
+
+# 2.6.52
+* Added Wait flag to improve the upload status polling in IFilesController.GetPackageUploadInfo.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (116.0.5845.9600).
+* Added Sync session Identifier param in IFilesController.UploadPackageAsync.
+
+# 2.6.51
+* Added support for parallel part uploads.
+
+# 2.6.50
+* Added support for refreshing multipart upload urls on expiry.
+
+# 2.6.49
+* Added support for multipart package upload in IFilesController.UploadPackageAsync API.
+
+# 2.6.48
+* Fixed last visited timestamp to be culture independent.
+* Updated read me file and documentation links.
+
+# 2.6.47
+* Added topic case to the DeltaResponseConverter to add topicId to the View properties.
+
+# 2.6.46
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.82).
+
+# 2.6.45
+* Removed preprocessor directive present in FileControllerExtensions for DownloadToFile methods.
+
+# 2.6.44
+* Fixed task cancelled exception in successive async calls on Trimble Connect Client by closing the response stream on previous calls.
+
+# 2.6.43
+* Updated position values in Angle markup to be nullable.
+
+# 2.6.42
+* Added fileset parameter to multipart file upload.
+
+# 2.6.41
+* Added minimal flag support in ProjectMembersController.GetAsync() to fetch either partial or full response.
+
 # 2.6.40
 * Added IFilesController.GetSnapshot() Api to get the latest snapshot of files and folders in the project.
 
