@@ -1,5 +1,29 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.87] - 2023-07-31
+* Added TopicApi Uri property in Region.cs.
+
+## [1.0.86] - 2023-07-24
+* Added file path property to file upload request.
+
+## [1.0.85] - 2023-06-27
+* Updated existing document and sample reference urls with the latest trimble-oss urls.
+
+## [1.0.84] - 2023-06-23
+* Changed the TcpsApi setter property from internal to public.
+
+## [1.0.83] - 2023-05-30
+* Added retries for http request exception while making the http calls.
+
+## [1.0.82] - 2023-05-15
+* Added retries for socket exception while making the http calls.
+
+## [1.0.81] - 2022-11-22
+* Added Regions configuration for UserApi
+
+## [1.0.80] - 2022-11-21
+* Made internals visible to UserApp Service client.
+
 ## [1.0.79] - 2022-09-29
 * Updated `Trimble.Diagnostics` module to 3.0.3.
 * Updated `Trimble.Net.Http.Formatting` module to 1.0.6.

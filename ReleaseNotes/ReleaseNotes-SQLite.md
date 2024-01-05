@@ -1,5 +1,19 @@
 # Trimble SQLite .NET Wrapper
 
+# 2.0.9
+* Fixed the OS description check for Android devices to load sqlite andriod libraries.
+
+# 2.0.8
+* Added fix for loading android libs in MAUI style android projects. The RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux) returns false in MAUI Android, so we additionally check the OSDescription.
+
+# 2.0.7
+# 2.0.6
+# 2.0.5
+* Updated Readme
+
+# 2.0.4
+* Updated sqlite version from 3.36.0 to 3.39.4.0.
+
 # 2.0.3
 * Remove old mobile targets
 
