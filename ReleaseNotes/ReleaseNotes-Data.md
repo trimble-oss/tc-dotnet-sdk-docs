@@ -2,6 +2,81 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.8.18
+* Adopt the latest client SDK version (2.6.63).
+
+# 2.8.17
+* Added support for Sku field in ProjectClass.
+
+# 2.8.16
+* Updated projects to sdk style.
+
+# 2.8.15
+* Handle invalid company data while pulling persons.
+
+# 2.8.14
+* Skip calling get project details API while creating sync client if the project location is known.
+
+# 2.8.13
+* Added support for Account related fields in ProjectClass.
+
+# 2.8.12
+* Added support for Account related fields in license class.
+* Updated the `Trimble.Connect.Client` module to the latest version (2.6.57).
+
+# 2.8.11
+* Updated dependencies.
+* Updated existing document and sample reference urls with the latest trimble-oss urls.
+* Added readme_nuget.md file.
+* Added package icon file instead of package icon url.
+
+# 2.8.10
+* Fixed testcases.
+
+# 2.8.9
+* Added support for pulling topic embedded views.
+
+# 2.8.8
+* Updated the access of all the Translator classes to public from internal.
+
+# 2.8.7
+* Adapted to have position fields as nullable in Angle Markup.
+
+# 2.8.6
+* Corrected unit test cases in View2DSyncTests.
+
+# 2.8.5
+* Fixed pushing deleted todos.
+
+# 2.8.4
+* Fixed: Added angle markup position variable parsing logic in Translator.View.
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.79).
+* Updated the `Trimble.Connect.Client` module to the latest version (2.6.38).
+* Updated the `Trimble.Connect.PSet.Client` module to the latest version (2.0.41).
+* Updated the `Trimble.Connect.SyncHelper.Client` module to the latest version (2.0.13).
+* Updated the `Trimble.Identity.OAuth.Password` module to the latest version (1.0.23).
+
+# 2.8.3
+* Added 'PanPositionX' and 'PanPositionY' columns to 'Views2D' table. 
+
+# 2.8.2
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (105.0.5195.5200).
+* Updated the `Newtonsoft.Json` module to the latest version (13.0.1).
+* Updated the `Trimble.Sqlite` module to the latest version (2.0.3).
+* Updated the `Trimble.Diagnostics` module to the latest version (3.0.3).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.78).
+
+# 2.8.1
+* Added support for .netstandard 2.0 framework replacing uap target framework.
+* Added an extra field Position in Angle markup class.
+
+# 2.7.24
+* Added support for angle markup.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (102.0.5005.6102).
+
+# 2.7.23
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (100.0.4896.6000).
+
 # 2.7.22
 * Fixed: Skip the unknown attachments like topics that are attached to tags.
 
