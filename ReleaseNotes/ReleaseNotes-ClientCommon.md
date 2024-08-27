@@ -1,5 +1,13 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [1.0.89] - 2024-06-06
+* Invalidate and refresh the auth token only when the request failed with error unauthorized and token was passed in the request.
+* If request failed with unauthorized and no auth token is passed, retry with passing the auth token.
+
+## [1.0.88] - 2023-12-11
+* Updated the projectName in the whitesource(MEND) configuration file to match the ProjectName in the MEND portal. 
+* Updated the `Selenium.WebDriver.ChromeDriver` version to (120.0.6099.7100).
+
 ## [1.0.87] - 2023-07-31
 * Added TopicApi Uri property in Region.cs.
 

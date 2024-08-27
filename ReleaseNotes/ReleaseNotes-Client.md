@@ -1,5 +1,26 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.6.66
+* Added query param support to IFilesController.GetSnapshot
+* Added ModifiedBy field to the response of FilesController.UploadAsync
+
+# 2.6.65
+* Added query param support to IFilesController.DownloadAsync
+
+# 2.6.64
+* Updated TrimbleConnectClient.RequestAccessAsync(projectId) API to newer Projects/RequestProjectAccess API that will send notification email to project admins. 
+* Updated minimum target android version to monoandroid71 (API level 25)
+* Removed IProjectClient.Models and IModelsController that had retired BIM Apis.
+
+# 2.6.63
+* Added support for revision field as part of the PackageUploadResponse class. 
+
+# 2.6.62
+* Added query param support to IProjectMembersController.GetAllAsync() API.
+
+# 2.6.61
+* Updated the IUsersController.GetProfileAsync() to return only the current user information. 
+
 # 2.6.60
 * Skip passing authentication token in ITrimbleConnectClient.DownloadThumbnailAsync() by default.
 * Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (118.0.5993.7000).
