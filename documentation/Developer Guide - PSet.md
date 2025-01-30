@@ -11,7 +11,7 @@
    + [Example: Delegating Handlers](#delegating-handlers)
    + [Example: CRUD Operations for Library](#crud-library)
    + [Example: CRUD Operations for Definitions](#crud-definitions)
-   + [Example: Fetching PSet](#fetching-pset)
+   + [Example: CRUD Operations for PSet](#crud-pset)
 
 ### Acronyms
 
@@ -194,7 +194,7 @@ var DeleteDefinitionResponse = await PSetClient.DeleteDefinitionAsync(DeleteDefi
 
 ```
 
-### <a name="fetching-pset">Fetching PSet</a>
+### <a name="crud-pset">Fetching PSet</a>
 
 ```csharp
 // Get Pset
