@@ -1,5 +1,33 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.7.4
+* Fixed IncludeAttachment query param in IFilesController.GetSnapshot() method.
+* Updated Get Projects method to limit page size to 25 when specific license parameters are included in the request.
+
+# 2.7.3
+* Added UploadAsync method to IFilesController to support uploading files from public URLs.
+
+# 2.7.2
+* Added the TidUuid property to Person.
+
+# 2.7.1
+* Added Multipart Download API IFilesController.DownloadAsync()
+* Fixed the assembly version issue.
+
+# 2.6.70
+* Added locks to shared resources during multipart upload.
+
+# 2.6.69
+* Added logs to troubleshoot large file uploads.
+* Increased part size for large files (> 5 GB)
+
+# 2.6.68
+* Fixed threading issue in multipart upload url refresh when upload url expired during parallel uploads.
+* Removed net40 support.
+
+# 2.6.67
+* Added check sum validation for part uploads.
+
 # 2.6.66
 * Added query param support to IFilesController.GetSnapshot
 * Added ModifiedBy field to the response of FilesController.UploadAsync

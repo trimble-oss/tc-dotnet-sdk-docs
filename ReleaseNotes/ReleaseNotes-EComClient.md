@@ -1,5 +1,33 @@
 # Trimble Connect ECom Service Client Release Notes
 
+# 2.1.1-beta
+* Fixed the assembly version issue.
+* Deprecated net40 target.
+* Upgraded from MonoAndroid44 to MonoAndroid71
+
+# 2.0.9-beta
+* Updated existing document and sample reference urls with the latest trimble-oss urls.
+* Updated dependencies.
+* Added readme_nuget.md file.
+* Added package icon file instead of package icon url.
+* Added package license file instead of package license url.
+
+# 2.0.8-beta
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (106.0.5249.6100).
+* Updated the `Trimble.Connect.Client.Common` module to the latest version (1.0.79).
+* Updated the `Trimble.Connect.Client` module to the latest version (2.6.39).
+* Updated the `Trimble.Diagnostics` module to the latest version (3.0.3)
+
+# 2.0.7-beta
+* Use test automation accounts in test cases.
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (98.0.4758.10200).
+
+# 2.0.6-beta
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (96.0.4664.4500).
+
+# 2.0.5-beta
+* Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (94.0.4606.4101).
+
 #2.0.4-beta
 * Updated the `Newtonsoft.Json` module to the (12.0.3) version for netstandard2.0 Targetframework to fix the whitesource vulnerability.
 * Updated the `NUnit` module to latest version (3.13.2) to fix the whitesource vulnerability.

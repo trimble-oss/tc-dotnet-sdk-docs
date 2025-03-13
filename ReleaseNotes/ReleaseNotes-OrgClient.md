@@ -1,5 +1,10 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.1.1] - 2024-10-25
+* Fixed the assembly version issue.
+* Deprecated net40 target.
+* Updated from MonoAndroid44 to MonoAndriod 71.
+
 ## [1.0.59] - 2023-08-10
 * Added package license file instead of package license url.
 

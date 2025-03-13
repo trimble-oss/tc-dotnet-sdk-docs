@@ -1,5 +1,11 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [2.0.1] - 2024-10-15
+* Bumped the package version to 2.0.1 to fix issues in package versioning.
+
+## [1.0.90] - 2024-09-04
+* Fixed the package version.
+
 ## [1.0.89] - 2024-06-06
 * Invalidate and refresh the auth token only when the request failed with error unauthorized and token was passed in the request.
 * If request failed with unauthorized and no auth token is passed, retry with passing the auth token.

@@ -1,5 +1,11 @@
 # Trimble Connect Object Sync Helper Service Client Release Notes
 
+# 2.1.2 
+# 2.1.1
+* Fixed the assembly version issue.
+* Deprecated net40 target.
+* Updated from MonoAndroid44 to MonoAndriod 71
+
 #2.0.16
 * Updated dependencies.
 * Updated existing document and sample reference urls with the latest trimble-oss urls.

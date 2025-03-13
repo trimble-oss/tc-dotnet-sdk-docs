@@ -1,5 +1,17 @@
 # Trimble Connect PSet Service Client .NET Release Notes
 
+## [2.1.2] - 2024-10-24
+## [2.1.1] - 2024-10-24
+* Fixed the assembly version issue.
+* Deprecated net40 target.
+
+## [2.0.47] - 2024-06-20
+* Updated minimum android target to API level 25 (nougat 7.1).
+* Updated chrome driver to latest version.
+
+## [2.0.46] - 2023-12-07
+* Added wrapper classes, request objects and tests related to syncing PSets.
+
 ## [2.0.45] - 2023-08-09
 * Updated existing document and sample reference urls with the latest trimble-oss urls.
 * Updated the `Selenium.WebDriver.ChromeDriver` module to the latest version (115.0.5790.17000).
