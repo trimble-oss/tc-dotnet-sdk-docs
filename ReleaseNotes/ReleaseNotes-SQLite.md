@@ -1,5 +1,9 @@
 # Trimble SQLite .NET Wrapper
 
+# 2.0.10
+* Fixed the assembly version issue.
+* Deprecated net40 target.
+
 # 2.0.9
 * Fixed the OS description check for Android devices to load sqlite andriod libraries.
 

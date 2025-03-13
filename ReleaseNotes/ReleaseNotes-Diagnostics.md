@@ -1,5 +1,11 @@
 # Trimble.Diagnostics Release Notes
 
+# 3.0.9
+* Updated dependencies.
+* Updated existing document and sample reference urls with the latest trimble-oss urls.
+* Added readme_nuget.md file.
+* Added package license file instead of package license url.
+
 # 3.0.8
 * Updated dependencies.
 

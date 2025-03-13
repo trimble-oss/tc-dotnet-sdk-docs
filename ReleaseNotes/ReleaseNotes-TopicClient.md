@@ -1,5 +1,12 @@
 # Trimble Connect Topic Client .NET Release Notes
 
+## 1.2.1
+* Fixed the assembly version issue.
+* Deprecated net40 target.
+
+## 1.1.6
+* Added BCF 3.0 properties `server_assigned_id` and `aspect_ratio`.
+
 ## 1.1.5
 * Updated dependencies.
 * Updated existing document and sample reference URLs with the latest trimble-oss URLs.

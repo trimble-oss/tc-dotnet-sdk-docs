@@ -2,6 +2,22 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.9.5
+* Fixed Include Attachements while pulling files for first time.
+* Fixed issue in caching heartbeat cursor for fsobject.
+
+# 2.9.4
+* Fixed the issue by applying multiple user / group specific permissions for a folder while pulling the permission changes to reflect the least restrictive setting.
+
+# 2.9.3
+* Fixed data dll version number
+
+# 2.9.2
+# 2.9.1
+* Added FS Snapshot adoption.
+* Fixed the assembly version issue.
+* Removed net40 target
+
 # 2.8.18
 * Adopt the latest client SDK version (2.6.63).
 
