@@ -8,7 +8,7 @@
 * Added UploadAsync method to IFilesController to support uploading files from public URLs.
 
 # 2.7.2
-* Added the TidUuid property to Person.
+* Added the TidUuid property explicitly to Person. This can be a breaking change when you are already accessing this property using the properties dictionary. 
 
 # 2.7.1
 * Added Multipart Download API IFilesController.DownloadAsync()
