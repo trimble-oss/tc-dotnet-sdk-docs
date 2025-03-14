@@ -1,5 +1,8 @@
 # Trimble Connect UserApp Service Client Release Notes
 
+# 2.0.2
+* Fixed the release notes link.
+
 # 2.0.1
 * Fixed the assembly version issue.
 * Deprecated net40 target.
