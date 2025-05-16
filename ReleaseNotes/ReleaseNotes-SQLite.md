@@ -1,5 +1,8 @@
 # Trimble SQLite .NET Wrapper
 
+# 2.0.11
+* Updated sqlite version from 3.39 to 3.49
+
 # 2.0.10
 * Fixed the assembly version issue.
 * Deprecated net40 target.

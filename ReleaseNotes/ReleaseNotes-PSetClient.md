@@ -1,5 +1,8 @@
 # Trimble Connect PSet Service Client .NET Release Notes
 
+## [2.1.3] - 2025-04-24
+* Fixed mend scan vulnerability issue.
+
 ## [2.1.2] - 2024-10-24
 ## [2.1.1] - 2024-10-24
 * Fixed the assembly version issue.

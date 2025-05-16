@@ -1,5 +1,13 @@
 # Trimble Identity OAuth authorization code flow credentials provider
 
+## [2.1.7] - 2025-05-16
+## [2.1.6] - 2025-05-15
+* Fixed issues with respect to listener not redirecting the local host urls after receiving the code.
+
+## [2.1.5] - 2025-05-13
+* Resolved vulnerabilities.
+* Removed windows dependency.
+
 ## [2.1.4] - 2025-03-10
 *  Updated email id and Tid user id on token refresh.
 

@@ -2,6 +2,12 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.9.7
+* Fixed app access and policy type persistence on their update in projects table.
+
+# 2.9.6
+* Added app access and policy type to the projects table.
+
 # 2.9.5
 * Fixed Include Attachements while pulling files for first time.
 * Fixed issue in caching heartbeat cursor for fsobject.

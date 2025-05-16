@@ -1,5 +1,8 @@
 # Trimble Connect Topic Client .NET Release Notes
 
+## 1.2.2
+* Removed reference to an unused vulnerable package.
+
 ## 1.2.1
 * Fixed the assembly version issue.
 * Deprecated net40 target.
