@@ -1,5 +1,9 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.2.1] - 2025-04-28
+* Fixed mend scan vulnerabilities.
+* Renamed the Resource class to OrgResource to avoid conflict with droid resources class(This is a breaking change).
+
 ## [1.1.1] - 2024-10-25
 * Fixed the assembly version issue.
 * Deprecated net40 target.

@@ -1,5 +1,8 @@
 # Trimble Connect Object Sync Helper Service Client Release Notes
 
+# 2.1.3
+* Fixed mend scan vulnerability issue.
+
 # 2.1.2 
 # 2.1.1
 * Fixed the assembly version issue.

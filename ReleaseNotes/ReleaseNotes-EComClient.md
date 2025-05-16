@@ -1,5 +1,11 @@
 # Trimble Connect ECom Service Client Release Notes
 
+# 2.1.3-beta
+* Fixed mend scan vulnerability.
+
+# 2.1.2-beta
+* Added GetAccessPolicyAsync() API to get the access policy response.
+
 # 2.1.1-beta
 * Fixed the assembly version issue.
 * Deprecated net40 target.

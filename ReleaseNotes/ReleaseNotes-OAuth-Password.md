@@ -1,5 +1,17 @@
 # Trimble Identity OAuth Password Grant flow credentials provider
 
+## [1.1.1] - 2024-10-28
+* Fixed the assembly version issue.
+
+## [1.0.25] - 2023-09-07
+* Added Implementation for InvalidateAndAuthorizeAsync and written test cases for it.
+
+## [1.0.24] - 2023-08-10
+* Updated existing document and sample reference urls with the latest trimble-oss urls.
+* Updated dependencies.
+* Added readme_nuget.md file.
+* Removed TrimbleIdentity package dependencies and ability to refresh token automatically.
+
 ## [1.0.23] - 2022-10-02
 * Updated nuspec.
 
