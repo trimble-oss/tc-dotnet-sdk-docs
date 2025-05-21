@@ -18,10 +18,10 @@ The Object sync helper service client component helps to fetch the file and fold
 ### Authentication
 
 
-TC uses token based authentication. The token is acquired during the TID OAuth2 (OpenID Connect) authentication (see  [Trimble.Identity Developer Guide](https://github.com/Trimble-Connect/dotnet-sdk-docs/blob/master/documentation/Trimble.Identity%20Developer%20Guide.md)).
+TC uses token based authentication. The token is acquired during the TID OAuth2 (OpenID Connect) authentication (see  [Trimble.ID Developer Guide](https://github.com/trimble-oss/trimble-id-sdk-docs-for-net)).
 
 It is important to understand that the ID token is generally a one use token with short life span. This means that when the token is expired and a new TID token needs to be acquired. App will have to request a new id token from TID. This can be done by  
-`AuthenticationContext.AcquireTokenByRefreshTokenAsync`  or by using  `RefreshOptions.IdToken`  option in other  `AuthenticationContext.AcquireTokenAsync`  methods. Please refer to the  [Trimble.Identity Developer Guide](https://github.com/Trimble-Connect/dotnet-sdk-docs/blob/master/documentation/Trimble.Identity%20Developer%20Guide.md).
+`AuthenticationContext.AcquireTokenByRefreshTokenAsync`  or by using  `RefreshOptions.IdToken`  option in other  `AuthenticationContext.AcquireTokenAsync`  methods. Please refer to the  [Trimble.ID Developer Guide](https://github.com/trimble-oss/trimble-id-sdk-docs-for-net).
 
 The clients can use Trimble.Identity.OAuth.AuthCode for interactive workflow authentication or Trimble.Identity.OAuth.Password for headless applications (like from test code). These newer components provide higher levels of abstraction and encapsulate the token acquiring and refreshing part. The clients can also provide any custom implementation of ICredentialsProvider.
 ### Example: Authenticating and Initializing.

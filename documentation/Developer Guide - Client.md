@@ -45,9 +45,9 @@ The video tutorial: [SDK Authentication using the Identity library](https://yout
 ## <a name="authentication">Authentication/Initialization</a>
 
 ## Obsolete Workflow
-TC uses token based authentication. The token is acquired during the TID OAuth2 (OpenID Connect) authentication (see [Trimble.Identity Developer Guide](Trimble.Identity%20Developer%20Guide.md)).
+TC uses token based authentication. The token is acquired during the TID OAuth2 (OpenID Connect) authentication (see [Trimble.ID Developer Guide](https://github.com/trimble-oss/trimble-id-sdk-docs-for-net)).
 
-It is important to understand that the ID token is generally a one use token with short life span. This means that when the token is expired and a new TID token needs to be acquired. App will have to request a new id token from TID.  This can be done by `AuthenticationContext.AcquireTokenByRefreshTokenAsync` or by using `RefreshOptions.IdToken` option in other `AuthenticationContext.AcquireTokenAsync` methods. Please refer to the [Trimble.Identity Developer Guide](Trimble.Identity%20Developer%20Guide.md).
+It is important to understand that the ID token is generally a one use token with short life span. This means that when the token is expired and a new TID token needs to be acquired. App will have to request a new id token from TID.  This can be done by `AuthenticationContext.AcquireTokenByRefreshTokenAsync` or by using `RefreshOptions.IdToken` option in other `AuthenticationContext.AcquireTokenAsync` methods. Please refer to the [Trimble.ID Developer Guide](https://github.com/trimble-oss/trimble-id-sdk-docs-for-net).
 
 The application should initialize the Trimble connect user with the acquired access token from TID.
 
@@ -136,7 +136,7 @@ E.g. in following example shows how to search for any entity with word `test` in
 
 ## <a name="tc_snippets">Code Snippets</a>
 Below are some examples on using the Trimble Connect Client component.
-Full sample applications can be found on [github](https://github.com/Trimble-Connect/samples)
+Full sample applications can be found on [github](https://github.com/trimble-oss/tc-samples)
 
 ### <a name="example-access-tc">Example: Access TC API endpoints</a>
 
