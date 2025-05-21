@@ -32,7 +32,7 @@ This layer's responsibilities include:
 * Graceful error handling
 * Adherence to HTTP conventions and standards
 
-The TC REST API specification can be found at [https://developer.trimble.com/docs/connect/topics-api](https://developer.trimble.com/docs/connect/topics-api)
+The Topics API specification can be found at [https://developer.trimble.com/docs/connect/topics-api](https://developer.trimble.com/docs/connect/topics-api).
 
 The video tutorial: [SDK Authentication using the Identity library](https://youtu.be/XaQXK4Y3TpE?t=2m20s).
 
