@@ -1,4 +1,6 @@
 # Trimble Identity OAuth authorization code flow credentials provider
+## [2.1.8] - 2025-05-26
+* Fixed issues with opening browser for wpf .net 8 windows target.
 
 ## [2.1.7] - 2025-05-16
 ## [2.1.6] - 2025-05-15
