@@ -1,5 +1,15 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.7.7
+* Fixed NotSupportedException for 'measure_slope' markup type by implementing its SlopeMeasurement model, enabling proper loading of views containing these measurements.
+
+# 2.7.6
+* Made internals visible to model client.
+* Added support for File Permission API.
+
+# 2.7.5
+* Made internals visible to sync mirror.
+
 # 2.7.4
 * Fixed IncludeAttachment query param in IFilesController.GetSnapshot() method.
 * Updated Get Projects method to limit page size to 25 when specific license parameters are included in the request.
