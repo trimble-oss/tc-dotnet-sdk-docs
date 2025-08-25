@@ -190,5 +190,5 @@ Please check the [FAQ](Developer%20Guide%20-%20FAQ.md) document.
 
 ## <a name="support">Support</a>
 
-Send email to [connect-integrate@trimble.com](mailto:connect-integrate@trimble.com)
+See https://developer.trimble.com/docs/connect#support-and-community.
 
