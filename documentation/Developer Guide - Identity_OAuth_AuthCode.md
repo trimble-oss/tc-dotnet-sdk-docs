@@ -56,7 +56,7 @@ In a .NET client app, is is highly recommended that you use **AuthContext** to a
 
 ## <a name="identity">Authentication with Trimble Identity</a>
 
-In order to use TID authentication, the calling app must be registered with Trimble.  This can be initiated by contacting the Trimble Connect integration team at [connect-integrate@trimble.com](mailto:connect-integrate@trimble.com).
+In order to use TID authentication, the calling app must be registered with Trimble.  This can be initiated by contacting the Trimble Connect integration team at [connect-support@trimble.com](mailto:connect-support@trimble.com).
 
 As a result of registration, the requesting developer will receive the following OAuth2 parameters: client credentials (id and secret) and returnUrl (usually http://localhost for native apps or custom uri scheme for android/ios). These must be passed as additional parameters to acquire the token.
 
