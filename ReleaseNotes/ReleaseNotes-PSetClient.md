@@ -195,7 +195,7 @@
 * General naming convention for method prefixes is: **_`Get`_**, **_`BatchGet`_**, **_`List`_**, **_`Create`_**, **_`Update`_**, **_`Delete`_**
 * For resources that don't have separate create and update methods (like policies, linksets, psets) the prefix for the create/update method is **_`Put`_**
 * For asynchronous methods the **_`Async`_** suffix is used.
-* In general all the data model class names and all the client method names that launch requests to the PSet service have been aligned with the [PSet service documentation](https://app.swaggerhub.com/apis/Trimble-Connect/pset-prod/v1).
+* In general all the data model class names and all the client method names that launch requests to the PSet service have been aligned with the Property Set API documentation.
 
 ## [1.0.2] - 2020-03-25
 * Using Trimble Connect .NET Client Common module (code common to CDM services has moved into this module)

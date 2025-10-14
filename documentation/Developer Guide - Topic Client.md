@@ -32,10 +32,7 @@ This layer's responsibilities include:
 * Graceful error handling
 * Adherence to HTTP conventions and standards
 
-The TC REST API specification can be found here: 
-
-* Staging: [https://app.swaggerhub.com/apis/Trimble-Connect/topic-stage/v1#](https://app.swaggerhub.com/apis/Trimble-Connect/topic-stage/v1#)
-* Prod: [https://app.swaggerhub.com/apis/Trimble-Connect/topic/v1#](https://app.swaggerhub.com/apis/Trimble-Connect/topic/v1#)
+The Topics API specification can be found at [https://developer.trimble.com/docs/connect/topics-api](https://developer.trimble.com/docs/connect/topics-api).
 
 The video tutorial: [SDK Authentication using the Identity library](https://youtu.be/XaQXK4Y3TpE?t=2m20s).
 
@@ -95,7 +92,7 @@ The following mechanisms are used to achieve this flexibility:
 ### <a name="tc_snippets">Code Snippets</a>
 
 Below are some examples on using the Trimble Connect Topic Client component.
-Full sample applications can be found on [github](https://github.com/Trimble-Connect/samples)
+Full sample applications can be found on [github](https://github.com/trimble-oss/tc-samples)
 
 ### <a name="example-access-tc">Example: Access TC Topic API endpoints</a>
 
