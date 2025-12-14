@@ -1,5 +1,30 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.8.1
+* Removed Xamarin.iOS10 from target frameworks.
+* Added new GET and UPDATE methods for folder permission APIs. Removed the older permission methods. This will be a breaking change on the folder permission APIs.
+
+# 2.7.10
+* Added Bulk API for fetching heartbeats of multiple projects for sync applications.
+
+# 2.7.9
+* Added progress invocation changes in Multipart DownloadAsync method.
+* Added Multipart Download API IFilesController.DownloadAsync() which returns part files for advanced streaming scenarios.
+
+# 2.7.8
+* Made internals visible to SyncHelper Client.
+
+# 2.7.7
+* Added Slope Measurement markup type.
+* Proceed reading markups from the response even if some of the markups are not supported by the client
+
+# 2.7.6
+* Made internals visible to model client.
+* Added support for File Permission API.
+
+# 2.7.5
+* Made internals visible to sync mirror.
+
 # 2.7.4
 * Fixed IncludeAttachment query param in IFilesController.GetSnapshot() method.
 * Updated Get Projects method to limit page size to 25 when specific license parameters are included in the request.
