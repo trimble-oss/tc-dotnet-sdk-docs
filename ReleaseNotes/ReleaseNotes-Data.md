@@ -2,6 +2,12 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.10.0
+* Added PSet Offline Sync functionality.
+
+# 2.9.8
+* Removed Xamarin.iOS10 from target frameworks.
+
 # 2.9.7
 * Fixed app access and policy type persistence on their update in projects table.
 
