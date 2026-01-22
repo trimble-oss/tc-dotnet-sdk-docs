@@ -1,5 +1,8 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.8.2
+* Updated the GetSnapshot method to support the latest file system snapshot API (readonly flag and inheritance flag).
+
 # 2.8.1
 * Removed Xamarin.iOS10 from target frameworks.
 * Added new GET and UPDATE methods for folder permission APIs. Removed the older permission methods. This will be a breaking change on the folder permission APIs.

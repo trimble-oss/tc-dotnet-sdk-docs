@@ -2,6 +2,9 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.10.1
+* Adapted permissions logic based on folder inheritance.
+
 # 2.10.0
 * Added PSet Offline Sync functionality.
 
