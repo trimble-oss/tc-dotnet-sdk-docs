@@ -1,5 +1,18 @@
 # Trimble Connect Object Sync Helper Service Client Release Notes
 
+# 2.1.7
+* Added inheritance flag to folder structure api response.
+
+# 2.1.6
+* Made inheritance flag nullable.
+
+# 2.1.5
+* Added inheritance flag to the permission events response.
+* Removed Xamarin IOS target
+
+# 2.1.4
+* Added implementation for pulling move changes in Sync Helper Client.
+
 # 2.1.3
 * Fixed mend scan vulnerability issue.
 
