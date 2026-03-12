@@ -2,6 +2,21 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.10.6
+* Added support for SectionBox.
+
+# 2.10.5
+* Performance: Boosted initial project sync speeds by 10x+, completing large pulls in seconds instead of minutes.
+* Permissions: Resolved synchronization edge cases for complex file and folder permission transitions.
+* Reliability: Added automatic database corruption recovery that prioritizes server data as the source of truth.
+
+# 2.10.4
+# 2.10.3
+* Fix permission apply on inheritance change.
+
+# 2.10.2
+* Use Get Permissions API for changed permission folder instead of relying on permission stream events.
+
 # 2.10.1
 * Adapted permissions logic based on folder inheritance.
 

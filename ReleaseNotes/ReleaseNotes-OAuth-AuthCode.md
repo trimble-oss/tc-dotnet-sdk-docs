@@ -1,4 +1,13 @@
 # Trimble Identity OAuth authorization code flow credentials provider
+
+## [2.1.10] - 2026-03-10
+* Implemented PKCE Support for OAuth Authorization Code Flow, providing enhanced protection against authorization code interception attacks using SHA-256 code challenges.
+* Introduced Dual PKCE Modes, featuring Standard PKCE for single-use verification and a new Serial PKCE mode that enables secure token persistence by embedding encrypted code verifiers within refresh tokens.
+
+## [2.1.9] - 2026-02-10
+* Updated Microsoft.Maui.Controls and Microsoft.Maui.Controls.Compatibility to version 9.0.120 for net9.0-maccatalyst target.
+* Ensured compatibility with .NET 9 and MAUI workloads.
+
 ## [2.1.8] - 2025-05-26
 * Fixed issues with opening browser for wpf .net 8 windows target.
 

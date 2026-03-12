@@ -1,5 +1,9 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.8.3
+* Added SectionBox API Support.
+* Corrected a typo in the method name `DeteleSectionPlaneAsync`. The method is now correctly named `DeleteSectionPlaneAsync`.
+
 # 2.8.2
 * Updated the GetSnapshot method to support the latest file system snapshot API (readonly flag and inheritance flag).
 
