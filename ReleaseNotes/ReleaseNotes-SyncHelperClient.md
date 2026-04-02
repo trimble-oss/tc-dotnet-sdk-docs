@@ -1,5 +1,8 @@
 # Trimble Connect Object Sync Helper Service Client Release Notes
 
+# 2.1.8
+* Removed Default Access from Folder Permissions.
+
 # 2.1.7
 * Added inheritance flag to folder structure api response.
 
