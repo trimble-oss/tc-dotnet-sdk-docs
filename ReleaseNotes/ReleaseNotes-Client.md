@@ -1,5 +1,9 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.8.4
+* Removed Default Access from Folder Permissions.
+* Updated OAuth Password module to the latest version (1.1.3).
+
 # 2.8.3
 * Added SectionBox API Support.
 * Corrected a typo in the method name `DeteleSectionPlaneAsync`. The method is now correctly named `DeleteSectionPlaneAsync`.

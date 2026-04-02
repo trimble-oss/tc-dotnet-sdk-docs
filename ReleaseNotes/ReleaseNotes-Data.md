@@ -2,6 +2,13 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.10.8
+* Updated "Trimble.Connect.Client" to Version 2.8.4 Removed Default Access Parameter.
+* Updated "Trimble.Identity.OAuth.Password" to Version 1.1.3 .
+
+# 2.10.7
+* Fix Inheritance update on pull snapshot when item already existed.
+
 # 2.10.6
 * Added support for SectionBox.
 

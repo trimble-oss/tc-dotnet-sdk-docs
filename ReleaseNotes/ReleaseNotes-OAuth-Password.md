@@ -1,5 +1,11 @@
 # Trimble Identity OAuth Password Grant flow credentials provider
 
+## [1.1.3] - 2026-03-23
+* Added a token cache.
+
+## [1.1.2] - 2025-08-24
+* Fixed the missing dll issue.
+
 ## [1.1.1] - 2024-10-28
 * Fixed the assembly version issue.
 
