@@ -1,5 +1,9 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.8.5
+* Added sync session tracking support for file and folder operations.
+* Added EnableSyncSessionTracking() and DisableSyncSessionTracking() methods to ProjectClient.
+
 # 2.8.4
 * Removed Default Access from Folder Permissions.
 * Updated OAuth Password module to the latest version (1.1.3).
