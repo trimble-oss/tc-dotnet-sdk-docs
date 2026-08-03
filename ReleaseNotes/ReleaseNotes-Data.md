@@ -2,6 +2,24 @@
 
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
 
+# 2.10.12
+* Added `StorageOptions.IncludeTopicEmbeddedInViewsSync` (default `false`) to opt in to including BCF topic-embedded views in the normal Views delta sync (`includeTopicEmbedded` query parameter).
+* When `IncludeTopicEmbeddedInViewsSync` is `false`, topic-embedded view thumbnails are also excluded from `Thumbnails.PullAsync<View>` / the all-types `Thumbnails.PullAsync()` helper.
+* View / View2D translators map remote `issueId` → `EntityType.Issue` and `topicId` → `EntityType.Topic`.
+* Updated `Trimble.Connect.Client` to 2.8.9 (includes delta `issueId` mapping into `View.Properties`).
+
+# 2.10.11
+* Fix: Person rows inserted via bulk snapshot sync were stored with incorrect type casing ('User' instead of 'USER'). A one-time DB migration (v100→v101) repairs all existing affected rows.
+
+# 2.10.10
+* Removed explicit "No Access" level from Folder Permissions.
+* Removed MonoAndroid71 from target frameworks.
+
+# 2.10.9
+* Fix: Snapshot pull orphan detection incorrectly marking items as deleted when parent folders have NO_ACCESS permissions.
+* Fix: PSet definition table caching to improve performance and consistency.
+* Added Slope Measurement Support.
+
 # 2.10.8
 * Updated "Trimble.Connect.Client" to Version 2.8.4 Removed Default Access Parameter.
 * Updated "Trimble.Identity.OAuth.Password" to Version 1.1.3 .
