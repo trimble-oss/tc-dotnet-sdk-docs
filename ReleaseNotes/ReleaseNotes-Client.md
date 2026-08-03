@@ -1,5 +1,27 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.8.10
+* Parse Issue Identifier in delta response.
+
+# 2.8.9
+* Added Project Members v2.0 API support with CURIE identifier format (users:{uuid}, applications:{uuid}) for both user and application members.
+* Added Group Members v2.0 API support with full pagination and enhanced ItemsCollection to support both v1.0 and v2.0 pagination formats.
+
+# 2.8.8
+* Removed explicit "No Access" level from Folder Permissions.
+* Removed MonoAndroid71 from target frameworks.
+
+# 2.8.7
+* Fixed View SectionBox initialization to prevent viewport rendering corruption when no section box is active.
+
+# 2.8.6
+* Added AppendSyncSessionIdIfActive method to conditionally append sync session IDs to file upload requests.
+* Updated InitiatePackageUploadAsync method to support sync session identifiers.
+
+# 2.8.5
+* Added sync session tracking support for file and folder operations.
+* Added EnableSyncSessionTracking() and DisableSyncSessionTracking() methods to ProjectClient.
+
 # 2.8.4
 * Removed Default Access from Folder Permissions.
 * Updated OAuth Password module to the latest version (1.1.3).

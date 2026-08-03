@@ -1,5 +1,11 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [2.0.3] - 2025-10-14
+* Removed Xamarin.iOS10 from target frameworks.
+
+## [2.0.2] - 2025-05-29
+* Made internals visible to Model service client and sync mirror.
+
 ## [2.0.1] - 2024-10-15
 * Bumped the package version to 2.0.1 to fix issues in package versioning.
 
