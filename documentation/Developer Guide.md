@@ -7,8 +7,9 @@
 3. [Building applications with TC SDK Components](#applications)
 4. [TC environments](#environments)
 5. [NuGet packages](#nuget-packages)
-6. [Frequently asked questions](#faq)
-7. [Support](#support)
+6. [Sample apps](#samples)
+7. [Frequently asked questions](#faq)
+8. [Support](#support)
 
 
 ### Acronyms
@@ -48,7 +49,7 @@ Trimble Connect .NET SDK is:
 
 The Trimble Connect SDK contains all of the necessary tools and building blocks to handle user authentication and to communicate with the Trimble Connect Platform Services in order to share data and collaborate with other users and applications using the TC.
 
-The TC .NET SDK targets full .NET desktop application (.NET 4.0 and above) as well as iOS (7.1+), Android (4.0+) and UWP applications built with Xamarin.
+The TC .NET SDK targets .NET Framework (net48), .NET Standard 2.0 (usable from .NET Core / .NET 5+), and .NET 9 mobile (Android, iOS, macOS, Mac Catalyst) via .NET MAUI. UWP is deprecated — use netstandard2.0 instead.
 
 <!-- (Comment) Introductory presentation can be found also [TODO: insert link]().-->
 
@@ -68,9 +69,9 @@ All SDK components are cross platform. The same API is available on a number of 
 
 Below are benefits listed for each component in the TC .NET SDK.
 
-#### Trimble.Identity
+#### Trimble.Identity.OAuth.AuthCode
 
-User identification component ([Trimble.Identity](Developer%20Guide%20-%20Identity.md)) solves the challenge of authenticating the user with the Trimble Identity service. Implementing this functionality is proven to be challenging since it includes a user interaction with the web UI flow. This component abstracts all the complexity of the authentication from the developer behind a very simple interface yet providing a significant degree of flexibility.
+The recommended interactive authentication component ([Trimble.Identity.OAuth.AuthCode](Developer%20Guide%20-%20Identity_OAuth_AuthCode.md)) implements the OAuth2 Authorization Code Grant (with optional PKCE and Serial PKCE) against Trimble Identity. It provides `AuthCodeCredentialsProvider`, which implements `ICredentialsProvider` consumed by `TrimbleConnectClient`.
 
 #### Trimble.Connect.Client
 
@@ -93,19 +94,38 @@ One significant addition in the SDK over the direct REST API usage is the local 
 
 TC .NET SDK is provided as a set of components.
 
-![SDK components](images/sdk_components.png)
+```mermaid
+graph TD
+    subgraph tcSDK ["TC .NET SDK"]
+        Client["TC API Wrappers\n(Trimble.Connect.Client)"]
+        subgraph dataLayer ["Local Offline Storage"]
+            ObjStore["Objects\n(Trimble.Connect.Data)"]
+            FileStore["Files + PSets"]
+            SQLite[("SQLite")]
+        end
+        Sync["Sync\n(Trimble.Connect.Data.Sync)"]
+    end
 
-TC SDK components are implemented as following nuget packages:
+    subgraph tidSDK ["TID .NET SDK"]
+        AuthCode["User Identity\n(Trimble.Identity.OAuth.AuthCode)"]
+    end
 
-1. [Trimble.Identity](Developer%20Guide%20-%20Identity.md) - TID authentication
+    Sync --> Client
+    ObjStore --> SQLite
+    FileStore --> SQLite
+```
+
+TC SDK components are implemented as the following NuGet packages:
+
+1. [Trimble.Identity.OAuth.AuthCode](Developer%20Guide%20-%20Identity_OAuth_AuthCode.md) - Interactive TID authentication (OAuth2 Authorization Code with PKCE)
 
 2. [Trimble.Connect.Client](Developer%20Guide%20-%20Client.md) - TC API Client (TC REST API wrappers)
 
-3. [Trimble.Connect.Data](Developer%20Guide%20-%20Data.md) and Trimble.Connect.Data.Sync - TC Data Storage (local offline storage) which uses SQLite for storing data locally with synchronization capability
+3. [Trimble.Connect.Data](Developer%20Guide%20-%20Data.md) and [Trimble.Connect.Data.Sync](Developer%20Guide%20-%20Data.md) - TC Data Storage (local offline storage using SQLite) with bidirectional cloud synchronization and PSet support
 
-All nuget packages target full .NET as well as PCL, UWP, iOS, and Android Xamarin platforms.
+Packages target `net48`, `netstandard2.0`, and .NET 9 mobile platforms (Android, iOS, macOS, Mac Catalyst). PCL and UWP targets are no longer supported.
 
-The [NuGet packages](#nuget-packages) are available from the [nuget.org](https://www.nuget.org/) and the corresponding symbols from symbolsource.org.  
+See the [NuGet packages](#nuget-packages) section for feed configuration and installation details.
 
 ## <a name="applications">Building Applications with TC SDK Components</a>
 
@@ -115,9 +135,29 @@ This section shows typical application designs using the TC SDK components.
 
 The design of offline components is based on the idea that applications (which want to work in occasionally connected mode) always use same interface to manage data regardless whether a network connection is currently available or not.
 
-The local offline storage component exposes an _ISync_ interface which allows occasional (application driven) synchronization of local data with a the TC cloud backend.
+The local offline storage component exposes an `IRemoteStorage` interface which allows occasional (application driven) synchronization of local data with the TC cloud backend. Repositories expose typed `IRepository<T>` interfaces for offline CRUD operations.
 
-![Occasionally connected application design](images/application_design.png)
+```mermaid
+graph LR
+    App["app"]
+
+    subgraph local ["Local (offline)"]
+        Repos["IRepository&lt;T&gt;\n(CRUD)"]
+        SyncAdapter["SyncClient\n(IRemoteStorage)"]
+        DB[("SQLite\n.storage")]
+    end
+
+    subgraph cloud ["TC Service (cloud)"]
+        Wrapper["TC API Wrapper\n(Trimble.Connect.Client)"]
+        TCService[("TC Service")]
+    end
+
+    App -->|"IRepository&lt;T&gt;"| Repos
+    App -->|IRemoteStorage| SyncAdapter
+    Repos --> DB
+    SyncAdapter --> Wrapper
+    Wrapper --> TCService
+```
 
 Below are three typical app architecture examples:
 
@@ -127,9 +167,42 @@ Below are three typical app architecture examples:
 
 3. Application without local state (online only app). Using TC cloud backend without local storage.
 
-![Offline capable app using SDK local storage](images/offline_capable_app_with_sdk_ls.png)![Offline capable app using own local storage](images/offline_capable_app_with_custom_ls.png)
+```mermaid
+graph TD
+    subgraph patternA ["Pattern A — SDK Local Storage"]
+        AppA["App Components"]
+        SyncClientA["Sync Client\n(SyncClient)"]
+        LocalStorageA["Local Storage\n(IStorage / SQLite)"]
+        TCClientA["TC Client\n(TrimbleConnectClient)"]
+        IdentityA["Identity\n(Trimble.Identity.OAuth.AuthCode)"]
+        TCServiceA[("TC Service")]
+        TIServiceA[("Trimble Identity")]
 
-![Online only](images/online_only_app.png)
+        AppA -->|Sync| SyncClientA
+        SyncClientA -->|CRUD| LocalStorageA
+        SyncClientA -->|CRUD| TCClientA
+        AppA --> IdentityA
+        TCClientA --> TCServiceA
+        IdentityA --> TIServiceA
+    end
+
+    subgraph patternB ["Pattern B — Custom Local Storage"]
+        AppB["App Components"]
+        CustomSync["Custom Sync"]
+        FileSystemB["Custom\nFile System"]
+        TCClientB["TC Client\n(TrimbleConnectClient)"]
+        IdentityB["Identity\n(Trimble.Identity.OAuth.AuthCode)"]
+        TCServiceB[("TC Service")]
+        TIServiceB[("Trimble Identity")]
+
+        AppB -->|Sync| CustomSync
+        CustomSync -->|CRUD| FileSystemB
+        CustomSync -->|CRUD| TCClientB
+        AppB --> IdentityB
+        TCClientB --> TCServiceB
+        IdentityB --> TIServiceB
+    end
+```
 
 ### Configuring Visual Studio
 
@@ -159,30 +232,34 @@ The staging environment of TC uses staging environment of TID.  Production TC en
 
 TID environments
 
-* Staging TID: [https://identity-stg.trimble.com/i/oauth2/](https://identity-stg.trimble.com/i/oauth2/) 
+* Staging TID: [https://stage.id.trimblecloud.com/](https://stage.id.trimblecloud.com/)
 
-* Production TID: [https://identity.trimble.com/i/oauth2/](https://identity.trimble.com/i/oauth2/) 
+* Production TID: [https://id.trimble.com/](https://id.trimble.com/)
 
 ## <a name="nuget-packages">NuGet packages</a>
 
-You can find the official releases on the public stable channel: [https://www.nuget.org/profiles/TrimbleConnect](https://www.nuget.org/profiles/TrimbleConnect).
-The beta channel is also available for restricted audience: [http://ts-nuget.teklaad.tekla.com/nuget/tempfortcd/](http://ts-nuget.teklaad.tekla.com/nuget/tempfortcd/)
+Packages are published to the Trimble NuGet Artifactory feed. Configure the feed in your `nuget.config` before installing. Contact [connect-integrate@trimble.com](mailto:connect-integrate@trimble.com) for feed credentials.
 
-All published packages support the following platforms:
+| Package | Purpose |
+|---------|---------|
+| `Trimble.Identity.OAuth.AuthCode` | Interactive TID OAuth2 (Authorization Code + PKCE) |
+| `Trimble.Connect.Client` | TCPS REST API v2 wrapper |
+| `Trimble.Connect.Data` | Local SQLite storage |
+| `Trimble.Connect.Data.Sync` | Bidirectional cloud synchronization |
 
-* .NET 4.0+
-* Android 4.0+ (using Xamarin Platform)
-* iOS 7.1+ (using Xamarin Platform)
-* UWP
+All packages support the following platforms:
 
-The corresponding symbol packages for stable channel can be found at [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public).
-For the beta channel symbol packages are available as well from this source: [http://ts-nuget.teklaad.tekla.com/symbols/tempfortcd](http://ts-nuget.teklaad.tekla.com/symbols/tempfortcd).
+* `net48` — .NET Framework (Windows desktop)
+* `netstandard2.0` — .NET Core / .NET 5+ / legacy Xamarin / UWP
+* `net9.0-android` — Android (via .NET MAUI)
+* `net9.0-ios` — iOS (via .NET MAUI)
+* `net9.0-macos` — macOS (via .NET MAUI)
+* `net9.0-maccatalyst` — Mac Catalyst (via .NET MAUI)
+* `net9.0-windows10.0.19041.0` — Windows (via .NET MAUI)
 
-SymbolSource has good instructions on how package consumers can [configure Visual Studio to use the symbol packages ](https://www.symbolsource.org/Public/Home/VisualStudio).
+## <a name="samples">Sample apps</a>
 
-<!--## <a name="samples">Sample apps</a>
-
-Example apps can be found here [TODO: insert link]().-->
+Example apps can be found at the [tc-samples repository on GitHub](https://github.com/trimble-oss/tc-samples).
 
 ## <a name="faq">Frequently asked questions</a>
 
