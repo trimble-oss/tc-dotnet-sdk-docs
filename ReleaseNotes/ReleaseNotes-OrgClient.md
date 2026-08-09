@@ -233,7 +233,7 @@
 * Adapted the code to use the leatest version (1.0.11) of the **_`Trimble.Connect.Client.Common`_** module.
 * Re-organized the **_`OrgClient`_** class by moving the request implementations into the **_`OrgClient.Requests`_** partial class.
 * Simplified the inheritance hierarchy of the test classes.
-* Aligned the model classes with the [Org service REST API documentation](https://app.swaggerhub.com/apis/Trimble-Connect/org-prod/v1#/)
+* Aligned the model classes with the Organizer service API documentation.
 * Re-organized source files into subfolders.
 * Cleaned up and updated package references.
 * Fixed StyleCop warnings and enabled automatic StyleCop scan during build.
