@@ -1,5 +1,8 @@
 # Trimble Connect Org Service Client .NET Release Notes
 
+## [1.2.2] - 2025-10-14
+* Removed Xamarin.iOS10 from target frameworks.
+
 ## [1.2.1] - 2025-04-28
 * Fixed mend scan vulnerabilities.
 * Renamed the Resource class to OrgResource to avoid conflict with droid resources class(This is a breaking change).
@@ -150,7 +153,7 @@
 ## [1.0.23] - 2020-07-01
 * Added configuration file for WhiteSource scan.
 * Prevented StyleCop from propagating to consuming modules.
-* Using the leatest version (1.0.41) of the **_`Trimble.Connect.Client.Common`_** module.
+* Using the latest version (1.0.41) of the **_`Trimble.Connect.Client.Common`_** module.
 
 ## [1.0.22] - 2020-06-26
 * Fixed handling unprocessed nodes in change sets.
@@ -179,26 +182,26 @@
 * Naming for Subscription API simplified
 * `IRequest.UseAuthorization` parameter removed
 * dependency on `Trimble.Identity` removed in tests
-* Fixed the Linux/OSX compartibility
+* Fixed the Linux/OSX compatibility
 * netstandard2.0 target added to align with the `Trimble.Connect.Client.Common` targets
-* Fixed exception thown on null arguments (`InvalidDataException` -> `ArgumentNullException`)
+* Fixed exception thrown on null arguments (`InvalidDataException` -> `ArgumentNullException`)
 
 ## [1.0.14] - 2020-05-27
 * Using the latest version (1.0.33) of the **_`Trimble.Connect.Client.Common`_** module.
 
 ## [1.0.13] - 2020-05-25
-* Using the leatest version (1.0.32) of the **_`Trimble.Connect.Client.Common`_** module.
+* Using the latest version (1.0.32) of the **_`Trimble.Connect.Client.Common`_** module.
 * Refactored the request model classes (added more properties for more flexibility).
-* Refactored the request sending mechanism, now also using the binary file client amongside the object client for large content.
-* Exposed generic request sending mechinism through the public interface of the client class, making it possible to generically support future request type without modifying the .NET SDK.
+* Refactored the request sending mechanism, now also using the binary file client alongside the object client for large content.
+* Exposed generic request sending mechanism through the public interface of the client class, making it possible to generically support future request type without modifying the .NET SDK.
 * Added model classes, request methods and tests related to batch-get functionality.
 * Added model classes, request methods and tests related to change set functionality.
-* Added utility classes for sending and receiving, serializing and deserializing NDJSON content.
+* Added utility classes for sending and receiving, serializing and de-serializing NDJSON content.
 * Moved the validation from **_`IModel`_**/**_`OrgModel`_** to **_`IRequest`_**/**_`OrgRequest`_** because validation is only needed for request model classes.
 * Simplified and consolidated the validation of all request model classes.
 * Refactored the creation of baseline test data and made it more robust.
 * Improved documentation comments
-* Re-organized the model classes into subfolders.
+* Re-organized the model classes into sub-folders.
 * Simplified the names of some model classes.
 * Added support for generic extra properties in request classes (ability to send to the service properties which are not yet supported in the .NET SDK)(forward compatibility).
 * Added support for generic extra properties in model classes (ability to receive from the service properties which are not yet supported in the .NET SDK)(forward compatibility).
@@ -206,35 +209,35 @@
 * Added support for sending generic requests to the service (which are not yet supported in the .NET SDK)(forward compatibility).
 
 ## [1.0.12] - 2020-04-29
-* Using the leatest version (1.0.16) of the **_`Trimble.Connect.Client.Common`_** module.
+* Using the latest version (1.0.16) of the **_`Trimble.Connect.Client.Common`_** module.
 * Added model classes, request methods and tests related to tree policies.
 * Added model classes, request methods and tests related to nodes, node links and node versions.
 * Added model classes, request methods and tests related to subscribing to notifications.
 * Added more test related to trees and nodes.
 * Made sure that all properties of request model classes which are not meant to be serialized will be ignored during serialization.
 * Simplified the inheritance hierarchy of requests (removed abstract base class **_`Request`_**).
-* Separated generic data model related fuctionality out of the request interface and base class (**_`IRequest`_**, **_`OrgRequest`_**) into its own interface and base class (**_`IModel`_**, **_`OrgModel`_**).
+* Separated generic data model related functionality out of the request interface and base class (**_`IRequest`_**, **_`OrgRequest`_**) into its own interface and base class (**_`IModel`_**, **_`OrgModel`_**).
 * Implemented validation for all model classes.
-* Re-organized source files into subfolders.
+* Re-organized source files into sub-folders.
 * Using PROD TID URI and a different user account for the unit tests.
 * Cleaned up the settings files.
 * Changed default assembly file version from x.y.0.0 to x.y.9999.9999 to make debug builds distinguishable from official builds.
 * Changed the user agent literal for this module from `org-client` to `tc-client-org`.
 
 ## [1.0.11] - 2020-04-21
-* Using the leatest version (1.0.14) of the **_`Trimble.Connect.Client.Common`_** module.
+* Using the latest version (1.0.14) of the **_`Trimble.Connect.Client.Common`_** module.
 * Added model classes, request methods and tests related to trees.
 * Moved the request-specific details from the request methods into the request model classes and created unified request dispatching mechanism.
 * Implemented unified basic request validation mechanism.
-* Re-organized source files into subfolders.
+* Re-organized source files into sub-folders.
 
 ## [1.0.10] - 2020-04-08
 
-* Adapted the code to use the leatest version (1.0.11) of the **_`Trimble.Connect.Client.Common`_** module.
+* Adapted the code to use the latest version (1.0.11) of the **_`Trimble.Connect.Client.Common`_** module.
 * Re-organized the **_`OrgClient`_** class by moving the request implementations into the **_`OrgClient.Requests`_** partial class.
 * Simplified the inheritance hierarchy of the test classes.
 * Aligned the model classes with the [Org service REST API documentation](https://app.swaggerhub.com/apis/Trimble-Connect/org-prod/v1#/)
-* Re-organized source files into subfolders.
+* Re-organized source files into sub-folders.
 * Cleaned up and updated package references.
 * Fixed StyleCop warnings and enabled automatic StyleCop scan during build.
 * Updated release notes to use a more standardized format.

@@ -1,5 +1,16 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [2.1.0] - 2026-10-28
+* Added `DpopCredentialProvider` so an application can attach a delegated DPoP access token and a per-request proof through the existing `ICredentialsProvider`.
+* `RetryHttpMessageHandler` authorizes each physical send. A 401 retry keeps the renewed token and any server `DPoP-Nonce` instead of signing a new proof that drops the nonce.
+
+## [2.0.5] - 2026-08-06
+* Made internals visible to Issue Management service client. 
+
+## [2.0.4] - 2026-07-07
+* Removed MonoAndroid71 from target frameworks.
+* Added ModelApi Uri property in Region.cs. Consumers should use the new ModelApiUri property instead of accessing the Model API URI through the AdditionalProperties collection, as the previous approach is no longer supported. This is a breaking change.
+
 ## [2.0.3] - 2025-10-14
 * Removed Xamarin.iOS10 from target frameworks.
 

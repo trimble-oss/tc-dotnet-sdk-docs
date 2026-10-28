@@ -1,5 +1,11 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.8.11
+* Added NWD submodel disambiguation support with optional `ModelId` fields on view presentation elements, section planes, measurements, and markups.
+* Added `ExcludedModelIds` to `SectionBox`.
+* Added `ReferenceObject` / `ReferenceObject2` support on section planes, measurements, and markups.
+* Updated `ModelElementIdState` equality to include `ModelId` for NWD submodel disambiguation.
+
 # 2.8.10
 * Parse Issue Identifier in delta response.
 
@@ -66,7 +72,7 @@
 * Added UploadAsync method to IFilesController to support uploading files from public URLs.
 
 # 2.7.2
-* Added the TidUuid property explicitly to Person. This can be a breaking change when you are already accessing this property using the properties dictionary. 
+* Added the TidUuid property to Person.
 
 # 2.7.1
 * Added Multipart Download API IFilesController.DownloadAsync()
@@ -304,7 +310,7 @@
 * Integrated 1.0.49-beta version of Trimble.Connect.Client.Common by off-loading the regions implementation to common client.
 
 # 2.6.2-beta
-* Added CredentialsProvider to ITrimbleConnectClient to support other micro service client intializations like sync helper client using IProjectClient
+* Added CredentialsProvider to ITrimbleConnectClient to support other micro service client initializations like sync helper client using IProjectClient
 
 # 2.6.1-beta
 * Added new constructor to initialize Trimble Connect Client using ICredentialProvider and marked the other constructors obsolete.
@@ -353,7 +359,7 @@
 * Added fileset and pathtemplate parameters to Upload and Download APIs to support point cloud files.
 
 # 2.4.19
-* Fix: Errors in view json parsor with respect to parsing the assignees.
+* Fix: Errors in view json parser with respect to parsing the assignees.
 
 # 2.4.18
 * Added panPositionX and panPositionY parameters to View2D while creating new View2D.
@@ -361,7 +367,7 @@
 # 2.4.17
 * Added support for skipLargeViewDetail query param while pulling views so that large view details are not pulled.
 * The views will be flagged as large if the view metadata is greater than 500KB.
-* Fix: Errors in view json parsor by adding cases to parse additional view properties.
+* Fix: Errors in view json parser by adding cases to parse additional view properties.
 
 # 2.4.16
 * Added overload that allows passing download url to IFilesController.DownloadAsync method to support multipart download.
@@ -391,7 +397,7 @@
 * Added API support to get the user information within a project.
 
 # 2.4.5
-* Added pdf fileformat to Trimble.Connect.Client.Models.FileFormat enumeration.
+* Added pdf file format to Trimble.Connect.Client.Models.FileFormat enumeration.
 
 # 2.4.4
 * Changed the authentication for Trimble Connect APIs to use TID access token
@@ -642,7 +648,7 @@ Implementation is based on preliminary backend API and subject to change, the in
 
 # 2.1.1
 
-* Minor version incremented because binary compartibility was broken in 2.0.289 (version should have been incremented back then)
+* Minor version incremented because binary compatibility was broken in 2.0.289 (version should have been incremented back then)
 * Todo.Title and Type properties are added to data model
 * FolderItem.Status, HasChildren and AccessLevel properties are added to data model
 
@@ -653,7 +659,7 @@ Implementation is based on preliminary backend API and subject to change, the in
 # 2.0.291
 
 * Missed extension added for deleting attachments from Todo
-* The attachments API assymetry is encapsulated: now the result from listing attachments can be directly used for deleting attachments. 
+* The attachments API asymmetry is encapsulated: now the result from listing attachments can be directly used for deleting attachments. 
 Background: TCPS API uses attachment id property differently in requests and in responses. In request it is a file *version id*, in response it is a *file id* and the *file version id* is tranferred in a different field. This creates incompartibility between response and request content.
 The solution applied on SDK level is that `Attachent.Identifier` and `Attachent.Version` properties are always used according to their names, but when sending requests to TCPS the `Identifier` is automatically replaced with value from the `Version` property when needed.
 
@@ -681,7 +687,7 @@ The solution applied on SDK level is that `Attachent.Identifier` and `Attachent.
 # 2.0.286
 
 * `ReceiveAll()` extension method added to enumerate paged results
-* internal refactorings to improve support for object delta queries
+* internal refactoring to improve support for object delta queries
 * improve robustness when parsing range for paged results
 
 ## Common Release notes
@@ -708,7 +714,7 @@ The solution applied on SDK level is that `Attachent.Identifier` and `Attachent.
 
 * `X-TC-INSTALLATION-ID` header is introduced. The unique installation identifier is generated for each application installation and upgrade. This feature is a foundation for the per app installation TC service API usage analytics and billing.
 * forward compatibility improvements for date properties (`ToDo.DueDate`, `Release.DueDate`, `Project.StartDate`, `Project.EndDate`) values parsing in TC service responses. Now both `yyyy'-'MM'-'dd` and `yyyy'-'MM'-'dd'T'HH':'mm':'ssK` formats are supported.
-* Fixed the UTC datetime conversion when processing date properties (`ToDo.DueDate`, `Release.DueDate`, `Project.StartDate`, `Project.EndDate`)
+* Fixed the UTC date time conversion when processing date properties (`ToDo.DueDate`, `Release.DueDate`, `Project.StartDate`, `Project.EndDate`)
 * `ITrimbleConnectClient.LogoutAsync()` method is added
 
 # 2.0.280
