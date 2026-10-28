@@ -1,5 +1,8 @@
 # Trimble Connect Topic Client .NET Release Notes
 
+## 1.2.3
+* Removed Xamarin.iOS10 from target frameworks.
+
 ## 1.2.2
 * Removed reference to an unused vulnerable package.
 
@@ -28,23 +31,24 @@
 ## 1.1.1
 * Added `project_id` setter to `Identifier` in ObjectIdentity to read the updated response from topic service for get project and get projects.
 
-# 1.1.0
+## 1.1.0
 * Support paging.
 * Fixed namespace conflicts with TC Client.
 
-# 1.0.8
-* Fixed typo in model class for the properties `assigned_to_uuid` and `assigned_to`
+## 1.0.8
+* Fixed typo in model class for the properties `assigned_to_uuid` and `assigned_to`.
 
-# 1.0.7
+## 1.0.7
 * Fixed the json parsing of properties in the Model classes.
 
-# 1.0.6
+## 1.0.6
 * Added an optional dictionary of user-defined parameters in the CRUD async calls in IController.
 
-# 1.0.5
+## 1.0.5
 * Fixed issue with parsing related topics.
 
-# 1.0.4
-# 1.0.1
+## 1.0.4
+
+## 1.0.1
 * Initial version of Topic service client.
-* Refer https://github.com/buildingSMART/BCF-API 
+* [Refer](https://github.com/buildingSMART/BCF-API)

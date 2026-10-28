@@ -1,6 +1,43 @@
 # Trimble Connect .NET SDK Release Notes
-
 *(Applicable for Trimble.Connect.Data and Trimble.Connect.Data.Sync components)*
+
+# 2.11.2
+* Improved encrypted database open performance. Newly encrypted files use `kdf_iter=256` and `cipher_page_size=4096` (instead of SQLCipher 4 defaults), disable `cipher_memory_security`, and open companions in WAL mode.
+* Avoid throwaway PSetCatalog / PSetProjectStorage opens when companions are already encrypted; reuse keyed connections on Storage/Catalog/PSet copy constructors; cache unwrapped hex keys in-process.
+* Existing databases encrypted with the previous defaults must be re-encrypted once to pick up the faster settings.
+
+# 2.11.1
+* Fixed encryption migration free-space check for Storage, Catalog, PSetCatalog, and PSetProjectStorage on Windows, Android, and iOS. Free space is measured on the directory of the database being encrypted. `Path.GetPathRoot` is `/` on Android, and `DriveInfo` reported 0 bytes there, which aborted migration and deleted the local project before sync.
+
+# 2.11.0
+* Added SQLCipher AES-256 encryption support for local databases (opt-in, non-breaking) on Windows x64, Android, and iOS.
+* New `StorageOptions.UseEncryption` on Windows/net48, Android, and iOS (`#if __WINDOWS__ || __MOBILE__`; not on netstandard2.0). When `true`, the SDK migrates existing plain SQLite databases to AES-256 on first open.
+* Windows: `TrimbleKeyStore` uses DPAPI plus RSA-4096/OAEP-SHA256 `.key.support` escrow. Android: one app-wide Keystore wrap alias; per-DB secret in `.key`. iOS: Keychain account is a random id stored in the `.key` marker (`AfterFirstUnlockThisDeviceOnly`). Phone keys are not bound to the absolute path. Do not call DPAPI on a phone.
+* Android encrypted open requires `StorageOptions.AndroidFilesDirectory` (app private files dir) for SQLCipher FIPS activation.
+* All four local databases (`Storage`, `Catalog`, `PSetCatalog`, `PSetProjectStorage`) are encrypted independently, each with its own key file pair.
+* **Shared catalog constraint:** `Catalog` and `PSetCatalog` reside one directory above the project folder and are shared across all projects under that parent. All sibling projects must use the same `UseEncryption` value — once those shared databases are encrypted, opening any sibling project with `UseEncryption = false` throws `InvalidOperationException`.
+* Migration is atomic: a temporary plaintext `.storage.100.bak` is used during the file swap and deleted after successful verification.
+* Consuming applications (TCD, TCM) must add `<TrimbleSQLiteUseEncryption>true</TrimbleSQLiteUseEncryption>` to the **app** `.csproj` so SQLCipher natives are copied. Setting the property only on this library is not enough for NuGet consumers. iOS uses CommonCrypto (not Windows CMVP #4985).
+* All packaged TFMs depend on `Trimble.SQLite 2.1.1` (`Encrypted`, `ExecuteSensitive`, Android/iOS natives), already in Artifactory. Catalog/PSet `hexKey` overloads throw on netstandard2.0.
+* NuGet also ships `net10.0-android29.0` and `net10.0-ios12.2` (SQLCipher + Android Keystore / iOS Keychain). MAUI apps restore those TFMs; `netstandard2.0` stays unencrypted.
+
+# 2.10.16
+* Added ModelId support to local models (ModelElementIdState, SectionPlane, SectionBox, ClipPlane, MeasurementPick, SlopeMeasurement, and markup classes) for NWD submodel disambiguation.
+* Updated translators to preserve ModelId, ReferenceObject, and ExcludedModelIds fields during Remote↔Local conversions.
+* Enhanced test coverage with 9 comprehensive roundtrip and backward compatibility tests.
+
+# 2.10.15
+* Fixed: Sync could fail with a UNIQUE constraint on Principals when a user existed locally without a matching Persons row, causing ClashSets, Views, Links, and other entity syncs to skip affected users.
+
+# 2.10.14
+* Added offline caching and sync for NWD submodels (metadata + TRB download).
+* Submodel storage is now included in clear and disk-usage operations.
+* Submodel sync resolves the correct regional Model service per project and reports clear errors when unavailable.
+* Improved compatibility with submodel IDs returned by the server for reliable hierarchy mapping.
+
+# 2.10.13
+* Fixed the sql exception on pull files snapshot during bulk persons insert.
+
 
 # 2.10.12
 * Added `StorageOptions.IncludeTopicEmbeddedInViewsSync` (default `false`) to opt in to including BCF topic-embedded views in the normal Views delta sync (`includeTopicEmbedded` query parameter).
@@ -49,7 +86,7 @@
 * Added PSet Offline Sync functionality.
 
 # 2.9.8
-* Removed Xamarin.iOS10 from target frameworks.
+* Removed Xamarin.iOS10 from target frameworks .
 
 # 2.9.7
 * Fixed app access and policy type persistence on their update in projects table.
@@ -58,7 +95,7 @@
 * Added app access and policy type to the projects table.
 
 # 2.9.5
-* Fixed Include Attachements while pulling files for first time.
+* Fixed Include Attachments while pulling files for first time.
 * Fixed issue in caching heartbeat cursor for fsobject.
 
 # 2.9.4
@@ -410,7 +447,7 @@
 * Added support for querying local storage with paged requests with optional sort property.
 
 # 2.5.16
-* Added new storage options to specifiy page size for entity types and db timeout.
+* Added new storage options to specify page size for entity types and db timeout.
 * Fix: Corrected DB transaction exception while undeleting embedded file.
 
 # 2.5.15
@@ -419,7 +456,7 @@
 # 2.5.14
 * Fix database deadlock while pushing model placements if there are more than one placement to push.
 * Fix: Missing transaction added while pulling placements.
-* Fix: use separate storage connection from background thread while pushing file resentation formats.
+* Fix: use separate storage connection from background thread while pushing file representation formats.
 
 # 2.5.13
 * Improved file sync performance by combining file and folder streams using FsObject sync.
@@ -431,7 +468,7 @@
 * Fix: Fixed the internal issue to improve the robustness.
 
 # 2.5.10
-* Fix: database schema conversion bug introduced in 2.5.9 - coverter v78 -> v79 is missing
+* Fix: database schema conversion bug introduced in 2.5.9 - converter v78 -> v79 is missing
 
 # 2.5.9
 * Fix: File attachment thumbnailsUrl are updated on assimilation events.
@@ -754,10 +791,10 @@
 * Fix sync logic so that after a sync cursor reset, entities to which access has been lost will be deleted on next pull
 
 # 2.1.44
-* Fix: pull thumbnail on indivudual file pull (LocalFile.PullAsync) if missed.
+* Fix: pull thumbnail on individual file pull (LocalFile.PullAsync) if missed.
 
 # 2.1.43
-* Support the change in the ToDo permission model inroduced in the TCPS 2.50: ToDos are not public for project members any more.
+* Support the change in the ToDo permission model introduced in the TCPS 2.50: ToDos are not public for project members any more.
 
 # 2.1.42
 * Optimize sync support for 2D views
@@ -807,7 +844,7 @@
 * Bugfix: Cannot pull files and versions in parallel if they have same content
 
 # 2.1.28
-* Internal pull optimisation for files and todo sync
+* Internal pull optimization for files and todo sync
 * Add ThumbnailUrl and Revision support to Files and FileVersions
 
 # 2.1.27
@@ -864,7 +901,7 @@ Note that app should still take care that synchronous operations for same Storag
 # 2.1.12
 * Synchronization methods (push, pull, refresh) are now thread safe. It is ok for the app to call them concurerntly from diferent thread, Sync component with do the nessesery coordination automatically to avoid data corruption.
 Previously it was up to the application to make sure only other thread is initiating the synchronization activity. Typical problem was a duplicate entities creation.
-* Push parallelizm is improved. If there are many entities up to 10 parallel requests will be send to backend to improve performance.
+* Push parallelism is improved. If there are many entities up to 10 parallel requests will be send to backend to improve performance.
 
 # 2.1.11-beta
 * Fix: automatic on demand file cache migration is removed to avoid problems related to atomicity of this operation and performance hit on storage construction. App could do migration as an admin action if needed.
@@ -901,12 +938,12 @@ Added CleanOptions.FileHistory.
 
 # 2.1.2-beta
 * Shared file content caching support. 
-Now the shared file content cache is the default behaviour on desktop platforms. 
+Now the shared file content cache is the default behavior on desktop platforms. 
 The default location for the shared file cache is local user profile (`%USERPROFILE%\.TrimbleConnect\.files`). This location can be overriden using _FileCachePath_ parameter in the configuration file `%USERPROFILE%\.TrimbleConnect\.config`.
 If relative file is specified in the configuration file then the file cache will be local for the project storage (same as behaviour in earlier versions).
-On mobile platforms behaviour is unchanged.
+On mobile platforms behavior is unchanged.
 When storage created with older SDK version is opened on desktop platform the SDK will look for the ".files" subfolder. If it exists automatic migration will be attempted to copy all the currently cached files to the shared cache. 
-* In case of the shared file content cache the `Storage.Clear()` method behaviour has changed: files are never removed from the shared cache
+* In case of the shared file content cache the `Storage.Clear()` method behavior has changed: files are never removed from the shared cache
 * Added possibility to override the file content cache (blob storage) location on project storage creation, the BlobStorage class is exposed for this purposes
 * Added callback on storage opening that informs app that the storage is going to be converted from older version and allows to cancel the conversion.
 

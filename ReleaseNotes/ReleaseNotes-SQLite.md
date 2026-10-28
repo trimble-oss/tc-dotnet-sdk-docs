@@ -1,5 +1,20 @@
 # Trimble SQLite .NET Wrapper
 
+# 2.1.1
+* Android and iOS SQLCipher consume path (CommonCrypto on iOS; OpenSSL `libsqlcipher_openssl` + `libfips.so` on Android). Encrypted open verifies `cipher_provider=commoncrypto` on iOS and native FIPS status on Android (emulators may be non-FIPS).
+* Added `Sqlite.ExecuteSensitive` for SQL that must not be logged (e.g. `ATTACH ... KEY`).
+
+# 2.1.0
+* Added SQLCipher AES-256 FIPS encryption support for Windows x64 (opt-in via `TrimbleSQLiteUseEncryption=true`).
+* Added `TrimbleKeyStore` for DPAPI + RSA-4096 key management with automatic support-team key recovery via `.key.support` escrow file.
+* SQLCipher binaries sourced from `Trimble.SQLCipher.Community` NuGet package.
+
+# 2.0.13
+* Updated sqlite version from 3.51 to 3.53.2
+
+# 2.0.12
+* Updated sqlite version from 3.49 to 3.51
+
 # 2.0.11
 * Updated sqlite version from 3.39 to 3.49
 
@@ -21,7 +36,7 @@
 # 2.0.4
 * Updated sqlite version from 3.36.0 to 3.39.4.0.
 
-# 2.0.3
+# 2.0.0
 * Remove old mobile targets
 
 # 1.0.65
