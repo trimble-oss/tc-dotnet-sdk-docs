@@ -1,5 +1,12 @@
 # Trimble Connect .NET Client Common Release Notes
 
+## [2.2.0] - 2026-11-16
+* Added `MtlsCredentialProvider` so an application can obtain a Trimble ID access token with a client certificate (`client_credentials` with TLS client authentication, no client secret) and attach the cached bearer token through `ICredentialsProvider`.
+* The constructor takes the caller's `X509Certificate2` (certificate and private key), client id, scope, and token endpoint. The application loads the certificate and owns it. An optional `extraRoots` collection trusts additional anchors on the token request. The server hostname is still verified.
+* The same certificate is presented on the token request and on Connect calls made with this provider when `ClientConfig.InnerHandler` is left unset.
+* `ProductionTokenEndpoint`, `StagingTokenEndpoint`, and `GovernmentTokenEndpoint` are the current mutual TLS token URLs. Prefer the token endpoint from that environment's OpenID discovery document when the alias changes.
+* A Connect 401 invalidates the cached token and the retry is sent with the refreshed bearer token.
+
 ## [2.1.0] - 2026-10-28
 * Added `DpopCredentialProvider` so an application can attach a delegated DPoP access token and a per-request proof through the existing `ICredentialsProvider`.
 * `RetryHttpMessageHandler` authorizes each physical send. A 401 retry keeps the renewed token and any server `DPoP-Nonce` instead of signing a new proof that drops the nonce.

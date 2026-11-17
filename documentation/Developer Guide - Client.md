@@ -4,13 +4,16 @@
 
 1. [Overview](#overview)
 2. [Authentication/Initialization](#authentication)
-	+ [Example: Sign-in TC Platform Services](#sign-in-example)
+	+ [Example: Sign-in TC Platform Services](#example-sign-in)
+	+ [Application tokens and CurrentUser](#app-tokens-current-user)
 	+ [Regions Configuration](#regions-config)
+	+ [Using the same SDK against FedRAMP](#fedramp-endpoints)
 3. [TC Data Model](#data-model)
 4. [Accessing TC Platform Services](#accessing-tc)
-5. [Extensibility mechanisms](#extensibility-mechanisms)
-6. [Search API](#search)
-7. [Code snippets](#tc_snippets)
+5. [Members and groups V2](#members-groups-v2)
+6. [Extensibility mechanisms](#extensibility-mechanisms)
+7. [Search API](#search)
+8. [Code snippets](#tc_snippets)
 	+  [Example: Access TC Services](#example-access-tc)
 	+  [Example: How to enumerate paged results](#example-paging)
 	+  [Example: Using delegating handlers to implement network activity indicator](#example-delegating-handlers)
@@ -53,8 +56,7 @@ The application should initialize the Trimble connect user with the acquired acc
 
 ## Updated workflow
 
-The clients can use Trimble.Identity.OAuth.AuthCode for interactive workflow authentication or Trimble.Identity.OAuth.Password for headless applications (like from test code).
-The clients can also provide any custom implementation of ICredentialsProvider.
+The clients can use Trimble.Identity.OAuth.AuthCode for interactive workflow authentication. `Trimble.Identity.OAuth.Password` is available only for test applications, not production apps. The clients can also provide any custom implementation of `ICredentialsProvider` (including `TokenCredentialsProvider`, DPoP, or FedRAMP mTLS).
 
 ### <a name="example-sign-in">Example: Authenticating with TC API </a>
 
@@ -79,15 +81,87 @@ The clients can also provide any custom implementation of ICredentialsProvider.
 	
 	await client.InitializeTrimbleConnectUserAsync();
 
+### <a name="app-tokens-current-user">Application tokens and CurrentUser</a>
+
+Project wrappers such as `FilesController.GetFolderItemsAsync` require `CurrentUser` to be set. Paged results construct `QueryResult` with that user; if it is null the call fails in the client **before** any HTTP request:
+
+```
+System.ArgumentNullException: Value cannot be null.
+Parameter name: user
+```
+
+`GetProjectClientAsync` copies `CurrentUser` onto the project client. If `CurrentUser` is still null and a credentials provider is set, it also calls `InitializeTrimbleConnectUserAsync()`, which loads `GET users/me`.
+
+**Interactive user tokens.** Call `InitializeTrimbleConnectUserAsync()`. That sets `CurrentUser` using the SDK alias `"me"` and fills in the Trimble Connect profile.
+
+**Application tokens** (client credentials, mTLS / FedRAMP, or any token that is not a Trimble Connect user). `InitializeTrimbleConnectUserAsync()` usually fails because there is no user profile. Stub `CurrentUser` **before** `GetProjectClientAsync` or file calls. Use `"me"` (the same value the SDK uses internally):
+
+```csharp
+var client = new TrimbleConnectClient(config, tokenProvider)
+{
+    CurrentUser = new TrimbleConnectUser("me"),
+};
+
+await client.ReadConfigurationAsync();
+var projects = await client.GetProjectsAsync();
+var project = projects.First();
+var projectClient = await client.GetProjectClientAsync(project);
+var files = await projectClient.Files.GetFolderItemsAsync(project.RootFolderIdentifier);
+```
+
+`"Unknown"` also satisfies the client null check (`new TrimbleConnectUser("Unknown")`). Prefer `"me"`. Set `CurrentUser` on the `TrimbleConnectClient` **before** `GetProjectClient` / `GetProjectClientAsync` (that copies it onto the project client). If the project client already exists with a null user, set `projectClient.CurrentUser` as well.
+
+This is an **SDK client-side** check (`QueryResult` refuses a null user). It is not a server 403. Auth still comes from `ICredentialsProvider`; `TrimbleConnectUser.AuthenticationToken` is obsolete and can stay null. You do not need `GET users/me` for folder listing.
+
+The stub does not make every Connect API accept an application token. APIs that need a real user profile still require a user token. Long-term, paged APIs should not require `CurrentUser` when a credentials provider is set; this stub is a caller workaround.
 
 ### <a name="regions-config">Regions Configuration </a>
 
 The regions endpoint is hardcoded to https://app.connect.trimble.com/tc/api/2.0/regions in the Trimble.Connect.Client.Common component.
 
-If the Trimble.Connect.Client component is initalized with a different service URI (say to point to QA or STATGE environments), then it is necessary to explicitly set the Regions URI.
+If the Trimble.Connect.Client component is initalized with a different service URI (say to point to QA, STAGE, or FedRAMP), then it is necessary to explicitly set the Regions URI.
 
 	RegionsConfig.RegionsUri = new Uri("https://app.stage.connect.trimble.com/tc/api/2.0/regions");	
 
+### <a name="fedramp-endpoints">Using the same SDK against FedRAMP</a>
+
+There is no separate FedRAMP client package. Use the same `Trimble.Connect.Client` (and the same PSet, Topic, Model, Issue, Org, ECom wrappers) and point them at the **internal FedRAMP hosts**.
+
+Set these URIs **before** `ReadConfigurationAsync` / `GetProjectClientAsync`:
+
+| What | Commercial (default) | FedRAMP |
+|---|---|---|
+| Connect API (`TrimbleConnectClientConfig.ServiceURI`) | `https://app.connect.trimble.com/tc/api/2.0/` | `{fedrampConnectHost}/tc/api/2.0/` |
+| Regions (`RegionsConfig.RegionsUri`) | `https://app.connect.trimble.com/tc/api/2.0/regions` | `{fedrampConnectHost}/tc/api/2.0/regions` |
+| Other service clients (`PSetClientConfig.ServiceURI`, and so on) | commercial regional APIs | the matching FedRAMP regional URI |
+
+```csharp
+RegionsConfig.RegionsUri = fedrampRegionsUri;
+
+var config = new TrimbleConnectClientConfig
+{
+    ServiceURI = fedrampConnectApiUri,
+};
+
+var client = new TrimbleConnectClient(config, credentialsProvider)
+{
+    CurrentUser = new TrimbleConnectUser("me"),
+};
+
+await client.ReadConfigurationAsync();
+var projects = await client.GetProjectsAsync();
+var project = projects.First();
+var projectClient = await client.GetProjectClientAsync(project);
+var files = await projectClient.Files.GetFolderItemsAsync(project.RootFolderIdentifier);
+```
+
+`GetProjectClientAsync` resolves the project shard from `RegionsConfig`. If `RegionsUri` is left at the commercial default, regional clients go to commercial Connect even when `ServiceURI` is FedRAMP.
+
+**The FedRAMP regions response lists external endpoints.** Do not derive internal FedRAMP hosts from that payload (for example `region.TcpsApi`, Model, PSet, or Topic URIs). If a service must call **internal** downstream APIs, take those URLs from the **service owner** and set `ServiceURI` (and related client configs) explicitly. Inferring internals from regions will send traffic to the external FedRAMP edge.
+
+**Interactive user sign-in** still uses `AuthCodeCredentialsProvider`. Point `AuthenticationContext.AuthorityUri` at FedRAMP TID; do not use `identity.trimble.com`.
+
+**Application tokens** on FedRAMP use `MtlsCredentialProvider` and the FedRAMP mutual TLS token endpoint (`GovernmentTokenEndpoint`). That path is not for commercial apps. See [Developer Guide - mTLS.md](https://github.com/trimble-oss/tc-dotnet-sdk-docs/blob/main/documentation/Developer%20Guide%20-%20mTLS.md) and [Application tokens and CurrentUser](#app-tokens-current-user).
 
 ## <a name="data-model">TC Data Model</a>
 
@@ -98,6 +172,67 @@ If the Trimble.Connect.Client component is initalized with a different service U
 Below is a class diagram that describes the API programming models used in the SDK component to access the TC service.
 
 ![Class diagram](images/class_diagram.png)
+
+## <a name="members-groups-v2">Members and groups V2</a>
+
+Prefer **V2** for new code and for **application tokens**. V2 member IDs are CURIEs, not a bare TID UUID. Build them with `MemberIdHelper`:
+
+* User: `users:{tidUuid}` — `MemberIdHelper.ForUser(tidUuid)`
+* Application: `applications:{uuid}` — `MemberIdHelper.ForApplication(appUuid)`
+
+Group CRUD (`Groups.CreateAsync`, `GetAllAsync`, …) stays on V1. Group **membership** has V2 methods that take `Member` (CURIE), not V1 `Person`.
+
+### Project members — `projectClient.MembersV2`
+
+| Method | HTTP |
+|---|---|
+| `ListMembersAsync` | `GET projects/{projectId}/members` |
+| `InviteMemberAsync` | `POST projects/{projectId}/members` |
+| `GetMemberAsync` | `GET projects/{projectId}/members/{memberId}` |
+| `UpdateMemberRoleAsync` | `PATCH projects/{projectId}/members/{memberId}` |
+| `RemoveMemberAsync` | `DELETE projects/{projectId}/members/{memberId}` |
+
+`ListMembersAsync` and `GetMemberAsync` accept user or application OAuth.
+
+For `InviteMemberAsync`, `memberId` must be a CURIE when you pass it. **`email` and `memberId` are mutually exclusive.** Passing both, or neither, throws `ArgumentException` in the SDK before the request goes out.
+
+| Invite type | `email` | `memberId` |
+|---|---|---|
+| New / email invite | email address | `null` |
+| Existing user by TID | `null` | `users:{tidUuid}` (`MemberIdHelper.ForUser`) |
+| Application | `null` | `applications:{uuid}` (`MemberIdHelper.ForApplication`) |
+
+Email-only invite (same as a POST that sends only `email`):
+
+```csharp
+var member = await projectClient.MembersV2.InviteMemberAsync(
+    projectId,
+    email,
+    null,          // memberId
+    Role.User,
+    notify: true);
+```
+
+The returned `Member` has the id / CURIE (and usually `TidUuid`). Invite by email with `null` memberId, then build `users:{tidUuid}` from the result when you need it for get / update / remove:
+
+```csharp
+var memberCurie = MemberIdHelper.ForUser(member.TidUuid);
+await projectClient.MembersV2.GetMemberAsync(projectId, memberCurie);
+await projectClient.MembersV2.UpdateMemberRoleAsync(projectId, memberCurie, Role.Admin);
+await projectClient.MembersV2.RemoveMemberAsync(projectId, memberCurie);
+```
+
+A bare `tidUuid` is not valid for `memberId`. Role must be `Role.User` (`"USER"`) or `Role.Admin` (`"ADMIN"`).
+
+### Group members — `projectClient.Groups`
+
+| Method | HTTP |
+|---|---|
+| `GetUsersV2Async` | `GET projects/{projectId}/groups/{groupId}/members` |
+| `AddUsersV2Async` | `POST projects/{projectId}/groups/{groupId}/members` |
+| `RemoveUsersV2Async` | `DELETE projects/{projectId}/groups/{groupId}/members/{memberId}` |
+
+Pass `Member` objects whose `Identifier` is a CURIE from `MemberIdHelper`. Do not use V1 `GetUsersAsync` / `AddUsersAsync` / `RemoveUsersAsync` with an application token; those paths return **403** (`Application token not supported for this endpoint at the moment`).
 
 ## <a name="extensibility-mechanisms">Extensibility mechanisms</a>
 
