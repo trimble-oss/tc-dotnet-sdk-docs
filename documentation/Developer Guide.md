@@ -99,7 +99,7 @@ TC SDK components are implemented as following nuget packages:
 
 1. [Trimble.Identity](Developer%20Guide%20-%20Identity.md) - TID authentication
 
-2. [Trimble.Connect.Client](Developer%20Guide%20-%20Client.md) - TC API Client (TC REST API wrappers)
+2. [Trimble.Connect.Client](Developer%20Guide%20-%20Client.md) - TC API Client (TC REST API wrappers). Same package against FedRAMP by changing `ServiceURI` and `RegionsUri`. See also [DPoP](Developer%20Guide%20-%20DPoP.md) and [mTLS (FedRAMP internal only)](Developer%20Guide%20-%20mTLS.md).
 
 3. [Trimble.Connect.Data](Developer%20Guide%20-%20Data.md) and Trimble.Connect.Data.Sync - TC Data Storage (local offline storage) which uses SQLite for storing data locally with synchronization capability
 
@@ -155,7 +155,9 @@ TC has several deployment environments that we encourage you to use for debuggin
 
     * Production TCW: [https://connect.trimble.com/](https://connect.trimble.com/) 
 
-The staging environment of TC uses staging environment of TID.  Production TC environment uses the production TID environment.
+3. FedRAMP - internal U.S. government stack. Use the same SDK packages and point `ServiceURI` / `RegionsUri` at the internal FedRAMP hosts. Do not use the commercial URLs above. The regions API still returns **external** endpoints; do not infer internal downstream URLs from it — get those from the service owner. Application-token sign-in on that stack uses [mTLS](Developer%20Guide%20-%20mTLS.md), not commercial AuthCode.
+
+The staging environment of TC uses staging environment of TID.  Production TC environment uses the production TID environment. FedRAMP uses FedRAMP TID.
 
 TID environments
 

@@ -454,3 +454,4 @@ There must be exactly one `DPoP` header value per send. `DpopCredentialProvider`
 * [Developer Guide - Org.md](https://github.com/trimble-oss/tc-dotnet-sdk-docs/blob/main/documentation/Developer%20Guide%20-%20Org.md) — Organization client
 * [Developer Guide - EComClient.md](https://github.com/trimble-oss/tc-dotnet-sdk-docs/blob/main/documentation/Developer%20Guide%20-%20EComClient.md) — ECom client
 * [Developer Guide - Identity_OAuth_AuthCode.md](https://github.com/trimble-oss/tc-dotnet-sdk-docs/blob/main/documentation/Developer%20Guide%20-%20Identity_OAuth_AuthCode.md) — interactive Bearer sign-in (not used for DPoP)
+* [Developer Guide - mTLS.md](https://github.com/trimble-oss/tc-dotnet-sdk-docs/blob/main/documentation/Developer%20Guide%20-%20mTLS.md) — FedRAMP internal client-certificate credentials (not used for DPoP or commercial apps)
