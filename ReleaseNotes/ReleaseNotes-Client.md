@@ -1,5 +1,14 @@
 # Trimble Connect Client .NET Release Notes
 
+# 2.8.12
+* Added `FedRampMultipartHandler` delegating handler for FedRAMP multipart package uploads. FedRAMP clients add it to `TrimbleConnectClientConfig.HttpHandlers`; commercial clients must not add it (commercial staging returns HTTP 400 when `totalParts` is sent).
+* Multipart package upload now accepts both commercial `partNumber=*` template URLs and FedRAMP `parts[]` pre-signed URL arrays. URL resolution is handled by `UploadUrl.GetUrlForPart()`.
+* Removed per-part ETag/MD5 comparison for multipart package uploads. Server ETags are still passed to the completion request but are no longer compared against local part hashes.
+* Added pre-upload size validation: file stream length must match the declared size before multipart upload is initiated.
+* Multipart part size and partition count calculations are now shared between `FedRampMultipartHandler` and `TransferUtility` (10 MB per part below 5 GB; 50 MB at or above 5 GB).
+* Added `GetSourceUploadContent()` with validation — throws `InvalidOperationException` when the initiate response is missing source content or a required upload URL.
+* `FedRampMultipartHandler` preserves original request content headers when injecting `totalParts`, and handles non-seekable request streams correctly.
+
 # 2.8.11
 * Added NWD submodel disambiguation support with optional `ModelId` fields on view presentation elements, section planes, measurements, and markups.
 * Added `ExcludedModelIds` to `SectionBox`.

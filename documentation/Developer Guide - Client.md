@@ -8,6 +8,7 @@
 	+ [Application tokens and CurrentUser](#app-tokens-current-user)
 	+ [Regions Configuration](#regions-config)
 	+ [Using the same SDK against FedRAMP](#fedramp-endpoints)
+	+ [FedRAMP multipart package upload](#fedramp-multipart)
 3. [TC Data Model](#data-model)
 4. [Accessing TC Platform Services](#accessing-tc)
 5. [Members and groups V2](#members-groups-v2)
@@ -162,6 +163,31 @@ var files = await projectClient.Files.GetFolderItemsAsync(project.RootFolderIden
 **Interactive user sign-in** still uses `AuthCodeCredentialsProvider`. Point `AuthenticationContext.AuthorityUri` at FedRAMP TID; do not use `identity.trimble.com`.
 
 **Application tokens** on FedRAMP use `MtlsCredentialProvider` and the FedRAMP mutual TLS token endpoint (`GovernmentTokenEndpoint`). That path is not for commercial apps. See [Developer Guide - mTLS.md](https://github.com/trimble-oss/tc-dotnet-sdk-docs/blob/main/documentation/Developer%20Guide%20-%20mTLS.md) and [Application tokens and CurrentUser](#app-tokens-current-user).
+
+### <a name="fedramp-multipart">FedRAMP multipart package upload</a>
+
+FedRAMP multipart uploads require a `totalParts` field in the initiate request body, which the commercial API does not accept (returns HTTP 400 if sent). To handle this automatically, add `FedRampMultipartHandler` to `TrimbleConnectClientConfig.HttpHandlers` **before** constructing the client. Commercial clients must not add this handler.
+
+```csharp
+var config = new TrimbleConnectClientConfig
+{
+    ServiceURI = fedrampConnectApiUri,
+};
+config.HttpHandlers.Add(new FedRampMultipartHandler());
+
+var client = new TrimbleConnectClient(config, credentialsProvider)
+{
+    CurrentUser = new TrimbleConnectUser("me"),
+};
+```
+
+The handler intercepts `POST files/fs/upload` (the initiate call), calculates `totalParts` from the declared file size, and injects it into `contents[].totalParts`. It leaves all other paths and content headers unchanged, and handles non-seekable request streams transparently.
+
+**URL format differences.** Commercial initiate returns a `partNumber=*` template URL in `contents[].url`. FedRAMP initiate returns a `parts[]` array of pre-signed per-part URLs instead of a template. The SDK resolves the correct URL for each part automatically via `UploadUrl.GetUrlForPart()`, so the same `UploadPackageAsync` call works for both environments once the handler is in place.
+
+**Part size rules** (same for both environments): 10 MB per part for files under 5 GB; 50 MB per part for files at or above 5 GB.
+
+**ETag behaviour.** Server ETags returned per part are forwarded to the completion request but are not compared against local part hashes. The comparison was removed because FedRAMP S3 returns a composite ETag that does not match the local MD5.
 
 ## <a name="data-model">TC Data Model</a>
 
